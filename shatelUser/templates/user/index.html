@@ -1,0 +1,49 @@
+{% extends 'user/base.html' %}
+
+
+{% block title %}
+{{_('پنل کاربری شاتل') }}
+{% endblock title %}
+
+
+{% block style %}
+{% endblock style %}
+
+{% block body %}
+<section>
+    <div class="container-fluid persian-font my-4 my-md-5 pt-md-5 pt-3">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-11 my-2">
+                <h1 class="text-center display-4 mt-3">{{ _('حساب کاربری من') }}</h1>
+            </div>
+            <div class="col-md-6 col-11 my-3 fs-4">
+                <label class="w-100">
+                    {{ _('نام کاربری') }}:
+                    <input class="form-control disabled" disabled value="{{request.user_object.Username}}">
+                </label>
+            </div>
+            <div class="col-md-6 col-11 my-3 fs-4">
+                <label class="w-100">
+                    {{ _('آدرس ایمیل') }}:
+                    <input class="form-control disabled" disabled value="{{ request.user_object.Email }}">
+                </label>
+            </div>
+            <div class="col-md-6 col-11 my-3 fs-4">
+                <label class="w-100">
+                    {{ _('شماره تماس') }}:
+                    <input class="form-control disabled" disabled value="{{ request.user_object.PhoneNumber or _('تنظیم نشده است') }}">
+                </label>
+            </div>
+            <div class="col-md-6 col-11 my-3 fs-4">
+                <label class="w-100">
+                    {{_('آدرس') }}:
+                    <input class="form-control disabled" disabled value="{{ request.user_object.Address or _('تنظیم نشده است') }}">
+                </label>
+            </div>
+            <div class="col-md-12 col-11 my-3  d-flex justify-content-center align-items-center">
+                <a href="{{ url_for('user.setting_get') }}" class="btn btn-primary text-white w-100 fs-5 ">{{ _('تنظیمات حساب کاربری') }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

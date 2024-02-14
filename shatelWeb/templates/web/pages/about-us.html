@@ -1,0 +1,239 @@
+{%  extends "base.html" %}
+
+{% block title %}
+{{ _('درباره ما') }}
+{% endblock title %}
+
+
+{% block style %}
+<!-- Owl Carousel -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+<!-- Page Custom css -->
+<link rel="stylesheet" href="{{ 'about-us/css/about-us.css' | StorageUrl }}"/>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        crossorigin="anonymous"></script>
+{% endblock style %}
+
+{% block content %}
+{% include "utils/header.html" %}
+<section style="overflow-x: hidden">
+    <div class="container-fluid persian-font my-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-11">
+                <h4 class="text-center display-5 my-3  text-blue">{{ _('درباره ما') }}</h4>
+                <p></p>
+            </div>
+            <div class="col-12 bg-gray">
+                <div class="row justify-content-center align-items-center">
+                    <div class="my-5 col-lg-5 col-10 pe-auto pe-lg-5" data-aos="fade-left">
+                        <h2 class="text-orange">{{ _('تاریخچه') }}</h2>
+                        <p class="m-0 fs-large" style="text-align: justify">{{_('گروه فناوری ارتباطات و اطلاعات شاتل، بزرگ‌ترین مجموعه‌ی فعال در حوزه‌ی ارائه‌ی خدمات دسترسی به اینترنت و راهکارهای ارتباطی اینترنتی در کشور است. این شرکت با بیش از ۱۲۰۰ نفر نیروی انسانی متخصص، با گسترش دامنه­‌ی توزیع خدمات خود در استان­‌های مختلف از طریق نزدیک به ۴۰۰ دفتر نمایندگی، یک هزار عامل فروش و بیش از ۱۶۰۰ نفر نیروی انسـانی توانسته است سراسر کشور را تحت پوشش خدمات خود قرار دهد و بزرگ‌ترین سهم از مشتریان بازار اینترنت و خدمات تکمیلی آن در کشور را به‌ویژه در حوزه‌ی ارائه‌ی خدمات اینترنت پرسرعت +ADSL2 به خویش اختصاص دهد. شاتل همچنین ارائه کننده‌ی خدمات ارتباطی همراه با نام تجاری شاتل موبایل و خدمات آنلاین فیلم و سرگرمی (VOD) در وب‌سایت و اپلیکیشن نماواست. ')}}
+                        </p>
+                    </div>
+                    <div class="my-5 col-lg-4 col-10 overflow-hidden rounded" data-aos="fade-right">
+                        <img class="img-fluid rounded img-hover-zoom-in"
+                             src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 my-4">
+                <div class="row justify-content-center align-items-center">
+                    <div class="my-5 col-lg-5 col-10 overflow-hidden rounded" data-aos="fade-up">
+                        <div class="owl-carousel owl-theme award-slider w-100">
+                            <div class="item d-flex justify-content-center align-items-center">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/awards/iso-9001.jpeg' | StorageUrl }}"
+                                     class="shadow img-hover-zoom-in"
+                                     style="width: 200px; height: 340px" alt=""/>
+                            </div>
+                            <div class="item d-flex justify-content-center align-items-center">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/awards/iso-14001.jpeg' | StorageUrl }}"
+                                     class="shadow img-hover-zoom-in" style="width: 200px; height: 340px" alt=""/>
+                            </div>
+                            <div class="item d-flex justify-content-center align-items-center">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/awards/iso-45001.jpeg' | StorageUrl }}"
+                                     class="shadow img-hover-zoom-in"
+                                     style="width: 200px; height: 340px" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-5 col-lg-4 col-10 ps-auto ps-lg-5" data-aos="fade-down">
+                        <h2 class="text-orange">{{ _('گواهینامه ها و جوایز') }}</h2>
+                        <p class="m-0 fs-large" style="text-align: justify">{{ _('شاتل همواره تلاش کرده است تا افزون بر ارائه‌ی خدمات دسترسی به اینترنت به مشتریان در سراسر کشور، فعالیت‌هایی را فراسوی کسب و کار و بر اساس رسالت اجتماعی خود انجام دهد که از جمله آن‌ها می‌توان به موارد زیر اشاره کرد: ') }}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 bg-gray">
+                <div class="row justify-content-center align-items-center">
+                    <div class="my-3 my-md-5 col-lg-6 col-10 pe-auto pe-lg-5" data-aos="fade-up-left">
+                        <h2 class="text-orange">{{ _('زمینه فعالیت') }}</h2>
+                        <p class="m-0 fs-large" style="text-align: justify">{{_('همکاری با دانشگاه‌ها و مراکز تخصصی کشور
+ارائه‌ی خدمات و تسهیلات ویژه برای دانشجویان و دانشگاه، حمایت از پایان‌نامه‌ها و تحقیقات دانشجویی، فراهم آوردن زمینه‌های بازدید دانشجویان از نرم‌افزارهای شرکت، کمک به نوسازی مدارس در روستاهای کشور، حمایت‌های مالی از دانش‌آموزان روستایی و پذیرفته شده در کنکور سراسری، حمایت از رخدادهای علمی و دانشجویی، برگزاری اردوهای آماده‌سازی نخبگان مسابقات جهانی، جذب دانش‌آموختگان، استخدام افراد معرفی شده توسط مجتمع‌های بهزیستی و …
+برگزاری همایش‌های تخصصی در شهرستان‌ها
+برگزاری همایش‌های علمی و تخصصی در استان‌های مختلف کشور، ارائه­‌ی سخنرانی و حمایت‌های مالی و علمی در برگزاری کنفرانس‌های بین‌المللی حمایت از همایش‌های علمی و تخصصی
+گروه شرکت‌های شاتل، افزون بر برگزاری همایش‌های تخصصی در استان‌های مختلف کشور، از برگزاری همایش‌های علمی و تخصصی در حوزه‌ی فناوری اطلاعات و ارتباطات نیز حمایت می‌کند تا ضمن انجام بخشی از رسالت اجتماعی خویش، زمینه تقویت دانش کارکنان خود را نیز فراهم کند.
+حمایت از فعالیت‌های اجتماعی و عام‌المنفعه
+حمایت از محیط زیست
+
+شاتل با هدف پشتیبانی و حفاظت از محیط زیست و پیش‌گیری از آلودگی‌های زیست‌محیطی در هنگام ارائه خدمات به مشتریان خود، موفق به دریافت گواهی‌نامه استاندارد مدیریت زیست‌محیطی ISO14001:2004 و پیاده‌سازی این سیستم در شرکت شده است.')}}
+                        </p>
+                    </div>
+                    <div class="my-auto my-md-5 col-lg-4 col-10 overflow-hidden rounded" data-aos="fade-up-right">
+                        <div class="my-5 owl-carousel owl-theme factory-slider w-100">
+                            <div class="item position-relative rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                            </div>
+                            <div class="item position-relative rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media//img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                            </div>
+                            <div class="item position-relative rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-10 my-5" data-aos="zoom-in">
+                        <div class="row justify-content-center align-items-center text-center">
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi bi-geo-alt display-3 text-orange"></i>
+                                    <p>{{_('حاضر در تمامی شهر ها و استان ها')}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi-headset display-3 text-orange"></i>
+                                    <p>{{_('پشتبانی 24/7 هفته')}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi-truck display-3 text-orange"></i>
+                                    <p>{{_('ارسال به سراسر کشور')}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi-hand-thumbs-up-fill display-3 text-orange"></i>
+                                    <p>{{_('رضایت بیش از 99 درصدی')}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi-lightbulb-fill display-3 text-orange"></i>
+                                    <p>{{_('استفاده از فناوری و ایده های نو')}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi-patch-check display-3 text-orange"></i>
+                                    <p>{{_('ضمانت ارائه کالای اصیل ایرانی')}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi-graph-up-arrow display-3 text-orange"></i>
+                                    <p>{{_('برترین فروشنده لوازم الکترونیکی در ایران')}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="m-3 bg-white py-2 shadow rounded card-hover">
+                                    <i class="bi bi-boxes display-3 text-orange"></i>
+                                    <p>+{{_('8 سال سابقه تحقیقاتی و تولیدی')}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 p-0 p-0">
+                {% include 'utils/news-letter.html' %}
+            </div>
+
+            <div class="col-10 my-5">
+                <h2 class="my-5 text-orange">{{_('گالری تصاویر')}}</h2>
+                <div class="owl-carousel owl-theme image-show-slider w-100">
+                    <div class="item  rounded">
+                                 <img
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                           <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                    <div class="item overflow-hidden rounded">
+                                <img loading="lazy"
+                                     src="{{ 'about-us/media/img/img8.JPG' | StorageUrl }}"
+                                     class="shadow w-100 h-100 rounded img-hover-zoom-in"
+                                     alt=""/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% include 'utils/footer.html' %}
+{% endblock content %}
+
+{% block script %}
+
+<script src="{{ 'about-us/js/about-us.js' | StorageUrl }}"></script>
+{% endblock script %}

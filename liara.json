@@ -1,0 +1,20 @@
+{
+  "app": "shatel-main-webapplication",
+  "platform": "flask",
+  "flask": {
+    "pythonVersion": "3.11",
+    "timezone": "Asia/Tehran",
+    "mirror": true,
+    "appModule": "app:app"
+  },
+  "disks": [
+    {
+      "name": "storage",
+      "mountTo": "/usr/src/app/Storage/"
+    }
+  ]
+}
+ 
+ 
+ 
+ 

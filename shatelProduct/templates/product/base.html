@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block style %}
+{% endblock style %}
+
+
+{% block content %}
+{% include 'utils/header.html' %}
+
+<section style="overflow-x: hidden">
+    {% block product_content %}
+
+    {% endblock product_content %}
+    {% include 'utils/news-letter.html' %}
+
+{%  include 'utils/mobile-navbar.html' %}
+{% include 'utils/footer.html' %}
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}

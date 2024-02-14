@@ -1,0 +1,8 @@
+.header-hire-banner{
+    height: 45vh !important;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url("../../media/hire3.png");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}

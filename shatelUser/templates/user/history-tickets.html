@@ -1,0 +1,141 @@
+{% extends 'user/base.html' %}
+
+
+{% block title %}
+{{ _('شاتل')}} - {{ _('تیکت ها')  }}
+{% endblock title %}
+
+
+{% block style %}
+{% endblock style %}
+
+{% block body %}
+<section>
+    <div class="container-fluid persian-font my-4 my-md-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-11">
+                <h2 class="text-center my-3">{{ _('سابقه تیکت های ارسالی') }}</h2>
+            </div>
+            <div class="col-12">
+                <table class="shadow-sm table table-responsive table-bordered table-hover table-primary">
+                    <thead>
+                    <th>{{ _('شماره پیگیری') }}</th>
+                    <th class="d-none d-md-table-cell">{{ _('عنوان') }}</th>
+                    <th class="d-none d-md-table-cell">{{ _('وضعیت') | truncate(15, True, "...") }}</th>
+                    <th>{{ _('تاریخ') }}</th>
+                    </thead>
+                    <tbody>
+                    {% for ticket in ctx.tickets %}
+                    <tr data-ticket-key="{{ ticket.PublicKey }}" class="ticket-row cursor-pointer">
+                        <td>#{{ticket.id}}</td>
+                        <td class="d-none d-md-table-cell">{{ticket.Title}}</td>
+                        {% if ticket.Status %}
+                        <td class="d-none d-md-table-cell">🟢</td>
+                        {% else %}
+                        <td class="d-none d-md-table-cell">🟠</td>
+                        {% endif %}
+                        <td>{{ticket.CreatedTime | datetimeformat }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+
+                <nav dir="ltr" class="d-flex justify-content-center align-items-center">
+                    <ul class="pagination">
+
+                        {% if ctx.tickets.pages - ctx.current_page >= 0 and ctx.current_page != 1 %}
+                        <li class="page-item">
+                            <a class="page-link"
+                               href="{{ url_for('user.history_tickets_get', page=ctx.current_page - 1) }}"
+                               aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for page in ctx.tickets.iter_pages(right_edge=1, left_edge=1,right_current=1, left_current=1)
+                        %}
+                        {% if page %}
+                        {% if page == ctx.current_page %}
+                        <li class="page-item">
+                            <a class="page-link active"
+                               href="{{ url_for('user.history_tickets_get', page=page) }}">{{ page }}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a class="page-link"
+                               href="{{ url_for('user.history_tickets_get', page=page) }}">{{ page }}</a>
+                        </li>
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+
+                        {% if ctx.tickets.pages - ctx.current_page > 0 %}
+                        <li class="page-item">
+                            <a class="page-link"
+                               href="{{ url_for('user.history_tickets_get', page=ctx.current_page + 1) }}"
+                               aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<div id="modal-ticket" class="modal fade persian-font">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header border-bottom">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <span>{{ _('تیکت شماره') }} <span id="TicketNumber"></span> </span>
+            </div>
+            <input type="hidden" value="{{csrf_token()}}" id="csrftoken">
+            <div class="modal-body p-1" style="max-height: 450px;">
+                <div>
+                    <table class="table table-responsive table-hover table-borderless table-striped table-primary ">
+                        <thead>
+                        <th>{{ _('عنوان تیکت') }}</th>
+                        <th>{{ _('تاریخ') }}</th>
+                        <th>{{ _('وضعیت تیکت') }}</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <span data-bs-toggle="tooltip"
+                                      class="cursor-pointer" id="TicketTitle"></span>
+                            </td>
+                            <td><span id="TicketTime">2023/10/21 20:18:56</span></td>
+                            <td><span class="badge" id="TicketStatus" data-ok="{{ _('پاسخ داده شده') }}"
+                                      data-waited="{{ _('در انتظار پاسخ') }}"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <p class="text-dark fw-bold me-3 h4">{{ _('متن تیکت') }}:</p>
+                    <textarea id="TicketMessage" cols="10" rows="8" style="line-height: 1.8"
+                              dir="rtl" class="form-control" disabled></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-dismiss="modal">{{ _('خروج') }}</button>
+                <button class="btn btn-info" id="ShowAnswerBtn">{{ _('نمایش پاسخ') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+
+
+{% block script %}
+<!--Ticket History js -->
+<script src="{{ url_for('user.Serve', filename='/assets/js/history-tickets.js') }}"></script>
+{% endblock script %}

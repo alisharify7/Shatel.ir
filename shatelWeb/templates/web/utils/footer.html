@@ -1,0 +1,65 @@
+<!-- footer -->
+<section class="persian-font">
+    <div class="container-fluid">
+        <div class="row bg-darkgray footer-section justify-content-center align-items-center pt-5 pb-5 pb-md-3">
+            <div class="col-lg-3 col-md-6 col-11 text-center ">
+
+                <h2 class="text-white">{{_('درباره شاتل')}}</h2>
+                <ul class="list-unstyled p-0">
+                    <li><a href="{{ url_for('web.about_us_get') }}" class="text-decoration-none text-white">{{_('درباره شاتل')}}</a></li>
+                    <li><a href="{{ url_for('web.logo_get') }}" class="text-decoration-none text-white">{{_('لوگو های شاتل')}}</a></li>
+                    <li><a href="{{ url_for('web.job_get') }}" class="text-decoration-none text-white">{{_('فرصت های شغلی')}}</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-11 text-center">
+                <h2 class="text-white">{{_('خدمات')}}</h2>
+                <ul class="list-unstyled p-0">
+                    <li><a href="{{ url_for('web.faq_get') }}" class="text-decoration-none text-white">{{_('سوالات متداول')}}</a></li>
+                    <li><a href="{{ url_for('auth.login_get') }}" class="text-decoration-none text-white">{{_('ورود به حساب کاربری')}}</a></li>
+                    <li><a href="{{ url_for('auth.register_get') }}" class="text-decoration-none text-white">{{_('ساخت حساب کاربری')}}</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-11 text-center">
+                <h2 class="text-white">{{_('پشتیبانی')}}</h2>
+                <ul class="list-unstyled p-0">
+                    <li><a href="{{ url_for('web.contact_us_get') }}" class="text-decoration-none text-white">{{_('تماس با ما')}}</a></li>
+                    <li><a href="{{ url_for('web.proxy_get')  }}" class="text-decoration-none text-white">{{_('مراکز گارانتی شاتل')}}</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-11 text-center">
+                <h2 class="text-white">{{_('اطلاع رسانی')}}</h2>
+                <ul class="list-unstyled p-0">
+                    <li><a href="" class="text-decoration-none text-white">{{_('مشاهده وبلاگ')}}</a></li>
+                    <li><a href="" class="text-decoration-none text-white"> {{_('خبرنامه شاتل')}}</a></li>
+                    <li><a href="" class="text-decoration-none text-white">{{_('جشنواره ها')}}</a></li>
+                </ul>
+
+                <form action="/register/newsletter/" method="POST" id="newsletter_registration">
+                    <input type="hidden" name="csrf_token"
+                           value="ImZmNDgxNDU2YTkwN2NjZjBlNGVmOGUwOGFlOGQwMjI1MGFhMzBjMTMi.ZQAXxA.7kRIjenMea7lCUQ3U9iixQfRuDI">
+                    <div class="input-group w-100 mx-auto">
+                        <input type="email" class="form-control rounded-0 rounded-start text-start"
+                               placeholder="{{_('آدرس ایمیل')}}"
+                               required name="email" dir="" id="">
+                        <button type="submit" class="btn bg-orange text-white input-group-text rounded-0 rounded-end "
+                                style="font-size: 1rem;">{{_('عضویت در خبرنامه')}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col-12 mt-4  mb-md-2 text-center text-white mb-4 mb-md-auto">
+                <p class="m-0"><span class="">
+        &copy;{{_('تمامی حقوق مادی و معنوی سایت متعلق به شاتل می باشد')}} - (1402-2023)
+                </p>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- end of footer -->
+

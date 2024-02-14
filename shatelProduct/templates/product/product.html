@@ -1,0 +1,300 @@
+{% extends 'product/base.html' %}
+
+{% block title %}
+hi
+{% endblock title %}
+
+{% block style %}
+{% include 'utils/owl-carousel.html' %}
+{% endblock style %}
+
+{% block product_content %}
+<div class="container my-4 persian-font ">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6 col-11 ">
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0"
+                            class="active bg-orange" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"
+                            class="bg-orange" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"
+                            class="bg-orange" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{  '/product/images/product.jpg' | StorageUrl  }}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{  '/product/images/product.jpg' | StorageUrl  }}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{  '/product/images/product.jpg' | StorageUrl  }}" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-orange
+" aria-hidden="true"></span>
+                    <span class="visually-hidden text-dark">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-orange" aria-hidden="true"></span>
+                    <span class="visually-hidden text-dark">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-6 col-11 my-5">
+            <h2 class="text-blue-dark">کارت گرافیک ام اس آی GeForce RTX 3070 VENTUS 3X OC</h2>
+            <div class="my-4">
+                <ul class="text-muted ">
+                    <li class="text-muted">میدان گشتاور: دارای پردازشگر NVIDIA® GeForce® GT 710 (954 مگاهرتز)</li>
+                    <li class="text-muted">نمایشگر: حافظه: 2 گیگابایت DDR3</li>
+                    <li class="text-muted">نمایشگر: دارای پردازشگر NVIDIA® GeForce® GT 710 (954 مگاهرتز)</li>
+                    <li class="text-muted">باتری: با رابط اتصال PCI Express 2.0)</li>
+                </ul>
+            </div>
+            <hr>
+            <div>
+                <p>
+                    دسته بندی:
+                    {% for i in range(5) %}
+                    <a class="text-muted text-decoration-none mx-1" href="#">مودم</a>
+                    {% endfor%}
+                </p>
+            </div>
+            <div>
+                <a class="btn btn-primary rounded-4 my-2">دانلود کاتالوگ راهنما</a>
+                <a class="btn bg-orange text-white rounded-4 my-2">لیست آپدیت های نرم افزاری</a>
+            </div>
+        </div>
+        <div class="col-12 my-5" id="parent-collapse-container">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-muted active" data-bs-toggle="tab" data-bs-target="#simple-info-tab"
+                            type="button"
+                            role="tab">مشخصات
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-muted" data-bs-toggle="tab" data-bs-target="#advance-info-tab"
+                            type="button"
+                            role="tab">مشخصات تکمیلی
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-muted" id="messages-tab" data-bs-toggle="tab"
+                            data-bs-target="#catalog-info-tab"
+                            type="button"
+                            role="tab" aria-controls="messages" aria-selected="false">کاتالوگ محصول
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-muted" data-bs-toggle="tab" data-bs-target="#question-info-tab"
+                            type="button"
+                            role="tab" aria-controls="settings" aria-selected="false">پرسش ها (3)
+                    </button>
+                </li>
+            </ul>
+            <!-- end of Nav tabs -->
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="simple-info-tab" role="tabpanel"
+                     tabindex="0">
+                    <div class="my-3 p-3 bg-gray shadow-sm rounded-3">
+                        <p style="text-align: justify">
+مودم روتر شاتل موبایل، مودم رومیزی در ابعاد ۴۸ * ۱۳۲ * ۱۸۰ و وزن ۴۰۰ گرم است که گزینه بسیار مناسبی برای به اشتراک گذاری اینترنت پرسرعت برای کاربران خانگی و سازمان ها محسوب می‌شود. کاربران با قرار دادن سیم کارت هوشمند شاتل موبایل در مودم شاتل موبایل اتصالی سریع و پایدار به اینترنت را تجربه خواهند کرد.
+مودم رومیزی شاتل موبایل از شبکه های 3G و 4G پشتیبانی کرده و برق مورد نیاز خود را از طریق یک منبع تغذیه با ولتاژ ۱۲ ولت DC و جریان ۱ آمپر تامین می کند.
+این مودم قدرتمند دارای ۲ آنتن خارجی و حداکثر سرعت انتقال اطلاعات ۱۵۰ مگابیت بر ثانیه است. در این مودم نشانگر LED برای نمایش وضعیت روشن یا خاموش بودن مودم، نمایش وضعیت شبکه وای فای، نمایش وضعیت شبکه دیتا و سیگنال شبکه و نمایش وضعیت اتصال و عدم اتصال پورت های LAN تعبیه شده است. از دیگر ویژگی های این مودم 4G می توان به سهولت در نصب و راه‌اندازی آن اشاره کرد.
+
+استفاده از این مودم‌ها تنها با سیم‌کارت‌های شاتل‌موبایل مقدور است و قیمت‌ها بدون احتساب مالیات بر ارزش افزوده است.
+ </p>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="advance-info-tab" role="tabpanel" tabindex="0">
+                    <div class="my-3">
+                        <table class="table table-responsive table-bordered table-striped table-hover">
+                            <tr>
+                                <th>مدل</th>
+                                <td>GT 710 2GD3H LP</td>
+                            </tr>
+                            <tr>
+                                <th>رابط</th>
+                                <td>رابط ایرانسل مودم</td>
+                            </tr>
+                            <tr>
+                                <th>مدل</th>
+                                <td>GT 710 2GD3H LP</td>
+                            </tr>
+                            <tr>
+                                <th>رابط</th>
+                                <td>رابط ایرانسل مودم</td>
+                            </tr>
+                            <tr>
+                                <th>حافظه</th>
+                                <td>2GB DDR3</td>
+                            </tr>
+                            <tr>
+                                <th>ابعاد</th>
+                                <td>146x69x19mm</td>
+                            </tr>
+                            <tr>
+                                <th>پاور</th>
+                                <td>300 وات</td>
+                            </tr>
+                            <tr>
+                                <th>حافظه</th>
+                                <td>2GB DDR3</td>
+                            </tr>
+                            <tr>
+                                <th>ابعاد</th>
+                                <td>146x69x19mm</td>
+                            </tr>
+                            <tr>
+                                <th>پاور</th>
+                                <td>300 وات</td>
+                            </tr>
+                            <tr>
+                                <th>حافظه</th>
+                                <td>2GB DDR3</td>
+                            </tr>
+                            <tr>
+                                <th>ابعاد</th>
+                                <td>146x69x19mm</td>
+                            </tr>
+                            <tr>
+                                <th>پاور</th>
+                                <td>300 وات</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="catalog-info-tab" role="tabpanel" tabindex="0">
+                    <iframe src="https://pdfobject.com/pdf/sample.pdf" class="w-100"
+                            style="min-height: 450px"></iframe>
+                </div>
+                <div class="tab-pane" id="question-info-tab" role="tabpanel" tabindex="0">
+                    <div class="w-100">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12">
+
+                                <div class="question rounded my-3">
+                                    <div class="question-header">
+                                    </div>
+                                    <div class="question-body d-flex justify-content-start align-items-center">
+                                        <i class="bi bi-question-circle text-orange fs-5 fw-bold me-2"></i>
+                                        <span class="">رم هشت با رم دوازده 4.5میلیون اختلاف قیمت داره یکم عجیب نیست؟بنظرتون ارزش خرید داره رم12؟</span>
+                                    </div>
+                                    <div class="question-answer ms-5 text-muted mt-2">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <span>
+                                                <i class="bi bi-arrow-90deg-left text-blue fw-bold m-0 p-0"></i>
+                                                پاسخ:
+                                            </span>
+                                            <span class="">این سر تره</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="question rounded my-3">
+                                    <div class="question-header">
+                                    </div>
+                                    <div class="question-body d-flex justify-content-start align-items-center">
+                                        <i class="bi bi-question-circle text-orange fs-5 fw-bold me-2"></i>
+                                        <span class="">رم هشت با رم دوازده 4.5میلیون اختلاف قیمت داره یکم عجیب نیست؟بنظرتون ارزش خرید داره رم12؟</span>
+                                    </div>
+                                    <div class="question-answer ms-5 text-muted">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <span>
+                                                <i class="bi bi-arrow-90deg-left text-blue fw-bold m-0 p-0"></i>
+                                                پاسخ:
+                                            </span>
+                                            <span class="">این سر تره</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="question rounded my-3">
+                                    <div class="question-header">
+                                    </div>
+                                    <div class="question-body d-flex justify-content-start align-items-center">
+                                        <i class="bi bi-question-circle text-orange fs-5 fw-bold me-2"></i>
+                                        <span class="">رم هشت با رم دوازده 4.5میلیون اختلاف قیمت داره یکم عجیب نیست؟بنظرتون ارزش خرید داره رم12؟</span>
+                                    </div>
+                                    <div class="question-answer ms-5 text-muted">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <span>
+                                                <i class="bi bi-arrow-90deg-left text-blue fw-bold m-0 p-0"></i>
+                                                پاسخ:
+                                            </span>
+                                            <span class="">این سر تره</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="question rounded my-3">
+                                    <div class="question-header">
+                                    </div>
+                                    <div class="question-body d-flex justify-content-start align-items-center">
+                                        <i class="bi bi-question-circle text-orange fs-5 fw-bold me-2"></i>
+                                        <span class="">رم هشت با رم دوازده 4.5میلیون اختلاف قیمت داره یکم عجیب نیست؟بنظرتون ارزش خرید داره رم12؟</span>
+                                    </div>
+                                    <div class="question-answer ms-5 text-muted">
+                                        <div class="d-flex justify-content-start align-items-center">
+                                            <span>
+                                                <i class="bi bi-arrow-90deg-left text-blue fw-bold m-0 p-0"></i>
+                                                پاسخ:
+                                            </span>
+                                            <span class="">این سر تره</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary px-4">{{ _('ثبت سوال') }}</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end of Tab panes -->
+        </div>
+
+        <!--        similar product-->
+        <div class="col-12 ">
+            <p class="h3 text-orange">{{_('محصولات مشابه')}}</p>
+        </div>
+        <div class="col-12 my-3">
+            <div class="row owl-carousel owl-theme similar_product_slider">
+                {% for i in range(10) %}
+                <div class="item shadow-sm">
+                    <div class="card rounded">
+                        <a class="d-inline-block text-decoration-none text-blue" href="google.com">
+                            <img class="card-img-top" src="{{  '/product/images/product.jpg' | StorageUrl  }}">
+                            <div class="card-body">
+                                <p class="h4 text-center">مودم Shatel C{{i}}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block script %}
+<script src="{{ 'product/js/product.js' | StorageUrl }}"></script>
+{% endblock %}

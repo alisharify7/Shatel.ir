@@ -1,0 +1,16 @@
+.col-split-main, .forget-col-split-main {
+    padding: 100px;
+    background-image: url(../media/login-register-back.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: var(--main-blue);
+}
+
+.forget-col-split-main {
+    background-image: url(../media/reset-password.png);
+
+}
+
+
+

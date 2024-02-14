@@ -1,0 +1,111 @@
+
+<!-- Mobile size responsive -->
+<div class="Mobile-Size-Responsive fixed-bottom d-md-none bg-white shadow persian-font">
+    <div class="container-fluid">
+        <div class="row py-2">
+            <div class="col-3 d-flex mobile-menu-selected flex-column justify-content-center align-items-center hover-able">
+                <i style="font-size: 1rem;" class="mb-1 fa-solid fa-house"></i>
+                <p style="font-size: 0.7rem;" class="m-0">{{_('خانه')}}</p>
+            </div>
+            <div class="col-3 d-flex text-muted flex-column justify-content-center align-items-center hover-able"
+                 data-bs-toggle="modal" data-bs-target="#category-modal">
+                <i style="font-size: 1rem;" class="mb-1 fa-solid fa-bars"></i>
+                <p style="font-size: 0.7rem;" class="m-0">{{_('دسته بندی ها')}}</p>
+            </div>
+            <div class="col-3 d-flex text-muted flex-column justify-content-center align-items-center hover-able">
+                <i style="font-size: 1rem;" class="mb-1 fa-solid fa-magnifying-glass"></i>
+                <p style="font-size: 0.7rem;" class="m-0">{{_('جستجو')}}</p>
+            </div>
+            <div class="col-3 d-flex text-muted flex-column justify-content-center align-items-center hover-able">
+                <i style="font-size: 1rem;" class="mb-1 fa-regular fa-user"></i>
+                <p style="font-size: 0.7rem;" class="m-0">{{_('حساب کاربری')}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end of Mobile size responsive -->
+
+
+<div class="modal fade persian-font" id="category-modal">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>دسته بندی ها</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                Accordion Item #1
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                             data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the first item's accordion body.</strong> It is shown by default, until
+                                the collapse
+                                plugin adds the appropriate classes that we use to style each element. These classes
+                                control the
+                                overall appearance, as well as the showing and hiding via CSS transitions. You can
+                                modify any of this
+                                with custom CSS or overriding our default variables. It's also worth noting that just
+                                about any HTML
+                                can go within the <code>.accordion-body</code>, though the transition does limit
+                                overflow.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Accordion Item #2
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the second item's accordion body.</strong> It is hidden by default,
+                                until the collapse
+                                plugin adds the appropriate classes that we use to style each element. These classes
+                                control the
+                                overall appearance, as well as the showing and hiding via CSS transitions. You can
+                                modify any of this
+                                with custom CSS or overriding our default variables. It's also worth noting that just
+                                about any HTML
+                                can go within the <code>.accordion-body</code>, though the transition does limit
+                                overflow.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Accordion Item #3
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                the collapse
+                                plugin adds the appropriate classes that we use to style each element. These classes
+                                control the
+                                overall appearance, as well as the showing and hiding via CSS transitions. You can
+                                modify any of this
+                                with custom CSS or overriding our default variables. It's also worth noting that just
+                                about any HTML
+                                can go within the <code>.accordion-body</code>, though the transition does limit
+                                overflow.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer"></div>
+        </div>
+    </div>
+</div>

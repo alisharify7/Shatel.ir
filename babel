@@ -1,0 +1,3 @@
+pybabel extract -F babel.cfg -k _l -o message.po .
+pybabel init -i message.po -d ./translations -l en
+pybabel compile -d ./translations

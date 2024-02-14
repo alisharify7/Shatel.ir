@@ -1,0 +1,19 @@
+<select id="language-widget" class="form-control" dir="ltr">
+    <option disabled selected>{{_('Select a Language')}}</option>
+    {% for lang in languages %}
+        <option data-link="{{ url_for('setUserLanguage', language=lang) }}">{{languages[lang]}}</option>
+    {% endfor%}
+</select>
+<script>
+    const languageWidget = document.querySelector("#language-widget")
+    languageWidget.addEventListener("change", e=>{
+        ClickedLanguage = e.currentTarget.value
+        Array.from(languageWidget.children).forEach(async each=>{
+            if (each.value == ClickedLanguage){
+                await fetch(window.location.protocol+ "//" + window.location.host + each.dataset.link)
+                window.location.reload()
+            }
+        })
+    })
+</script>
+

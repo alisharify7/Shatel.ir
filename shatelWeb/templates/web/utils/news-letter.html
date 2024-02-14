@@ -1,0 +1,25 @@
+<div class="notification-news-letter py-2 persian-font">
+    <div class="row justify-content-center py-5  my-5 align-items-center">
+        <div class="col-lg-6 col-10 my-auto my-md-3 text-white text-center">
+            <h3 class="text-orange fw-bold text-center ">{{_('از آخرین محصولات و جشنواره ها باخبر باشید')}}!</h3>
+            <p>{{_('با عضویت در خبرنامه شاتل از آخرین خبر ها و محصولات و جشنواره های شاتل باخبر باشید.')}}</p>
+        </div>
+        <div class="col-lg-6 col-10">
+            <div class="w-100 d-flex justify-content-center align-items-center">
+                <form action="" method="POST" id="" class="w-75">
+                    <input type="hidden" name="csrf_token"
+                           value="{{ csrf_token }}">
+                    <div class="input-group w-100 mx-auto">
+                        <input type="email" class="form-control rounded-0 rounded-start text-start py-3"
+                               placeholder="{{_('آدرس ایمیل')}}"
+                               required name="email" dir="">
+                        <button type="submit"
+                                class="btn bg-orange text-white input-group-text rounded-0 rounded-end py-3 "
+                                style="font-size: 1rem;">{{_('عضویت در خبرنامه')}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en  ">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link rel="shortcut icon" type="image/png" href=""/>
+    <link rel="stylesheet" href="{{ '/global/css/global.css' | StorageUrl }}"/>
+    <link rel="stylesheet" href="{{ url_for('user.Serve', filename='assets/css/styles.min.css') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <style>
+        .simplebar-content {
+            height: calc(100% - 8%);
+            display: flex;
+            flex-direction: column;
+            padding: 18px;
+        }
+
+    </style>
+    {% block style%}
+    {% endblock style%}
+</head>
+
+<body dir="rtl">
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar shadow-sm">
+        <!-- Sidebar scroll-->
+        <div>
+            <div class="brand-logo d-flex align-items-center justify-content-between my-2">
+                <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                    <i class="ti ti-x fs-8"></i>
+                </div>
+                <a href="{{ url_for('user.user_index') }}" class="text-nowrap logo-img">
+                    <img src="{{ renderLogo() | StorageUrl }}" width="180" alt="Logo"/>
+                </a>
+            </div>
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav scroll-sidebar shadow persian-font" data-simplebar="">
+                <ul id="sidebarnav">
+                    <hr class="m-0 p-0 ">
+                    <li class="nav-small-cap mt-3 fs-5 text-muted fw-bold">
+                        <span class="hide-menu">{{ _('خانه') }}</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ctx.dashboard}}" href="{{ url_for('user.user_index') }}"
+                           aria-expanded="false">
+                            <span>
+                        <i class="bi bi-ui-checks-grid fs-4 {{'text-white' if ctx.dashboard else 'text-orange'}} "></i>
+                            </span>
+                            <span class="hide-menu">{{ _('داشبورد') }}</span>
+                        </a>
+                    </li>
+                    <hr class="m-0 p-0 ">
+                    <li class="nav-small-cap mt-2 fs-5 text-muted fw-bold">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">{{ _('پشتیبانی') }}</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ url_for('user.send_ticket_get') }}" aria-expanded="false">
+                            <span>
+                                <i class="bi bi-chat-dots fs-4 {{'text-white' if ctx.send_ticket else 'text-orange'}}"></i>
+                            </span>
+                            <span class="hide-menu">{{ _('ارسال تیکت') }}</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+
+                        <a class="sidebar-link {{'active' if ctx.history_ticket else ''}}"
+                           href="{{ url_for('user.history_tickets_get') }}" aria-expanded="false">
+                            <span>
+                                <i class="bi bi-chat-fill fs-4 text-orange {{'text-white' if ctx.history_ticket else 'text-orange'}}"></i>
+                            </span>
+                            <span class="hide-menu">{{ _('سابقه تیکت ها') }}</span>
+                        </a>
+                    </li>
+                    <hr class="m-0 p-0 ">
+                    <li class="nav-small-cap mt-3 fs-5 text-muted fw-bold">
+                        <span class="hide-menu ">{{ _('تنظیمات') }}</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ url_for('user.setting_get') }}" aria-expanded="false">
+                            <span>
+                                <i class="bi bi-gear fs-4 text-orange {{'text-white' if ctx.setting else 'text-orange'}}"></i>
+                            </span>
+                            <span class="hide-menu">{{ _('تنظیمات حساب کاربری') }}</span>
+                        </a>
+                    </li>
+                    <hr class="m-0 p-0 mt-3">
+                    <li class="nav-small-cap mt-3 fs-5 text-muted fw-bold">
+                        <span class="hide-menu">{{ _('زبان') }}</span>
+                    </li>
+                    <li class="sidebar-item">
+                        {% include 'utils/multi-language-widget.html' %}
+                    </li>
+
+
+                </ul>
+                <div class="mt-auto p-0 mx-0">
+                    <p class="p-0 m-0 text-muted fs-2">
+                        ©
+                        {{ _('تمامی حقوق مادی و معنوی سایت برای شاتل محفوط می باشد') }}
+                        (2023-1402)
+                    </p>
+                </div>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+
+    </aside>
+    <!--  Sidebar End -->
+
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+        <!--  Header Start -->
+        <header class="app-header bg-light shadow">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item d-block d-xl-none">
+                        <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                            <i class="ti ti-menu-2"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                            <i class="ti ti-bell-ringing"></i>
+                            <div class="notification bg-primary rounded-circle"></div>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                    <ul class="navbar-nav flex-row me-auto align-items-center justify-content-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
+                               data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                <img src="data:image/jpeg;base64,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"
+                                     alt="" width="35" height="35" class="rounded-circle">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-start dropdown-menu-animate-up shadow persian-font"
+                                 aria-labelledby="drop2">
+                                <div class="message-body">
+                                    <a href="{{ url_for('user.user_index') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <i class="ti ti-user fs-6"></i>
+                                        <p class="mb-0 fs-3">{{ _('حساب کاربری') }}</p>
+                                    </a>
+                                    <hr class="m-0 p-0 w-75 mx-auto"></hr>
+                                    <a href="{{ url_for('user.setting_get') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <i class="ti ti-mail fs-6"></i>
+                                        <p class="mb-0 fs-3">{{ _('تنظیمات حساب کاربری') }}</p>
+                                    </a>
+                                    <hr class="m-0 p-0 w-75 mx-auto"></hr>
+                                    <a href="{{ url_for('user.send_ticket_get') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                        <i class="ti ti-list-check fs-6"></i>
+                                        <p class="mb-0 fs-3">{{ _('پشتیبانی') }}</p>
+                                    </a>
+                                    <hr class="m-0 p-0 w-75 mx-auto"></hr>
+                                    <a href="{{ url_for('auth.logout') }}"
+                                       class="btn btn-outline-primary mx-3 mt-2 d-block">{{ _('خروج')}}</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--  Header End -->
+        <div class="container-fluid">
+            <!--  Row 1 -->
+            {% block body %}
+            {% endblock body %}
+        </div>
+    </div>
+</div>
+
+{% include 'utils/alert.html' %}
+
+<!--JQUERY-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--BS JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+
+<!--SIDE BAR MENU JS-->
+<script src="{{ url_for('user.Serve', filename='/assets/js/sidebarmenu.js') }}"></script>
+
+<!--APP JS-->
+<script src="{{ url_for('user.Serve', filename='/assets/js/app.min.js') }}"></script>
+
+<!--SIMPLE BAR css-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.css"
+      integrity="sha512-rptDreZF629VL73El0GaBEH9tlYEKDJFUr+ysb+9whgSGbwYfGGA61dVtQFL0qC8/SZv/EQFW5JtwEFf+8zKYg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<!--SIMPLE BAR JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"
+        integrity="sha512-HV1U44HR4mYVDcsxzJpghYyGEy2PvbePe9UFXlV3vnzf4yFhbKA9QNpnhy4VWwnaC2jKzijITVWHPZBCOuc51g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--DASHBOARD JS-->
+<script src="{{ url_for('user.Serve', filename='/assets/js/dashboard.js') }}"></script>
+{% block script %}
+{% endblock script %}
+
+<!--SweetAlert2-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+
+</html>

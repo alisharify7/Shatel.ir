@@ -1,0 +1,252 @@
+/*
+- public css < Global css >
+    loaded in all pages automatically
+    @author github.com/alisharify7
+
+*/
+
+
+:root {
+    --main-blue: #419dd7;
+    --main-blue-hover: #2b83ba;
+    --main-blue-dark: #154464;
+    --main-orange: #f1592a;
+    --main-orange-hover: #d2512a;
+}
+
+@font-face {
+    font-family: "vazir";
+    src: url(../../.././/font/vazir-font-v18.0.0/Vazir-Bold.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.persian-font {
+    font-family: vazir, sans-serif;
+}
+
+.fs-large {
+    font-size: 1.3rem;
+    line-height: 1.5 !important;
+}
+
+.no-default-style {
+    background-color: transparent;
+    border: none;
+}
+
+.card-hover {
+    transition: all 1s;
+}
+
+.card-hover:hover {
+    transform: translateY(-15px);
+    cursor: pointer;
+}
+
+/*header*/
+
+.line1,
+.line2,
+.line3 {
+    width: 35px;
+    height: 5px;
+    border-radius: 2px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.brand-blue-shadow {
+    box-shadow: 0px 0px 45px -7px #419dd7;
+}
+
+.brand-orange-shadow {
+    box-shadow: 0px 0px 45px -7px #f1592a;
+}
+
+#navbar-burger-menu.burger_active .line1 {
+    transform: rotate(45deg) translate(6px, 8px);
+    background-color: var(--main-orange);
+}
+
+#navbar-burger-menu.burger_active .line2 {
+    opacity: 0;
+}
+
+#navbar-burger-menu.burger_active .line3 {
+    transform: rotate(-45deg) translate(5px, -6px);
+    background-color: var(--main-orange);
+}
+
+
+/* utils */
+.bg-orange {
+    background-color: var(--main-orange) !important;
+    transition: background-color 1s;
+}
+
+.bg-orange:hover {
+    background-color: var(--main-orange-hover);
+}
+
+.bg-section-odd {
+    background-color: rgb(226, 244, 255);
+}
+
+.bg-white {
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-blue {
+    transition: background-color 1s;
+    background-color: var(--main-blue);
+}
+
+.bg-blue:hover {
+    background-color: var(--main-blue-hover);
+}
+
+.bg-gray {
+    background-color: rgb(227, 238, 255);
+}
+
+.text-blue {
+    color: var(--main-blue);
+}
+
+.text-blue-dark {
+    color: var(--main-blue-dark);
+}
+
+.text-gray-dark {
+    color: rgb(143, 142, 142);
+}
+
+.text-orange {
+    color: var(--main-orange);
+}
+
+
+.blue-line-divider {
+    background-color: var(--main-blue);
+    height: 2px;
+    width: 90%;
+    margin: 10px auto 10px auto;
+}
+
+.bg-darkgray {
+    background-color: #2C3333;
+    background-color: #212A3E;
+}
+
+/* end of utils */
+
+
+.dropdown-menu li {
+    position: relative;
+}
+
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    right: 100%;
+    top: -7px;
+}
+
+.dropdown-menu .dropdown-submenu-left {
+    right: 100%;
+    right: auto;
+}
+
+.dropdown-menu > li:hover > .dropdown-submenu {
+    display: block;
+}
+
+@media (max-width: 800px) {
+
+    .dropdown-menu .dropdown-submenu {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        top: -7px;
+    }
+
+    .dropdown-menu .dropdown-submenu-left {
+        bottom: 100%;
+        bottom: auto;
+    }
+}
+
+/*overload bs classes*/
+.btn-success {
+    background-color: rgb(51, 176, 34);
+}
+
+.btn-success:hover {
+    background-color: rgb(63, 155, 33);
+}
+
+.btn-primary:hover {
+    background-color: var(--main-blue-hover);
+    border-color: var(--main-blue-hover);
+
+
+}
+
+.btn-primary {
+    background-color: var(--main-blue);
+    border-color: var(--main-blue);
+    transition: background 1s ease;
+}
+
+/* footer */
+.footer-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .4)), url(../../../media/world-map.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* end of footer */
+
+
+.img-hover-zoom-in {
+    transition: all 1s;
+}
+
+.img-hover-zoom-in:hover {
+    transform: scale(150%);
+    cursor: pointer;
+}
+
+/*mobile menu*/
+.mobile-menu-selected {
+    transition: all 1s;
+}
+
+.mobile-menu-selected {
+    color: var(--main-blue);
+}
+.hover-able {
+    transition: all 0.8s;
+}
+.hover-able:hover {
+    cursor: pointer;
+}
+
+.hover-able:hover {
+    color: var(--main-blue) !important;
+}
+/*mobile menu*/
+
+
+
+.notification-news-letter{
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, .4)), url(../../../media/shatel-team.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+
