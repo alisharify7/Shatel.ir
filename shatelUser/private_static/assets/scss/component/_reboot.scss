@@ -3,37 +3,37 @@
 // ----------------------------------------------
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    color: $primary;
+  color: $primary;
 }
 
 ul {
-    list-style: none;
-    padding-left: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 :focus {
-    outline: 0;
-    box-shadow: none !important;
+  outline: 0;
+  box-shadow: none !important;
 }
 
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .calendar-events {
-    cursor: move;
+  cursor: move;
 }
 
 .object-fit-cover {
-    object-fit: cover;
+  object-fit: cover;
 }

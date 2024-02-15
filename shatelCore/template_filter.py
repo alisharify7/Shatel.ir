@@ -1,5 +1,6 @@
-from . import app
 from flask import url_for
+
+from . import app
 
 
 @app.template_filter('StorageUrl')
@@ -13,5 +14,3 @@ def StorageUrl(path: str):
         return url_for("web.ServeStorageFiles", path=path)  # flask serve
     else:
         return f"/Storage/{path}"  # Nginx Serve Files
-
-

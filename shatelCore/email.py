@@ -1,13 +1,12 @@
 import pickle
-from flask import current_app, url_for, request, render_template
-from flask_mail import Message
-from flask_babel import lazy_gettext as _l
 from threading import Thread
 
-from shatelCore.extensions import ServerMail
 from celery import shared_task
+from flask import current_app, url_for, request, render_template
+from flask_babel import lazy_gettext as _l
+from flask_mail import Message
 
-
+from shatelCore.extensions import ServerMail
 
 
 def async_send_email_thread(app, msg):
@@ -73,11 +72,11 @@ def sendActivAccounteMail(context: dict, recipients: list, **kwargs):
             token: slug url for activate user Account
     """
 
-    template = render_template("ActivateAccount.html",**context,
-             **{"ActivateLink": url_for(
-                 "auth.active_account", token=context['token'],
-                 language=request.current_language,  # send user's language to endpoint as well
-                 _external=True)})
+    template = render_template("ActivateAccount.html", **context,
+                               **{"ActivateLink": url_for(
+                                   "auth.active_account", token=context['token'],
+                                   language=request.current_language,  # send user's language to endpoint as well
+                                   _external=True)})
 
     send_email(
         subject=_l('فعال سازی حساب کاربری'),
@@ -97,11 +96,11 @@ def sendResetPasswordMail(context: dict, recipients: list, **kwargs):
             token: slug url for reset user Account
     """
 
-    template = render_template("ResetPassword.html",**context,
-             **{"ActivateLink": url_for(
-                 "auth.check_reset_password", token=context['token'],
-                 language=request.current_language,  # send user's language to endpoint as well
-                 _external=True)})
+    template = render_template("ResetPassword.html", **context,
+                               **{"ActivateLink": url_for(
+                                   "auth.check_reset_password", token=context['token'],
+                                   language=request.current_language,  # send user's language to endpoint as well
+                                   _external=True)})
 
     send_email(
         subject=_l('بازنشانی گذرواژه'),

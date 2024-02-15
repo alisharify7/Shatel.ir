@@ -1,20 +1,20 @@
-from flask import Flask, request, session, redirect, url_for
+from flask import Flask, request, session, redirect, url_for, flash
+from flask_babel import lazy_gettext as _l
+
+from shatelAdmin.cli.admin import AdminCommands
+from shatelAuth.model import User
 from shatelConfig import Setting
+from .Logger import GetStdoutLogger
+# cli
+from .cli.make import MakeCommands
 from .extensions import db, ServerCaptcha2, ServerSession, \
     ServerMigrate, ServerMail, babel, csrf
 from .utils import celery_init_app, add_watermark
-from shatelAuth.model import User
-
-# cli
-from .cli.make import MakeCommands
-from shatelAdmin.cli.admin import AdminCommands
 
 
 def create_app():
     """
         Factory Function For creating FlaskApp
-
-     first we should update app config for extension configs
     """
     app = Flask(
         __name__,
@@ -53,6 +53,7 @@ def create_app():
     from shatelProduct import product
     app.register_blueprint(product, url_prefix="/product/")
 
+    app.SimpleLogger = GetStdoutLogger("SimpleLogger")
     return app
 
 
@@ -104,14 +105,12 @@ def setUserLanguage(language):
         this view select a  language for user
     """
     location = (request.referrer or url_for('web.index_get'))
-
     if language not in Setting.LANGUAGES:
         return redirect(location)
     else:
+        flash(_l('زبان با موفقیت تغییر کرد'), "success")
         session["language"] = language
         return redirect(location)
-
-
 
 
 import shatelCore.template_filter

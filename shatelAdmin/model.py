@@ -1,8 +1,8 @@
-from shatelCore.model import BaseModel
-from shatelCore.extensions import db
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, BIGINT, TEXT
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from shatelCore.extensions import db
+from shatelCore.model import BaseModel
 
 AdminsPermission = db.Table(
     BaseModel.SetTableName("admins-permission"),
@@ -15,7 +15,7 @@ class Admin(BaseModel):
     __tablename__ = BaseModel.SetTableName("admins")
 
     Username = Column(String(256), unique=True, nullable=False)
-    Password = Column(String(102), unique=False, nullable=False)
+    Password = Column(String(162), unique=False, nullable=False)
     Email = Column(String(512), unique=True, nullable=False)
     PhoneNumber = Column(String(14), unique=True, nullable=False)
     Active = Column(Boolean, default=False)
@@ -24,7 +24,7 @@ class Admin(BaseModel):
     Permissions = db.relationship("Permission", secondary=AdminsPermission, backref="Admin", lazy="dynamic")
 
     def setPassword(self, password: str) -> None:
-        self.Password = generate_password_hash(password)
+        self.Password = generate_password_hash(password, method='scrypt')
 
     def checkPassword(self, password: str) -> bool:
         return check_password_hash(pwhash=self.Password, password=password)
@@ -50,13 +50,10 @@ class Admin(BaseModel):
             self.Email = email
             return True
 
-    def setActivate(self):
-        self.Active = True
-
     def allowToLogin(self):
-        return False if self.TryNumber >= 5 else True
+        return self.TryNumber >= 5
 
-    def setLog(self, ip:str, action:str):
+    def setLog(self, ip: str, action: str):
         log = AdminLog()
         log.SetIPaddress(ip)
         log.SetPublicKey()

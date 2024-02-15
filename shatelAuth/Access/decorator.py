@@ -1,13 +1,17 @@
+# build in
 from functools import wraps
 
+# framework
 from flask import session, request, redirect, url_for, flash, abort
-
-from shatelAuth.model import User
-from shatelAdmin.model import Admin
-
+# lib
 from flask_babel import lazy_gettext as _l
 
+# app
+from shatelAuth.model import User
+from shatelCore.extensions import db
 
+
+# TODO: remote this decorator and use login_manager decorator
 def login_required(f):
     """Base Login required Decorator for users"""
 
@@ -38,7 +42,6 @@ def login_required(f):
         # check password
         if user.Password != (session.get("password")):
             flash(message, "danger")
-            print("herwe")
             return redirect(url_for("auth.login_get", next=next))
 
         if not user.Active:
@@ -51,43 +54,86 @@ def login_required(f):
 
 
 def only_reset_password(f):
-    """"""
+    """Only reset password users """
 
     @wraps(f)
     def inner(*args, **kwargs):
 
         if not session.get("mail", False):
-            return redirect(url_for("auth.login_get"))
+            abort(404)
 
         # get user id
         if not session.get("allow-set-password"):
-            return redirect(url_for("auth.login_get"))
+            abort(404)
 
         return f(*args, **kwargs)
 
     return inner
 
 
-def admin_login_required(f, Roles: list):
+def login_manager_required(roles: int = []):
     """
-    This Function Take a Role and return a Custom decorator Access Control for That Role
+    Login Manager decorator
 
-        >> return_a_decorator = create_custom_login_decorator(RoleName="admin")
+    use this decorator for generating new decorators base on permission id
 
-        @app.get("url")
-        @return_a_decorator
-        def view_func():
-            pass
+        example:
+            user permission id : 1
+            user_login_required = login_manager_required(roles=[1])
 
-        # doc Num : page 64 - 80
+            @app.route("/")
+            @user_login_required()
+            def view():
+                ...
     """
+    if not roles or len(roles) == 0:
+        raise ValueError("empty role set is given")
 
-    @wraps(f)
-    def inner(*args, **kwargs):
-        if not (user_id := session.get("account-id")):
-            session.clear()
-            abort(401)
+    def login_required(f):
+        """Base Login required Decorator for users"""
 
-        return f(*args, **kwargs)
+        @wraps(f)
+        def inner(*args, **kwargs):
 
-    return inner
+            next = request.url_rule
+            message = "برای دسترسی به صفحه مورد نیاز ابتدا وارد حساب کاربری خود شوید"
+
+            nonlocal roles
+            if not roles or len(roles) == 0:
+                flash(message, "danger")
+                return redirect(url_for("auth.login_get", next=next))
+
+            # check user login
+            if not session.get("is-login", False):
+                flash(message, "danger")
+                return redirect(url_for("auth.login_get", next=next))
+
+            # get user id
+            if not session.get("account-id"):
+                flash(message, "danger")
+                return redirect(url_for("auth.login_get", next=next))
+
+            # check user id
+            try:
+                user = db.session.get(User, session.get("account-id"))
+                if not user:
+                    raise ValueError
+            except Exception as e:
+                flash(message, "danger")
+                return redirect(url_for("auth.login_get", next=next))
+
+            # check password is same (not changed)
+            # session stored hashed password not plain text :
+            if user.Password != (session.get("password")):
+                flash(message, "danger")
+                return redirect(url_for("auth.login_get", next=next))
+
+            if not user.Active:
+                flash(message, "danger")
+                return redirect(url_for("auth.login_get", next=next))
+
+            return f(*args, **kwargs)
+
+        return inner
+
+    return login_required

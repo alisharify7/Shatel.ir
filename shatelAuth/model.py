@@ -1,7 +1,8 @@
-from shatelCore.model import BaseModel
-from shatelCore.extensions import db
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from shatelCore.extensions import db
+from shatelCore.model import BaseModel
 
 
 class User(BaseModel):
@@ -37,8 +38,6 @@ class User(BaseModel):
         return check_password_hash(pwhash=self.Password, password=password)
 
     def setUsername(self, username: str) -> bool:
-        print(self.query.filter_by(Username=username).first(), "old")
-        print(db.session.execute(db.select(User).filter_by(Username=username)).scalar_one_or_none(), "new")
         if db.session.execute(db.select(User).filter_by(Username=username)).scalar_one_or_none():
             return False
         else:
@@ -86,6 +85,7 @@ class Ticket(BaseModel):
 
     def getAnswer(self):
         return self.Answer or False
+
 
 class AnswerTicket(BaseModel):
     __tablename__ = BaseModel.SetTableName("answer-tickets")

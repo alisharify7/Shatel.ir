@@ -1,7 +1,8 @@
-import sys
 import logging
+import sys
 
-def GetStdoutLogger():
+
+def GetStdoutLogger(logger_name: str):
     """
         return a stdout logger
     """
@@ -9,7 +10,7 @@ def GetStdoutLogger():
         "[APP-LOGGER <%(levelname)s> %(asctime)s]\n %(message)s\n %(module)s\nat line -%(lineno)d- in %(pathname)s "
     )
     logLevel = logging.INFO
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger(logger_name)
     logger.setLevel(logLevel)
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(logLevel)
@@ -17,4 +18,3 @@ def GetStdoutLogger():
     logger.addHandler(handler)
 
     return handler
-

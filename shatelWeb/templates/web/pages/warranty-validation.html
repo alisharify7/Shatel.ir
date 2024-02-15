@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{_('اعتبار سنجی گارانتی')}}
+    {{ _('اعتبار سنجی گارانتی') }}
 {% endblock title %}
 
 {% block style %}
@@ -9,71 +9,71 @@
 {% endblock style %}
 
 {% block content %}
-{% include 'utils/header.html' %}
+    {% include 'utils/header.html' %}
 
-<section class="persian-font" style="overflow-x: hidden">
-    <div class="container-fluid">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-10 text-center my-md-4 mt-5 mb-3 py-3">
-                <h2 class="text-orange fs-1" data-aos="fade-up">{{_('اعتبار سنجی گارانتی شاتل')}}</h2>
-                <p class="text-muted" data-aos="fade-up">
-                    {{ _('برای صحت گارانتی محصولات شاتل, کد 21 رقمی روی برچسب گارانتی را در کادر زیر وارد کنید') }}
-                </p>
-            </div>
-            <div class="col-10">
-                <form>
-                    <label class="my-3 w-100">
-                        {{ _('کد گارانتی را وارد کند') }}
-                        {{ form.ProductNumber() }}
-                    </label>
-                    {{ form.hidden_tag() }}
+    <section class="persian-font" style="overflow-x: hidden">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-10 text-center my-md-4 mt-5 mb-3 py-3">
+                    <h2 class="text-orange fs-1" data-aos="fade-up">{{ _('اعتبار سنجی گارانتی شاتل') }}</h2>
+                    <p class="text-muted" data-aos="fade-up">
+                        {{ _('برای صحت گارانتی محصولات شاتل, کد 21 رقمی روی برچسب گارانتی را در کادر زیر وارد کنید') }}
+                    </p>
+                </div>
+                <div class="col-10">
+                    <form>
+                        <label class="my-3 w-100">
+                            {{ _('کد گارانتی را وارد کند') }}
+                            {{ form.ProductNumber() }}
+                        </label>
+                        {{ form.hidden_tag() }}
 
-                    <label class="my-3 w-100">
-                      {{ form.Submit() }}
-                    </label>
-                </form>
-            </div>
-            <div class="col-10 my-3">
-                <p>{{ _(' شرایط گارانتی : تمامی کالا های شاتل زیر نظر گارانتی 24 ماه شاتل گارانتی هستند ') }}</p>
-                <p>{{ _('برای مشاهده شرایط و شروط گارانتی لطفا به سایت شاتل گارانتی مراجعه کنید') }}
-                <a href="#">{{_('کلیک کنید')}}</a>
-                </p>
-            </div>
+                        <label class="my-3 w-100">
+                            {{ form.Submit() }}
+                        </label>
+                    </form>
+                </div>
+                <div class="col-10 my-3">
+                    <p>{{ _(' شرایط گارانتی : تمامی کالا های شاتل زیر نظر گارانتی 24 ماه شاتل گارانتی هستند ') }}</p>
+                    <p>{{ _('برای مشاهده شرایط و شروط گارانتی لطفا به سایت شاتل گارانتی مراجعه کنید') }}
+                        <a href="#">{{ _('کلیک کنید') }}</a>
+                    </p>
+                </div>
 
+            </div>
         </div>
-    </div>
-</section>
-{% include 'utils/footer.html' %}
+    </section>
+    {% include 'utils/footer.html' %}
 
 {% endblock content %}
 
 {% block script %}
-<script>
-    const SubmitBtn = document.querySelector("#submitBtn")
-    const ProductNumberRegex = /^(IB-[a-z]{2})-[0-9]{21}$/i;
-    const ProductNumber = document.querySelector("#ProductNumber")
+    <script>
+        const SubmitBtn = document.querySelector("#submitBtn")
+        const ProductNumberRegex = /^(IB-[a-z]{2})-[0-9]{21}$/i;
+        const ProductNumber = document.querySelector("#ProductNumber")
 
 
-    SubmitBtn.addEventListener("click", (e)=>{
-        if (!ProductNumberRegex.test(ProductNumber.value)){
+        SubmitBtn.addEventListener("click", (e) => {
+            if (!ProductNumberRegex.test(ProductNumber.value)) {
+                Swal.fire({
+                    title: `{{ _('فرمت کد گارانتی نامعتبر می باشد') }}`,
+                    text: `{{ _('فرمت نادرست') }}`,
+                    icon: "warning"
+
+                });
+                e.preventDefault()
+                return false;
+            }
+
+            e.preventDefault();
             Swal.fire({
-                title:`{{ _('فرمت کد گارانتی نامعتبر می باشد') }}`,
-                text:`{{ _('فرمت نادرست') }}`,
-                icon:"warning"
+                title: `{{ _('موردی یافت نشد') }}`,
+                text: `{{ _('یافت نشد') }}`,
+                icon: "warning"
 
-            });
-            e.preventDefault()
-            return false;
-        }
-
-        e.preventDefault();
-        Swal.fire({
-            title:`{{ _('موردی یافت نشد') }}`,
-            text:`{{ _('یافت نشد') }}`,
-            icon:"warning"
-
+            })
         })
-    })
 
-</script>
+    </script>
 {% endblock script %}

@@ -1,11 +1,14 @@
+# build in
 import os
-from . import web, form as WebForm
+
+# framework
 from flask import send_from_directory, \
     current_app, render_template
-
+# lib
 from flask_babel import lazy_gettext as _l
 
-
+# app
+from . import web, form as WebForm
 
 
 @web.get("/StorageFiles/<path:path>/")
@@ -46,7 +49,8 @@ def faq_get():
     """
     this View return faq page
     """
-    faq_questions = [{"question": _l("آیا امکان خرید مستقیم از شاتل وجود دارد؟"),"answer": _l("آیا امکان خرید مستقیم از شاتل وجود دارد؟")} for i in range(20)]
+    faq_questions = [{"question": _l("آیا امکان خرید مستقیم از شاتل وجود دارد؟"),
+                      "answer": _l("آیا امکان خرید مستقیم از شاتل وجود دارد؟")} for i in range(20)]
     # TODO: read faq from db
     return render_template("pages/faq.html", question=faq_questions)
 
