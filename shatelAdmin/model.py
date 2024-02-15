@@ -10,6 +10,60 @@ AdminsPermission = db.Table(
     Column("PermissionID", ForeignKey(BaseModel.SetTableName("permissions") + ".id"))
 )
 
+class DEFAULT_PERMISSION:
+    ADMIN = 1
+    USER = 2
+
+    # STAFF
+    MANAGE_USERS = 3
+    MANAGE_TICKETS = 4
+    MANAGE_SITE_CONTENT = 5
+
+    default_permissions = [
+        {"Permission": "ADMIN", "Description": "admin , all "},
+        {"Permission": "USER", "Description": "a normal user ..."},
+
+        # staff
+        {"Permission": "MANAGE_USERS", "Description": "add - update - delete - edit users"},
+        {"Permission": "MANAGE_TICKETS", "Description": "read,answer tickets"},
+        {"Permission": "MANAGE_SITE_CONTENT", "Description": "manage products - manage index sliders news and ..."},
+    ]
+
+
+class Permission(BaseModel, DEFAULT_PERMISSION):
+    """
+     Permission Handler Table
+
+        backref=GetAdmin
+    """
+    __tablename__ = BaseModel.SetTableName("permissions")
+    Permission = Column(String(256), unique=True, nullable=False)
+    Description = Column(String(1024), unique=False, nullable=False)
+
+
+    def init_permissions(self):
+        for each in self.default_permissions:
+            p = Permission()
+            p.Permission = each['Permission']
+            p.Description = each['Description']
+            p.SetPublicKey()
+            p.id = getattr(self, p.Permission)
+            if not p.id:
+                raise RuntimeError(f"id for {p.Permission} not found")
+            if p.save(show_traceback=True):
+                print(f"{p} saved in db")
+            else:
+                db.session.rollback()
+                print(f"exception for  {p}")
+
+
+    def __str__(self):
+        return f"<Permission: {self.Permission}-{self.id}>"
+
+    def __repr__(self):
+        return self.__str__()
+
+
 
 class Admin(BaseModel):
     __tablename__ = BaseModel.SetTableName("admins")
@@ -64,6 +118,12 @@ class Admin(BaseModel):
     logs = db.relationship("AdminLog", backref='GetAdmin', lazy='dynamic')
 
 
+    def __str__(self):
+        return f"<Admin: {self.Username}-{self.id}>"
+
+    def __repr__(self):
+        return self.__str__()
+
 class AdminLog(BaseModel):
     __tablename__ = BaseModel.SetTableName("admins-log-table")
     IP = Column(BIGINT, unique=False, nullable=False)
@@ -86,19 +146,8 @@ class AdminLog(BaseModel):
         self.AdminID = admin_id
 
 
-class Permission(BaseModel):
-    """
-     Permission Handler Table
+    def __str__(self):
+        return f"<AdminLog: {self.AdminID}-{self.IP}-{self.Action[:20]}>"
 
-        backref=GetAdmin
-    """
-    __tablename__ = BaseModel.SetTableName("permissions")
-    Permission = Column(String(256), unique=True, nullable=False)
-    Description = Column(String(1024), unique=False, nullable=False)
-
-    default_permissions = [
-        {"Permission": "manage-users", "Description": "add - update - delete - edit users"},
-        {"Permission": "manage-tickets", "Description": "delete - view - and response tickets"},
-        {"Permission": "manage-site-content", "Description": "manage products - manage index sliders news and ..."},
-        {"Permission": "all", "Description": "manage products - manage index sliders news and ..."},
-    ]
+    def __repr__(self):
+        return self.__str__()

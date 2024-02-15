@@ -45,7 +45,7 @@ class BaseModel(db.Model):
         jalali = timerConv.convert_grg2_jalali_dt(t)
         return str(jalali.date())
 
-    def save(self, show_traceback: bool = False):
+    def save(self, show_traceback: bool = True):
         """
          combination of two steps, add and commit session
         """

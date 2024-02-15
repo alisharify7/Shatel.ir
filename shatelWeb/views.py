@@ -4,12 +4,12 @@ import os
 # framework
 from flask import send_from_directory, \
     current_app, render_template
+
 # lib
 from flask_babel import lazy_gettext as _l
 
 # app
 from . import web, form as WebForm
-
 
 @web.get("/StorageFiles/<path:path>/")
 def ServeStorageFiles(path: os.path):
