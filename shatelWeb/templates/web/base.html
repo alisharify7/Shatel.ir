@@ -10,7 +10,7 @@
         {% endblock title %}
     </title>
     {# TODO: generate dynamic meta tag #}
-    <link rel="icon" href="{{ 'media/logo/favicon.ico' | StorageUrl }}" sizes="192x192" />
+    <link rel="icon" href="{{ 'media/logo/favicon.ico' | StorageUrl }}" sizes="192x192"/>
 
 
     <!-- Bootstrap -->
@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="{{ '/global/css/global.css' | StorageUrl }}"/>
     {% include 'utils/sweetalert.html' %}
     {% block style %}
-    {% include 'utils/owl-carousel.html' %}
-    <link rel="stylesheet" href="{{ '/index/css/index.css' | StorageUrl }}"/>
+        {% include 'utils/owl-carousel.html' %}
+        <link rel="stylesheet" href="{{ '/index/css/index.css' | StorageUrl }}"/>
     {% endblock style %}
 </head>
 <body>
@@ -48,13 +48,13 @@
         crossorigin="anonymous"></script>
 
 {% block alert %}
-{% include "/utils/alert.html" %}
+    {% include "/utils/alert.html" %}
 {% endblock %}
 <script>
-    function UnderDevelopment(){
+    function UnderDevelopment() {
         Swal.fire({
             text: `{{_('این بخش از سایت در حال توسعه می باشد و موقتا در دسترس نمی باشد')}}`,
-            title:` {{ _('اخطار') }}`,
+            title: ` {{ _('اخطار') }}`,
             icon: "warning",
         })
     }

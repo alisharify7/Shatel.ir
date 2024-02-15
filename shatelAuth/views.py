@@ -1,12 +1,6 @@
 # build in
 from urllib.parse import urlparse as url_parse
 
-# app
-from . import auth
-from . import form as AuthForm
-from . import model as AuthModel
-from . import utils as AuthUtils
-
 # framework
 from flask import render_template, session, \
     abort, url_for, redirect, flash, jsonify, \
@@ -14,12 +8,17 @@ from flask import render_template, session, \
 from flask_babel import lazy_gettext as _l
 from sqlalchemy.exc import SQLAlchemyError
 
-# app
-from shatelCore.extensions import ServerCaptcha2
+from shatelAdmin.model import Admin
+from shatelConfig import Setting
 from shatelCore.email import sendActivAccounteMail, sendResetPasswordMail
 from shatelCore.extensions import RedisServer, db
-from shatelConfig import Setting
-from shatelAdmin.model import Admin
+# app
+from shatelCore.extensions import ServerCaptcha2
+# app
+from . import auth
+from . import form as AuthForm
+from . import model as AuthModel
+from . import utils as AuthUtils
 from .Access import only_reset_password
 
 
@@ -63,8 +62,7 @@ def login_post():
             session["login"] = True
             session["account-id"] = user.id
             session["password"] = user.Password
-            session.permanent = True # SET session lifetime
-
+            session.permanent = True  # SET session lifetime
 
     return redirect(next_page)
 
@@ -342,7 +340,6 @@ def set_password_post():
     return redirect(url_for('auth.login_get'))
 
 
-
 @auth.route("/logout/", methods=["GET"])
 def logout():
     """
@@ -392,6 +389,5 @@ def admin_login_post():
     admin_db.TryNumber += 1
     admin_db.setLog(ip=request.real_ip)
     admin_db.save()
-
 
     return redirect(url_for('admin.index_get'))

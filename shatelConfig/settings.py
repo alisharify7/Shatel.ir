@@ -1,9 +1,10 @@
-import os
 import datetime
+import os
 from pathlib import Path
 
 import redis
 from dotenv import load_dotenv
+
 from .utils import generate_secret_key
 
 load_dotenv()
@@ -56,14 +57,14 @@ class Setting:
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = 'Lax'
     SESSION_COOKIE_NAME = '_session_cookie_'
-    SESSION_REDIS = redis.Redis.from_url(os.environ.get("REDIS_SESSION_URI")) if os.environ.get("REDIS_SESSION_URI", None) else REDIS_DEFAULT_INTERFACE
+    SESSION_REDIS = redis.Redis.from_url(os.environ.get("REDIS_SESSION_URI")) if os.environ.get("REDIS_SESSION_URI",
+                                                                                                None) else REDIS_DEFAULT_INTERFACE
 
     # Recaptcha Config <Flask-captcha2>
     RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY", '')
     RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY", '')
     RECAPTCHA_ENABLED = os.environ.get("RECAPTCHA_ENABLED", False) == "True"
     RECAPTCHA_LOG = os.environ.get("RECAPTCHA_LOG", True) == "True"
-
 
     # RECAPTCHA_THEME = ''
     # RECAPTCHA_TYPE = ''

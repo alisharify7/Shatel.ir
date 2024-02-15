@@ -1,14 +1,14 @@
 # flask extensions
 
-from flask_mail import Mail
-from flask_session import Session
-from flask_migrate import Migrate
-from flask_sqlalchemy import SQLAlchemy
-from flask_captcha2 import FlaskCaptcha2, FlaskCaptcha3
 from flask_babel import Babel
-from shatelConfig import Setting
+from flask_captcha2 import FlaskCaptcha2
+from flask_mail import Mail
+from flask_migrate import Migrate
+from flask_session import Session
+from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
 
+from shatelConfig import Setting
 
 RedisServer = Setting.REDIS_DEFAULT_INTERFACE
 

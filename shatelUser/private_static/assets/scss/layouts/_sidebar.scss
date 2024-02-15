@@ -99,9 +99,9 @@
         opacity: $link-disabled;
       }
 
-      &.selected>.sidebar-link.active,
-      &.selected>.sidebar-link,
-      >.sidebar-link.active {
+      &.selected > .sidebar-link.active,
+      &.selected > .sidebar-link,
+      > .sidebar-link.active {
         background-color: $primary;
         color: $white;
       }

@@ -1,7 +1,7 @@
+from flask_babel import lazy_gettext as _l
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, EmailField
 from wtforms.validators import Length, DataRequired, InputRequired, Email as EmailValidator, Regexp
-from flask_babel import lazy_gettext as _l
 
 
 class TicketForm(FlaskForm):

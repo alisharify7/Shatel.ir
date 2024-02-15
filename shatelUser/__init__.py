@@ -8,6 +8,4 @@ user = Blueprint(
     static_url_path="UserPublicStatic"
 )
 
-
 from . import views
-

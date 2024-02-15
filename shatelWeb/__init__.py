@@ -1,7 +1,5 @@
 from flask import Blueprint
 
-
-
 web = Blueprint(
     "web",
     __name__,
@@ -9,6 +7,5 @@ web = Blueprint(
     template_folder="templates/web/",
     static_url_path="WebPublicStatic"
 )
-
 
 from . import views

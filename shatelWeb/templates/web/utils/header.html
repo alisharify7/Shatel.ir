@@ -3,7 +3,7 @@
         <div class="col-lg-5 col-md-5 col-6">
             <button class="text-white py-3 no-default-style">
                 <i class="fa-solid fa-phone"></i>
-                <span class="text-white">{{_(' شماره تماس')}} 3454</span>
+                <span class="text-white">{{ _(' شماره تماس') }} 3454</span>
             </button>
         </div>
 
@@ -13,22 +13,23 @@
                 <button class="btn no-default-style d-none d-md-inline">
                     <a href="{{ url_for('auth.login_get') }}" class="text-decoration-none text-white">
                         <i class="fa-solid fa-right-to-bracket fa-lg mx-2"></i>
-                        {{_('ورود / ساخت حساب')}}
+                        {{ _('ورود / ساخت حساب') }}
                     </a>
                 </button>
 
                 <a role="button"
                    class=" text-white dropdown-toggle text-decoration-none"
                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <span class="p-0 m-0 english">{{_('Language')}}</span>
+                    <span class="p-0 m-0 english">{{ _('Language') }}</span>
                     <span class="p-0 m-0"><i class="bi bi-globe text-brand"></i></span>
                 </a>
 
                 <ul class="dropdown-menu mx-3 ">
                     {% for lang in languages %}
-                    <li>
-                        <a class="dropdown-item text-end" href="{{ url_for('setUserLanguage', language=lang) }}">{{ languages[lang] }}</a></li>
-                    </li>
+                        <li>
+                            <a class="dropdown-item text-end"
+                               href="{{ url_for('setUserLanguage', language=lang) }}">{{ languages[lang] }}</a></li>
+                        </li>
                     {% endfor %}
                 </ul>
 
@@ -57,19 +58,19 @@
                 <div class="collapse navbar-collapse" id="navbar-header">
                     <ul class="navbar-nav p-sm-0 p-0 w-100 fs-6 ">
                         <li class="nav-item">
-                            <a href="{{ url_for('web.index_get') }}" class="nav-link">{{_('صفحه اصلی')}}</a>
+                            <a href="{{ url_for('web.index_get') }}" class="nav-link">{{ _('صفحه اصلی') }}</a>
                         </li>
 
                         <li class="nav-item dropdown-center" dir="rtl">
                             <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span>{{_('خدمات')}}</span>
+                                <span>{{ _('خدمات') }}</span>
                             </a>
 
                             <ul class="dropdown-menu text-start mx-3 mx-md-0">
-                                <li class="dropdown-header">{{_('* حساب کاربری')}}</li>
+                                <li class="dropdown-header">{{ _('* حساب کاربری') }}</li>
                                 <li class="">
                                     <a class="dropdown-item" href="{{ url_for('auth.register_get') }}">
-                                        <span>{{_('ساخت حساب کاربری')}}</span>
+                                        <span>{{ _('ساخت حساب کاربری') }}</span>
                                     </a>
                                 </li>
                                 <li class="">
@@ -81,15 +82,15 @@
                                 <li>
                                     <hr class="dropdown-divider"/>
                                 </li>
-                                <li class="dropdown-header">{{_('* ارتباط')}}</li>
+                                <li class="dropdown-header">{{ _('* ارتباط') }}</li>
                                 <li class="">
                                     <a href="{{ url_for('web.faq_get') }}" class="dropdown-item">
-                                        <span>{{_('سوالات متداول')}}</span>
+                                        <span>{{ _('سوالات متداول') }}</span>
                                     </a>
                                 </li>
                                 <li class="">
                                     <a class="dropdown-item" href="{{ url_for('web.contact_us_get') }}">
-                                        <span>{{_('ارتباط با ما')}}</span>
+                                        <span>{{ _('ارتباط با ما') }}</span>
                                     </a>
                                 </li>
                             </ul>
@@ -97,62 +98,71 @@
 
                         <li class="nav-item dropdown-center fs-6 d-md-flex d-none" dir="rtl">
                             <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span>{{_('محصولات')}}</span>
+                                <span>{{ _('محصولات') }}</span>
                             </button>
 
                             <ul class="dropdown-menu mx-3 mx-md-0 text-muted">
                                 <li class="">
-                                    <a  onclick="UnderDevelopment(); return false;" class="dropdown-item text-muted d-flex justify-content-between align-content-center"
+                                    <a onclick="UnderDevelopment(); return false;"
+                                       class="dropdown-item text-muted d-flex justify-content-between align-content-center"
                                        href="">
-                                        <span>{{_(' مودم ها')}}</span>
+                                        <span>{{ _(' مودم ها') }}</span>
                                         <span><i class="fa-solid fa-angle-left"></i></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-submenu text-start" dir="rtl">
-                                        <li onclick="UnderDevelopment(); return false;" >
-                                            <a class="dropdown-item text-muted" href="#">{{_('مودم های فیبرنوری')}}</a>
+                                        <li onclick="UnderDevelopment(); return false;">
+                                            <a class="dropdown-item text-muted"
+                                               href="#">{{ _('مودم های فیبرنوری') }}</a>
                                         </li>
-                                        <li onclick="UnderDevelopment(); return false;" >
-                                            <a class="dropdown-item text-muted" href="#">{{_('مودم های سیم کارتی')}}</a>
+                                        <li onclick="UnderDevelopment(); return false;">
+                                            <a class="dropdown-item text-muted"
+                                               href="#">{{ _('مودم های سیم کارتی') }}</a>
                                         </li>
-                                        <li onclick="UnderDevelopment(); return false;" >
-                                            <a class="dropdown-item text-muted" href="#">{{_('مودم های')}} ADSL/VDSL</a>
+                                        <li onclick="UnderDevelopment(); return false;">
+                                            <a class="dropdown-item text-muted" href="#">{{ _('مودم های') }}
+                                                ADSL/VDSL</a>
                                         </li>
                                     </ul>
                                 </li>
 
                                 <li class="">
-                                    <a  onclick="UnderDevelopment(); return false;"  class="dropdown-item text-muted d-flex justify-content-between align-content-center"
+                                    <a onclick="UnderDevelopment(); return false;"
+                                       class="dropdown-item text-muted d-flex justify-content-between align-content-center"
                                        href="">
-                                        <span>{{_('خانه هوشمند')}}</span>
+                                        <span>{{ _('خانه هوشمند') }}</span>
                                         <span><i class="fa-solid fa-angle-left"></i></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-submenu text-end" dir="rtl">
-                                        <li  onclick="UnderDevelopment(); return false;" >
-                                            <a  onclick="UnderDevelopment(); return false;"  class="dropdown-item text-muted" href="#">
-                                                {{_('تجهیزات خانه هوشمند')}}
+                                        <li onclick="UnderDevelopment(); return false;">
+                                            <a onclick="UnderDevelopment(); return false;"
+                                               class="dropdown-item text-muted" href="#">
+                                                {{ _('تجهیزات خانه هوشمند') }}
                                             </a>
                                         </li>
-                                        <li  onclick="UnderDevelopment(); return false;" >
-                                            <a  onclick="UnderDevelopment(); return false;"  class="dropdown-item text-muted" href="#">
-                                                {{_('پکیج های خانه هوشمند')}}
+                                        <li onclick="UnderDevelopment(); return false;">
+                                            <a onclick="UnderDevelopment(); return false;"
+                                               class="dropdown-item text-muted" href="#">
+                                                {{ _('پکیج های خانه هوشمند') }}
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
 
                                 <li class="">
-                                    <a  onclick="UnderDevelopment(); return false;"  class="dropdown-item d-flex justify-content-between align-items-center"
-                                       href="" >
-                                        <span class="text-muted">{{_('لوازم جانبی الکترونیکی')}}</span>
+                                    <a onclick="UnderDevelopment(); return false;"
+                                       class="dropdown-item d-flex justify-content-between align-items-center"
+                                       href="">
+                                        <span class="text-muted">{{ _('لوازم جانبی الکترونیکی') }}</span>
                                         <span><i class="fa-solid fa-angle-left ms-2"></i></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-submenu text-start" dir="rtl">
-                                        <li  onclick="UnderDevelopment(); return false;"  class="d-flex justify-content-between align-content-center">
-                                            <a class="dropdown-item text-muted" href="#">{{_('موبایل')}}</a>
+                                        <li onclick="UnderDevelopment(); return false;"
+                                            class="d-flex justify-content-between align-content-center">
+                                            <a class="dropdown-item text-muted" href="#">{{ _('موبایل') }}</a>
                                             <span><i class="fa-solid fa-angle-left mx-2 my-2"></i></span>
                                             <ul class="dropdown-menu dropdown-submenu text-start" dir="rtl">
-                                                <li  onclick="UnderDevelopment(); return false;" >
-                                                    <a class="dropdown-item text-muted" href="#">{{_('شارژر')}}</a>
+                                                <li onclick="UnderDevelopment(); return false;">
+                                                    <a class="dropdown-item text-muted" href="#">{{ _('شارژر') }}</a>
                                                 </li>
                                             </ul>
                                         </li>
@@ -165,35 +175,38 @@
 
                         <li class="nav-item dropdown-center mt-1">
                             <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{_('خدمات پس از فروش')}}
+                                {{ _('خدمات پس از فروش') }}
                             </button>
 
                             <ul class="dropdown-menu text-start">
                                 <li class="">
                                     <a href="{{ url_for('web.proxy_get') }}" class="dropdown-item text-muted">
-                                        <span>{{_('مرکز گارانتی')}}</span>
+                                        <span>{{ _('مرکز گارانتی') }}</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="{{ url_for('web.warranty_validation_get') }}" class="dropdown-item text-muted">
-                                        <span>{{_('اعتبارسنجی گارانتی')}}</span>
+                                    <a href="{{ url_for('web.warranty_validation_get') }}"
+                                       class="dropdown-item text-muted">
+                                        <span>{{ _('اعتبارسنجی گارانتی') }}</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="" onclick="UnderDevelopment(); return false;" class="dropdown-item text-muted">
-                                        <span>{{ _('ثبت درخواست گارانتی')}}</span>
+                                    <a href="" onclick="UnderDevelopment(); return false;"
+                                       class="dropdown-item text-muted">
+                                        <span>{{ _('ثبت درخواست گارانتی') }}</span>
                                     </a>
                                 </li>
                                 <li class="">
-                                    <a href="" onclick="UnderDevelopment(); return false;" class="dropdown-item text-muted">
-                                        <span>{{_('ثبت نظر و پیشنهاد گارانتی')}}</span>
+                                    <a href="" onclick="UnderDevelopment(); return false;"
+                                       class="dropdown-item text-muted">
+                                        <span>{{ _('ثبت نظر و پیشنهاد گارانتی') }}</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{  url_for('web.proxy_get') }}" class="nav-link">{{_('درخواست نمایندگی')}}</a>
+                            <a href="{{ url_for('web.proxy_get') }}" class="nav-link">{{ _('درخواست نمایندگی') }}</a>
                         </li>
                     </ul>
                 </div>

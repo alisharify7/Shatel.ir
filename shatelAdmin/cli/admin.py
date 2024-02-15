@@ -1,16 +1,16 @@
-import re
 import getpass
+import re
 import sys
 
+from email_validator import validate_email
 from flask.cli import AppGroup
 
 from shatelAdmin.model import Admin
-from email_validator import validate_email
 
 AdminCommands = AppGroup(name="admin", help="admin operation commands.")
 
 
-@AdminCommands.command("create", help= "create a new admin in database.")
+@AdminCommands.command("create", help="create a new admin in database.")
 def create_admin_account():
     def get_password():
         while True:

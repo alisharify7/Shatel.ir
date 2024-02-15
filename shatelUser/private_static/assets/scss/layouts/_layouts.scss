@@ -10,7 +10,7 @@
 .body-wrapper {
   position: relative;
 
-  >.container-fluid {
+  > .container-fluid {
     max-width: $boxed-width;
     margin: 0 auto;
     padding: $grid-gutter-width;
@@ -20,7 +20,7 @@
 
 @include media-breakpoint-down(md) {
   .body-wrapper {
-    >.container-fluid {
+    > .container-fluid {
       padding: 30px 20px;
     }
   }
@@ -48,7 +48,7 @@
     }
 
     .body-wrapper {
-      >.container-fluid {
+      > .container-fluid {
         padding-top: calc(#{$header-height} + 15px);
       }
     }

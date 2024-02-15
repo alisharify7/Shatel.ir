@@ -5,12 +5,11 @@ from flask import (render_template, send_from_directory, jsonify,
 from flask_babel import lazy_gettext as _l, format_datetime
 
 from shatelAuth.Access.decorator import login_required
-from shatelCore.extensions import db
 from shatelAuth.model import Ticket
 from shatelCore.extensions import ServerCaptcha2
-
-from . import user
+from shatelCore.extensions import db
 from . import form as UserForm
+from . import user
 
 
 @user.route("/UserStatic/<path:filename>", methods=["GET"])

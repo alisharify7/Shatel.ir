@@ -1,374 +1,380 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{_('شاتل')}}
+    {{ _('شاتل') }}
 {% endblock title %}
 
 {% block content %}
-{% include 'utils/header.html' %}
+    {% include 'utils/header.html' %}
 
-<!-- index carousel -->
-<div style="max-height: 60vh; width: 100%" class="custom-owl">
-    <div class="owl-carousel owl-theme owl-carousel-slider position-relative">
-        <div class="item">
-            <img src="{{ 'index/media/slider-33.jpg' | StorageUrl }}"
-                 class="w-100 h-100"
-                 style="max-height: 60vh" alt=""/>
-        </div>
-        <div class="item">
-            <img src="{{ 'index/media/slider-11.jpg' | StorageUrl }}"
-                 class="w-100 h-100"
-                 style="max-height: 60vh" alt=""/>
-        </div>
-        <div class="item">
-            <img src="{{ 'index/media/slider-22.jpg' | StorageUrl }}"
-                 class="w-100 h-100"
-                 style="max-height: 60vh" alt=""/>
+    <!-- index carousel -->
+    <div style="max-height: 60vh; width: 100%" class="custom-owl">
+        <div class="owl-carousel owl-theme owl-carousel-slider position-relative">
+            <div class="item">
+                <img src="{{ 'index/media/slider-33.jpg' | StorageUrl }}"
+                     class="w-100 h-100"
+                     style="max-height: 60vh" alt=""/>
+            </div>
+            <div class="item">
+                <img src="{{ 'index/media/slider-11.jpg' | StorageUrl }}"
+                     class="w-100 h-100"
+                     style="max-height: 60vh" alt=""/>
+            </div>
+            <div class="item">
+                <img src="{{ 'index/media/slider-22.jpg' | StorageUrl }}"
+                     class="w-100 h-100"
+                     style="max-height: 60vh" alt=""/>
+            </div>
         </div>
     </div>
-</div>
-<!-- end of index carousel -->
+    <!-- end of index carousel -->
 
 
-<section class="persian-font">
-    <div class="container-fluid">
-        <div class="row justify-content-center align-content-center">
-            <!-- about  -->
-            <div class="col-12 bg-gray py-4">
-                <div class="row justify-content-center align-content-center">
-                    <div class="col-lg-10 col-md-10 col-11 bg-gray">
-                        <img data-aos="fade-left" data-aos-duration="1500"
-                             src="{{ renderLogo() | StorageUrl }}" style="width: 190px"
-                             alt="{{_('شاتل تولید کننده محصولات الکترونیکی در ایران')}}"/>
-                        <p data-aos="fade-up" data-aos-duration="1900" class="text-muted mt-3"
-                           style="text-align: justify">
-                            {{_('گروه فناوری ارتباطات و اطلاعات شاتل، بزرگ‌ترین مجموعه‌ی فعال در حوزه‌ی ارائه‌ی خدمات دسترسی به اینترنت و راهکارهای ارتباطی اینترنتی در کشور است. این شرکت با بیش از ۱۲۰۰ نفر نیروی انسانی متخصص، با گسترش دامنه­‌ی توزیع خدمات خود در استان­‌های مختلف از طریق نزدیک به ۴۰۰ دفتر نمایندگی، یک هزار عامل فروش و بیش از ۱۶۰۰ نفر نیروی انسـانی توانسته است سراسر کشور را تحت پوشش خدمات خود قرار دهد و بزرگ‌ترین سهم از مشتریان بازار اینترنت و خدمات تکمیلی آن در کشور را به‌ویژه در حوزه‌ی ارائه‌ی خدمات اینترنت پرسرعت +ADSL2 به خویش اختصاص دهد. شاتل همچنین ارائه کننده‌ی خدمات ارتباطی همراه با نام تجاری شاتل موبایل و خدمات آنلاین فیلم و سرگرمی (VOD) در وب‌سایت و اپلیکیشن نماواست.')}}
-                        </p>
+    <section class="persian-font">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-content-center">
+                <!-- about  -->
+                <div class="col-12 bg-gray py-4">
+                    <div class="row justify-content-center align-content-center">
+                        <div class="col-lg-10 col-md-10 col-11 bg-gray">
+                            <img data-aos="fade-left" data-aos-duration="1500"
+                                 src="{{ renderLogo() | StorageUrl }}" style="width: 190px"
+                                 alt="{{ _('شاتل تولید کننده محصولات الکترونیکی در ایران') }}"/>
+                            <p data-aos="fade-up" data-aos-duration="1900" class="text-muted mt-3"
+                               style="text-align: justify">
+                                {{ _('گروه فناوری ارتباطات و اطلاعات شاتل، بزرگ‌ترین مجموعه‌ی فعال در حوزه‌ی ارائه‌ی خدمات دسترسی به اینترنت و راهکارهای ارتباطی اینترنتی در کشور است. این شرکت با بیش از ۱۲۰۰ نفر نیروی انسانی متخصص، با گسترش دامنه­‌ی توزیع خدمات خود در استان­‌های مختلف از طریق نزدیک به ۴۰۰ دفتر نمایندگی، یک هزار عامل فروش و بیش از ۱۶۰۰ نفر نیروی انسـانی توانسته است سراسر کشور را تحت پوشش خدمات خود قرار دهد و بزرگ‌ترین سهم از مشتریان بازار اینترنت و خدمات تکمیلی آن در کشور را به‌ویژه در حوزه‌ی ارائه‌ی خدمات اینترنت پرسرعت +ADSL2 به خویش اختصاص دهد. شاتل همچنین ارائه کننده‌ی خدمات ارتباطی همراه با نام تجاری شاتل موبایل و خدمات آنلاین فیلم و سرگرمی (VOD) در وب‌سایت و اپلیکیشن نماواست.') }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- end of about -->
+                <!-- end of about -->
 
-            <!-- news and gallery -->
-            <div class="col-12 my-5 py-4">
-                <div class="row justify-content-center align-items-center">
-                    <div data-aos="fade-down"
-                         class="col-lg-10 col-12 my-2 d-flex justify-content-between align-content-center">
-                        <h2 class="text-center text-muted ">{{_('گالری اخبار و تصاویر')}}</h2>
-                        <a class="m-0 p-0 text-orange fs-5 text-center mt-2 text-decoration-none" href="">
-                            {{_('مشاهده اخبار ')}}<i class="fa-solid fa-chevron-left"></i>
+                <!-- news and gallery -->
+                <div class="col-12 my-5 py-4">
+                    <div class="row justify-content-center align-items-center">
+                        <div data-aos="fade-down"
+                             class="col-lg-10 col-12 my-2 d-flex justify-content-between align-content-center">
+                            <h2 class="text-center text-muted ">{{ _('گالری اخبار و تصاویر') }}</h2>
+                            <a class="m-0 p-0 text-orange fs-5 text-center mt-2 text-decoration-none" href="">
+                                {{ _('مشاهده اخبار ') }}<i class="fa-solid fa-chevron-left"></i>
+                            </a>
+                        </div>
+                        <div class="col-lg-10 col-12">
+                            <div class="news-slider owl-carousel owl-theme position-relative custom-owl"
+                                 data-aos="fade-up">
+                                <div class="card">
+                                    <a href="" class="position-relative text-decoration-none news-anchor-link">
+                                        <img loading="lazy"
+                                             src="{{ '/media/news.JPG' | StorageUrl }}"
+                                             class="card-img-top img-fluid news-slider-img"/>
+                                        <p class="position-absolute bottom-0 end-0 start-0 me-4 mb-5 text-white fs-5 news-slider-paragraph ms-5">
+                                            {{ _('بازگشایی خط تولیدی جدید شاتل') }}
+                                        </p>
+                                    </a>
+                                </div>
+
+                                <div class="card">
+                                    <a href="" class="position-relative text-decoration-none news-anchor-link">
+                                        <img loading="lazy"
+                                             src="{{ '/media/news.JPG' | StorageUrl }}"
+                                             class="card-img-top img-fluid news-slider-img"/>
+                                        <p class="position-absolute bottom-0 end-0 start-0 me-4 mb-5 text-white fs-5 news-slider-paragraph ms-5">
+                                            {{ _('بازگشایی خط تولیدی جدید شاتل') }}
+                                        </p>
+                                    </a>
+                                </div>
+
+                                <div class="card">
+                                    <a href="" class="position-relative text-decoration-none news-anchor-link">
+                                        <img loading="lazy"
+                                             src="{{ '/media/news.JPG' | StorageUrl }}"
+                                             class="card-img-top img-fluid news-slider-img"/>
+                                        <p class="position-absolute bottom-0 end-0 start-0 me-4 mb-5 text-white fs-5 news-slider-paragraph ms-5">
+                                            {{ _('بازگشایی خط تولیدی جدید شاتل') }}
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of news gallery -->
+
+                <!-- services -->
+                <div class="col-12 bg-gray py-5" style="overflow-x: hidden">
+                    <div class="row justify-content-center align-content-center">
+                        <div class="col-sm-10 col-12">
+                            <div class="row">
+
+                                <div class="col-12 my-2 d-flex justify-content-between align-content-center position-relative overflow-hidden">
+                                    <h2 class="text-center text-muted ">{{ _('خدمات و سرویس ها') }}</h2>
+                                    <a class="m-0 p-0 text-orange fs-5 text-center mt-2 text-decoration-none"
+                                       href="{{ url_for('web.about_us_get') }}">
+                                        {{ _('درباره شاتل') }} <i class="fa-solid fa-chevron-left"></i>
+                                    </a>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
+                                    <div class="card shadow card-bs rounded-5">
+                                        <img src="{{ '/index/media/board.png' | StorageUrl }}"
+                                             class="card-img-top mx-auto position-relative services-images" alt=""/>
+                                        <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
+                                            {{ _('طراحی و ساخت تجهیزات الکترونیکی و مخابراتی') }}
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
+                                    <div class="card shadow card-bs rounded-5">
+                                        <img src="{{ '/index/media/smartHome.png' | StorageUrl }}"
+                                             class="card-img-top rounded mx-auto position-relative" alt=""/>
+                                        <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-3">
+                                            {{ _('طراحی و تولید محصولات خانه هوشمند') }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
+                                    <div class="card shadow card-bs rounded-5">
+                                        <img src="{{ '/index/media/5G.png' | StorageUrl }}"
+                                             class="card-img-top mx-auto position-relative" alt=""/>
+                                        <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-3">
+                                            {{ _('طراحی و ساخت مودم های فیبرنوری و 5G') }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
+                                    <div class="card shadow card-bs rounded-5">
+                                        <img src="{{ '/index/media/application.jpg' | StorageUrl }}"
+                                             class="card-img-top mx-auto position-relative" alt=""/>
+                                        <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
+                                            {{ _('توسعه و تولید نرم افزار و سرویس های ارتباطی') }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
+                                    <div class="card shadow card-bs rounded-5">
+                                        <img src="{{ '/index/media/security.png' | StorageUrl }}"
+                                             class="card-img-top mx-auto position-relative" alt=""/>
+                                        <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
+                                            {{ _('طراحی و توسعه نرم افزار های حضور و غیاب و امنیتی') }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
+                                    <div class="card shadow card-bs rounded-5">
+                                        <img src="{{ '/index/media/testing-and-creating.png' | StorageUrl }}"
+                                             class="card-img-top mx-auto position-relative" alt=""/>
+                                        <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
+                                            {{ _('تست و کنتنرل کیفیت محصولات') }}
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  end of services -->
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- first Product -->
+    <section class="persian-font my-5">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-5 col-md-10 col-11">
+                    <div class="TopProductsSlider owl-carousel owl-theme position-relative">
+                        <img loading="lazy" src="{{ '/product/images/product.jpg' | StorageUrl }}"
+                             class=" img-fluid item" style="max-height: 600px;"/>
+                        <img loading="lazy" src="{{ '/product/images/product.jpg' | StorageUrl }}"
+                             class=" img-fluid item" style="max-height: 600px;"/>
+                        <img loading="lazy" src="{{ '/product/images/product.jpg' | StorageUrl }}"
+                             class=" img-fluid item" style="max-height: 600px;"/>
+                    </div>
+
+                </div>
+                <div class="col-lg-5 col-md-10 col-11 d-flex flex-column justify-content-start align-items-start"
+                     data-aos="fade-up">
+                    <p class="text-orange m-0 fs-4">{{ _('مودم های نسل پنج شاتل') }}</p>
+                    <h1 class="text-blue">{{ _('تحولی در سرعت و انتقال داده در ایران') }}</h1>
+                    <p class="text-muted fs-5"
+                       style="text-align: justify; line-height: 1.8">{{ _('شاتل با ارائه خدمات و راهکارهای ارتباطی و محتوایی ارزش‌آفرین و نوآورانه و نیز پای‌بندی به اخلاق حرفه‌ای و مسئولیت‌های اجتماعی، رسالت خود را خلق لبخند رضایت در جامعه می‌داند.') }}</p>
+
+                    <div class="d-flex justify-content-around align-items-center w-100 flex-wrap">
+                        <a href="{{ url_for('web.contact_us_get') }}" class="btn btn-primary py-2 my-2 px-5 px-sm-3">
+                            <i class="fa-solid fa-phone"></i>
+                            {{ _('ارتباط با شاتل') }}
                         </a>
-                    </div>
-                    <div class="col-lg-10 col-12">
-                        <div class="news-slider owl-carousel owl-theme position-relative custom-owl" data-aos="fade-up">
-                            <div class="card">
-                                <a href="" class="position-relative text-decoration-none news-anchor-link">
-                                    <img loading="lazy"
-                                         src="{{  '/media/news.JPG' | StorageUrl  }}"
-                                         class="card-img-top img-fluid news-slider-img"/>
-                                    <p class="position-absolute bottom-0 end-0 start-0 me-4 mb-5 text-white fs-5 news-slider-paragraph ms-5">
-                                        {{_('بازگشایی خط تولیدی جدید شاتل')}}
-                                    </p>
-                                </a>
-                            </div>
-
-                            <div class="card">
-                                <a href="" class="position-relative text-decoration-none news-anchor-link">
-                                    <img loading="lazy"
-                                         src="{{  '/media/news.JPG' | StorageUrl  }}"
-                                         class="card-img-top img-fluid news-slider-img"/>
-                                    <p class="position-absolute bottom-0 end-0 start-0 me-4 mb-5 text-white fs-5 news-slider-paragraph ms-5">
-                                        {{_('بازگشایی خط تولیدی جدید شاتل')}}
-                                    </p>
-                                </a>
-                            </div>
-
-                            <div class="card">
-                                <a href="" class="position-relative text-decoration-none news-anchor-link">
-                                    <img loading="lazy"
-                                         src="{{  '/media/news.JPG' | StorageUrl  }}"
-                                         class="card-img-top img-fluid news-slider-img"/>
-                                    <p class="position-absolute bottom-0 end-0 start-0 me-4 mb-5 text-white fs-5 news-slider-paragraph ms-5">
-                                        {{_('بازگشایی خط تولیدی جدید شاتل')}}
-                                    </p>
-                                </a>
-                            </div>
-                        </div>
+                        <button class="btn btn-warning py-2 my-2 px-5 px-sm-3">
+                            <i class="fa-solid fa-cart-shopping"></i>{{ _(' خرید محصولات شاتل') }}
+                        </button>
+                        <button class="btn btn-primary py-2 my-2 px-5 px-sm-3">
+                            <i class="fa-solid fa-tags"></i> {{ _('مشاهده محصولات') }}
+                        </button>
                     </div>
                 </div>
             </div>
-            <!-- end of news gallery -->
-
-            <!-- services -->
-            <div class="col-12 bg-gray py-5" style="overflow-x: hidden">
-                <div class="row justify-content-center align-content-center">
-                    <div class="col-sm-10 col-12">
-                        <div class="row">
-
-                            <div class="col-12 my-2 d-flex justify-content-between align-content-center position-relative overflow-hidden">
-                                <h2 class="text-center text-muted ">{{_('خدمات و سرویس ها')}}</h2>
-                                <a class="m-0 p-0 text-orange fs-5 text-center mt-2 text-decoration-none"
-                                   href="{{ url_for('web.about_us_get') }}">
-                                    {{_('درباره شاتل')}} <i class="fa-solid fa-chevron-left"></i>
-                                </a>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
-                                <div class="card shadow card-bs rounded-5">
-                                    <img src="{{ '/index/media/board.png' | StorageUrl }}"
-                                         class="card-img-top mx-auto position-relative services-images" alt=""/>
-                                    <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
-                                        {{_('طراحی و ساخت تجهیزات الکترونیکی و مخابراتی')}}
-                                    </p>
-
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
-                                <div class="card shadow card-bs rounded-5">
-                                    <img src="{{ '/index/media/smartHome.png' | StorageUrl }}"
-                                         class="card-img-top rounded mx-auto position-relative" alt=""/>
-                                    <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-3">
-                                        {{_('طراحی و تولید محصولات خانه هوشمند')}}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
-                                <div class="card shadow card-bs rounded-5">
-                                    <img src="{{  '/index/media/5G.png' | StorageUrl }}"
-                                         class="card-img-top mx-auto position-relative" alt=""/>
-                                    <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-3">
-                                        {{_('طراحی و ساخت مودم های فیبرنوری و 5G')}}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
-                                <div class="card shadow card-bs rounded-5">
-                                    <img src="{{ '/index/media/application.jpg' | StorageUrl }}"
-                                         class="card-img-top mx-auto position-relative" alt=""/>
-                                    <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
-                                        {{_('توسعه و تولید نرم افزار و سرویس های ارتباطی')}}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
-                                <div class="card shadow card-bs rounded-5">
-                                    <img src="{{ '/index/media/security.png' | StorageUrl }}"
-                                         class="card-img-top mx-auto position-relative" alt=""/>
-                                    <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
-                                        {{_('طراحی و توسعه نرم افزار های حضور و غیاب و امنیتی')}}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-12 my-2" data-aos="fade-down">
-                                <div class="card shadow card-bs rounded-5">
-                                    <img src="{{ '/index/media/testing-and-creating.png' | StorageUrl }}"
-                                         class="card-img-top mx-auto position-relative" alt=""/>
-                                    <p class="text-center position-absolute bottom-0 w-100 fw-bold fs-4">
-                                        {{_('تست و کنتنرل کیفیت محصولات')}}
-                                    </p>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--  end of services -->
-
         </div>
-    </div>
-</section>
+    </section>
+    <!-- end of first Product -->
 
-
-<!-- first Product -->
-<section class="persian-font my-5">
-    <div class="container-fluid">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-5 col-md-10 col-11">
-                <div class="TopProductsSlider owl-carousel owl-theme position-relative">
-                    <img loading="lazy" src="{{  '/product/images/product.jpg' | StorageUrl  }}" class=" img-fluid item" style="max-height: 600px;"/>
-                    <img loading="lazy" src="{{  '/product/images/product.jpg' | StorageUrl  }}" class=" img-fluid item" style="max-height: 600px;"/>
-                    <img loading="lazy" src="{{  '/product/images/product.jpg' | StorageUrl  }}" class=" img-fluid item" style="max-height: 600px;"/>
+    <!-- awards -->
+    <section class="persian-font mt-5 award-section mx-0 pb-5">
+        <div class="container-fluid mt-5">
+            <div class="row justify-content-center align-content-center">
+                <div class="col-10 my-3">
+                    <h2 class="text-center text-white border-bottom text-blue">
+                        {{ _('جوایز و افتخارات') }}
+                    </h2>
                 </div>
-
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
+                    <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
+                         data-aos="fade-up"
+                         style="max-width: 120px; min-width: 60px" alt=""/>
+                    <p class="text-white my-2">{{ _('دارنده استاندارد iso 9001') }}</p>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
+                    <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
+                         data-aos="fade-up"
+                         style="max-width: 120px; min-width: 60px" alt=""/>
+                    <p class="text-white my-2">{{ _('دارنده استاندارد iso 45001') }}</p>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
+                    <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
+                         data-aos="fade-up"
+                         style="max-width: 120px; min-width: 60px" alt=""/>
+                    <p class="text-white my-2">{{ _('دارنده استاندارد iso 14001') }}</p>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
+                    <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
+                         data-aos="fade-up"
+                         style="max-width: 120px; min-width: 60px" alt=""/>
+                    <p class="text-white my-2">{{ _('دارنده استاندارد iso IMS') }}</p>
+                </div>
             </div>
-            <div class="col-lg-5 col-md-10 col-11 d-flex flex-column justify-content-start align-items-start"
-                 data-aos="fade-up">
-                <p class="text-orange m-0 fs-4">{{_('مودم های نسل پنج شاتل')}}</p>
-                <h1 class="text-blue">{{_('تحولی در سرعت و انتقال داده در ایران')}}</h1>
-                <p class="text-muted fs-5" style="text-align: justify; line-height: 1.8">{{_('شاتل با ارائه خدمات و راهکارهای ارتباطی و محتوایی ارزش‌آفرین و نوآورانه و نیز پای‌بندی به اخلاق حرفه‌ای و مسئولیت‌های اجتماعی، رسالت خود را خلق لبخند رضایت در جامعه می‌داند.')}}</p>
+        </div>
+    </section>
+    <!-- awards -->
 
-                <div class="d-flex justify-content-around align-items-center w-100 flex-wrap">
-                    <a href="{{ url_for('web.contact_us_get') }}" class="btn btn-primary py-2 my-2 px-5 px-sm-3">
-                        <i class="fa-solid fa-phone"></i>
-                        {{_('ارتباط با شاتل')}}
+
+    <!-- top product -->
+    <section class="persian-font">
+        <div class="container-fluid bg-gray py-5">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-10 col-12 my-2 d-flex justify-content-between align-content-center">
+                    <h2 class="text-center text-muted ">{{ _('جدید ترین محصولات شاتل') }} </h2>
+                    <a class="m-0 p-0 text-orange fs-5 text-center mt-2 text-decoration-none" href="">
+                        {{ _('محصولات') }} <i class="fa-solid fa-chevron-left"></i>
                     </a>
-                    <button class="btn btn-warning py-2 my-2 px-5 px-sm-3">
-                        <i class="fa-solid fa-cart-shopping"></i>{{_(' خرید محصولات شاتل')}}
-                    </button>
-                    <button class="btn btn-primary py-2 my-2 px-5 px-sm-3">
-                        <i class="fa-solid fa-tags"></i> {{_('مشاهده محصولات')}}
-                    </button>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end of first Product -->
-
-<!-- awards -->
-<section class="persian-font mt-5 award-section mx-0 pb-5">
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center align-content-center">
-            <div class="col-10 my-3">
-                <h2 class="text-center text-white border-bottom text-blue">
-                    {{_('جوایز و افتخارات')}}
-                </h2>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
-                <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
-                     data-aos="fade-up"
-                     style="max-width: 120px; min-width: 60px" alt=""/>
-                <p class="text-white my-2">{{_('دارنده استاندارد iso 9001')}}</p>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
-                <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
-                     data-aos="fade-up"
-                     style="max-width: 120px; min-width: 60px" alt=""/>
-                <p class="text-white my-2">{{_('دارنده استاندارد iso 45001')}}</p>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
-                <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
-                     data-aos="fade-up"
-                     style="max-width: 120px; min-width: 60px" alt=""/>
-                <p class="text-white my-2">{{_('دارنده استاندارد iso 14001')}}</p>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
-                <img src="https://www.pngall.com/wp-content/uploads/5/Award-PNG-Image.png" class="card-bs"
-                     data-aos="fade-up"
-                     style="max-width: 120px; min-width: 60px" alt=""/>
-                <p class="text-white my-2">{{_('دارنده استاندارد iso IMS')}}</p>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- awards -->
+                <div class="col-lg-10 col-12 ">
+                    <div class="product-slider owl-carousel owl-theme position-relative custom-owl ">
+                        <div class="card">
 
 
-<!-- top product -->
-<section class="persian-font">
-    <div class="container-fluid bg-gray py-5">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-10 col-12 my-2 d-flex justify-content-between align-content-center">
-                <h2 class="text-center text-muted ">{{_('جدید ترین محصولات شاتل')}} </h2>
-                <a class="m-0 p-0 text-orange fs-5 text-center mt-2 text-decoration-none" href="">
-                    {{_('محصولات')}} <i class="fa-solid fa-chevron-left"></i>
-                </a>
-            </div>
-            <div class="col-lg-10 col-12 ">
-                <div class="product-slider owl-carousel owl-theme position-relative custom-owl ">
-                    <div class="card">
-
-
-                    <div class="card">
-                        <a href="" class="position-relative text-decoration-none ">
-                            <img loading="lazy"
-                                 src="{{  '/product/images/product.jpg' | StorageUrl  }}"
-                                 class="card-img-top img-fluid py-5" style="max-height: 600px;"/>
-                            <div class="card-footer p-1">
-                                <p class="position-absolute bottom-0 end-0 start-0 text-center mb-5  text-dark fs-5">
-                                    <span class="">Shatel c22+</span>
-                                </p>
-                                <button class="btn bg-blue text-white fs-5 m-0 p-0 w-100">
-                                    {{_('مشاهده')}}
-                                </button>
+                            <div class="card">
+                                <a href="" class="position-relative text-decoration-none ">
+                                    <img loading="lazy"
+                                         src="{{ '/product/images/product.jpg' | StorageUrl }}"
+                                         class="card-img-top img-fluid py-5" style="max-height: 600px;"/>
+                                    <div class="card-footer p-1">
+                                        <p class="position-absolute bottom-0 end-0 start-0 text-center mb-5  text-dark fs-5">
+                                            <span class="">Shatel c22+</span>
+                                        </p>
+                                        <button class="btn bg-blue text-white fs-5 m-0 p-0 w-100">
+                                            {{ _('مشاهده') }}
+                                        </button>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
 
 
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end of top product -->
-
-
-<!-- contact us -->
-<section class="persian-font my-5 pt-5">
-    <div class="d-flex flex-column justify-content-center align-items-center">
-        <h2 class="text-center text-orange display-3" data-aos="fade-left">{{ _('ارتباط با ما') }}</h2>
-        <p class="text-blue h3" data-aos="fade-right">{{ _('آیا سوالی دارید؟') }}</p>
-    </div>
-    {% include "utils/contact-us-form.html" %}
-</section>
-<!-- end of contact us -->
-
-<!-- partnership company  -->
-<section class="mt py-5 persian-font bg-gray">
-    <div class="container-fluid">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-8 col-11">
-                <h2 class="text-center mt-3" data-aos="fade-down" data-aos-duration="3000">
-                    {{_('شرکت های همکار شاتل')}}
-                </h2>
-            </div>
-            <div class="col-md-8 col-11" data-aos="fade-down">
-                <div class="row owl-carousel owl-theme partnership-company-slider">
-                    <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
-                        <img src="{{ 'media/partners/hamrah.png' | StorageUrl }}"
-                             class="partnership-company-img"
-                             style="width: 60px;" alt="">
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
-                        <img src="{{ 'media/partners/asitech.png' | StorageUrl }}"
-                             class="partnership-company-img"
-                             style="width: 100px;" alt="">
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
-                        <img src="{{ 'media/partners/irancell.png' | StorageUrl }}"
-                             class="partnership-company-img"
-                             style="width: 60px;" alt="">
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
-                        <img src="https://mobinnet.ir/wp-content/uploads/2021/08/File.aspx2_.png"
-                             class="partnership-company-img"
-                             style="width: 100px;" alt="">
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Shatel_Logo.png"
-                             class="partnership-company-img" style="width: 75px;" alt="">
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/SAIran.svg"
-                             class="partnership-company-img"
-                             style="width: 120px;" alt="">
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
-                        <img src="https://upload.wikimedia.org/wikipedia/fa/9/94/Rightel_logo.png"
-                             class="partnership-company-img"
-                             style="width: 120px;" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
-         data-aos-duration="1500">
-        <a class="text-center text-orange" href="{{ url_for('web.proxy_get') }}">{{_(' + درخواست دریافت نمایندگی ')}}</a>
-    </div>
-</section>
-<!-- end of partnership company  -->
+    </section>
+    <!-- end of top product -->
 
-{%  include 'utils/footer.html' %}
-{%  include 'utils/mobile-navbar.html' %}
+
+    <!-- contact us -->
+    <section class="persian-font my-5 pt-5">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h2 class="text-center text-orange display-3" data-aos="fade-left">{{ _('ارتباط با ما') }}</h2>
+            <p class="text-blue h3" data-aos="fade-right">{{ _('آیا سوالی دارید؟') }}</p>
+        </div>
+        {% include "utils/contact-us-form.html" %}
+    </section>
+    <!-- end of contact us -->
+
+    <!-- partnership company  -->
+    <section class="mt py-5 persian-font bg-gray">
+        <div class="container-fluid">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-8 col-11">
+                    <h2 class="text-center mt-3" data-aos="fade-down" data-aos-duration="3000">
+                        {{ _('شرکت های همکار شاتل') }}
+                    </h2>
+                </div>
+                <div class="col-md-8 col-11" data-aos="fade-down">
+                    <div class="row owl-carousel owl-theme partnership-company-slider">
+                        <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
+                            <img src="{{ 'media/partners/hamrah.png' | StorageUrl }}"
+                                 class="partnership-company-img"
+                                 style="width: 60px;" alt="">
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
+                            <img src="{{ 'media/partners/asitech.png' | StorageUrl }}"
+                                 class="partnership-company-img"
+                                 style="width: 100px;" alt="">
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
+                            <img src="{{ 'media/partners/irancell.png' | StorageUrl }}"
+                                 class="partnership-company-img"
+                                 style="width: 60px;" alt="">
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
+                            <img src="https://mobinnet.ir/wp-content/uploads/2021/08/File.aspx2_.png"
+                                 class="partnership-company-img"
+                                 style="width: 100px;" alt="">
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Shatel_Logo.png"
+                                 class="partnership-company-img" style="width: 75px;" alt="">
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/SAIran.svg"
+                                 class="partnership-company-img"
+                                 style="width: 120px;" alt="">
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-4 d-flex justify-content-center align-items-center py-5 item w-100 h-100">
+                            <img src="https://upload.wikimedia.org/wikipedia/fa/9/94/Rightel_logo.png"
+                                 class="partnership-company-img"
+                                 style="width: 120px;" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+             data-aos-duration="1500">
+            <a class="text-center text-orange"
+               href="{{ url_for('web.proxy_get') }}">{{ _(' + درخواست دریافت نمایندگی ') }}</a>
+        </div>
+    </section>
+    <!-- end of partnership company  -->
+
+    {% include 'utils/footer.html' %}
+    {% include 'utils/mobile-navbar.html' %}
 
 
 {% endblock content %}
@@ -376,5 +382,5 @@
 
 {% block script %}
 
-<script src="{{ 'index/js/index.js' | StorageUrl }}"></script>
+    <script src="{{ 'index/js/index.js' | StorageUrl }}"></script>
 {% endblock script %}

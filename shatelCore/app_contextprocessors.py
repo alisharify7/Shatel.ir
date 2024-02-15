@@ -1,5 +1,6 @@
-from . import app
 from flask import request
+
+from . import app
 
 
 @app.context_processor

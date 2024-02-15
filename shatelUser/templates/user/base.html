@@ -21,8 +21,8 @@
         }
 
     </style>
-    {% block style%}
-    {% endblock style%}
+    {% block style %}
+    {% endblock style %}
 </head>
 
 <body dir="rtl">
@@ -50,10 +50,10 @@
                         <span class="hide-menu">{{ _('خانه') }}</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link {{ctx.dashboard}}" href="{{ url_for('user.user_index') }}"
+                        <a class="sidebar-link {{ ctx.dashboard }}" href="{{ url_for('user.user_index') }}"
                            aria-expanded="false">
                             <span>
-                        <i class="bi bi-ui-checks-grid fs-4 {{'text-white' if ctx.dashboard else 'text-orange'}} "></i>
+                        <i class="bi bi-ui-checks-grid fs-4 {{ 'text-white' if ctx.dashboard else 'text-orange' }} "></i>
                             </span>
                             <span class="hide-menu">{{ _('داشبورد') }}</span>
                         </a>
@@ -66,17 +66,17 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ url_for('user.send_ticket_get') }}" aria-expanded="false">
                             <span>
-                                <i class="bi bi-chat-dots fs-4 {{'text-white' if ctx.send_ticket else 'text-orange'}}"></i>
+                                <i class="bi bi-chat-dots fs-4 {{ 'text-white' if ctx.send_ticket else 'text-orange' }}"></i>
                             </span>
                             <span class="hide-menu">{{ _('ارسال تیکت') }}</span>
                         </a>
                     </li>
                     <li class="sidebar-item">
 
-                        <a class="sidebar-link {{'active' if ctx.history_ticket else ''}}"
+                        <a class="sidebar-link {{ 'active' if ctx.history_ticket else '' }}"
                            href="{{ url_for('user.history_tickets_get') }}" aria-expanded="false">
                             <span>
-                                <i class="bi bi-chat-fill fs-4 text-orange {{'text-white' if ctx.history_ticket else 'text-orange'}}"></i>
+                                <i class="bi bi-chat-fill fs-4 text-orange {{ 'text-white' if ctx.history_ticket else 'text-orange' }}"></i>
                             </span>
                             <span class="hide-menu">{{ _('سابقه تیکت ها') }}</span>
                         </a>
@@ -88,7 +88,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ url_for('user.setting_get') }}" aria-expanded="false">
                             <span>
-                                <i class="bi bi-gear fs-4 text-orange {{'text-white' if ctx.setting else 'text-orange'}}"></i>
+                                <i class="bi bi-gear fs-4 text-orange {{ 'text-white' if ctx.setting else 'text-orange' }}"></i>
                             </span>
                             <span class="hide-menu">{{ _('تنظیمات حساب کاربری') }}</span>
                         </a>
@@ -149,23 +149,26 @@
                             <div class="dropdown-menu dropdown-menu-start dropdown-menu-animate-up shadow persian-font"
                                  aria-labelledby="drop2">
                                 <div class="message-body">
-                                    <a href="{{ url_for('user.user_index') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                    <a href="{{ url_for('user.user_index') }}"
+                                       class="d-flex align-items-center gap-2 dropdown-item">
                                         <i class="ti ti-user fs-6"></i>
                                         <p class="mb-0 fs-3">{{ _('حساب کاربری') }}</p>
                                     </a>
                                     <hr class="m-0 p-0 w-75 mx-auto"></hr>
-                                    <a href="{{ url_for('user.setting_get') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                    <a href="{{ url_for('user.setting_get') }}"
+                                       class="d-flex align-items-center gap-2 dropdown-item">
                                         <i class="ti ti-mail fs-6"></i>
                                         <p class="mb-0 fs-3">{{ _('تنظیمات حساب کاربری') }}</p>
                                     </a>
                                     <hr class="m-0 p-0 w-75 mx-auto"></hr>
-                                    <a href="{{ url_for('user.send_ticket_get') }}" class="d-flex align-items-center gap-2 dropdown-item">
+                                    <a href="{{ url_for('user.send_ticket_get') }}"
+                                       class="d-flex align-items-center gap-2 dropdown-item">
                                         <i class="ti ti-list-check fs-6"></i>
                                         <p class="mb-0 fs-3">{{ _('پشتیبانی') }}</p>
                                     </a>
                                     <hr class="m-0 p-0 w-75 mx-auto"></hr>
                                     <a href="{{ url_for('auth.logout') }}"
-                                       class="btn btn-outline-primary mx-3 mt-2 d-block">{{ _('خروج')}}</a>
+                                       class="btn btn-outline-primary mx-3 mt-2 d-block">{{ _('خروج') }}</a>
                                 </div>
                             </div>
                         </li>

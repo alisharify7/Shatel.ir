@@ -4,12 +4,11 @@ import pathlib
 import pickle
 import uuid
 
-from flask import Flask, current_app
-from celery import Celery, Task
-
 import khayyam
 from PIL import Image, UnidentifiedImageError
+from celery import Celery, Task
 from celery import shared_task
+from flask import Flask, current_app
 
 
 def celery_init_app(app: Flask) -> Celery:

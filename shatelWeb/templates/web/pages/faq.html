@@ -1,47 +1,50 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{_('سوالات متداول')}}
+    {{ _('سوالات متداول') }}
 {% endblock title %}
 
 {% block style %}
 {% endblock style %}
 
 {% block content %}
-{% include 'utils/header.html' %}
+    {% include 'utils/header.html' %}
 
-<section class="persian-font overflow-hidden">
-    <div class="container-fluid">
-        <div class="my-5 row justify-content-center align-items-center">
-            <div class="col-10">
-                <h1  data-aos="fade-left" class="text-orange display-4 mb-0">{{_('سوالات متداول')}}</h1>
-                <p   data-aos="fade-right" class="text-muted my-3 fs-5">{{_('به تمام سوالات شما پاسخ داده‌ایم ')}}</p>
-            </div>
-            <div class="col-11">
-                <div class="accordion shadow rounded" id="accordionfaq">
-                    {% for q in question %}
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="ac-{{loop.index}}">
-                            <button  class="accordion-button collapsed fs-5" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#q{{loop.index}}" aria-expanded="false" aria-controls="collapseThree">
-                                {{q['question']}}
-                            </button>
-                        </h2>
-                        <div id="q{{loop.index}}"  class="accordion-collapse collapse"
-                             data-bs-parent="#accordionfaq">
-                            <div class="accordion-body">
-                                <p class="text-muted fs-5">+ {{q['answer']}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
+    <section class="persian-font overflow-hidden">
+        <div class="container-fluid">
+            <div class="my-5 row justify-content-center align-items-center">
+                <div class="col-10">
+                    <h1 data-aos="fade-left" class="text-orange display-4 mb-0">{{ _('سوالات متداول') }}</h1>
+                    <p data-aos="fade-right"
+                       class="text-muted my-3 fs-5">{{ _('به تمام سوالات شما پاسخ داده‌ایم ') }}</p>
                 </div>
+                <div class="col-11">
+                    <div class="accordion shadow rounded" id="accordionfaq">
+                        {% for q in question %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="ac-{{ loop.index }}">
+                                    <button class="accordion-button collapsed fs-5" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#q{{ loop.index }}" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                        {{ q['question'] }}
+                                    </button>
+                                </h2>
+                                <div id="q{{ loop.index }}" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionfaq">
+                                    <div class="accordion-body">
+                                        <p class="text-muted fs-5">+ {{ q['answer'] }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
 
+                </div>
             </div>
         </div>
-    </div>
-</section>
-{% include 'utils/footer.html' %}
+    </section>
+    {% include 'utils/footer.html' %}
 
 {% endblock content %}
 

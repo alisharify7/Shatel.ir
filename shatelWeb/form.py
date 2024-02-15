@@ -1,7 +1,7 @@
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, EmailField, HiddenField
-from wtforms.validators import DataRequired, InputRequired, Length, EqualTo, Email
 from flask_babel import lazy_gettext as _l
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired, InputRequired, Length
 
 
 class ValidateVarrantyForm(FlaskForm):

@@ -1,7 +1,7 @@
+from flask_babel import lazy_gettext as _l
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, EmailField, HiddenField
 from wtforms.validators import DataRequired, InputRequired, Length, EqualTo, Email
-from flask_babel import lazy_gettext as _l
 
 
 class FormFlask(FlaskForm):
@@ -230,4 +230,3 @@ class SetNewPasswordForm(FlaskForm):
             "value": _l('بازنشانی گذرواژه'),
             "class": "btn bg-orange text-white w-100 py-2 my-3 fs-5 border-0"
         })
-

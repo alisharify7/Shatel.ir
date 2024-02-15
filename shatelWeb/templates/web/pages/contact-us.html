@@ -1,58 +1,64 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ _('ارتباط با ما') }}
+    {{ _('ارتباط با ما') }}
 {% endblock title %}
 
 {% block style %}
-<style xmlns="http://www.w3.org/1999/html">
-    .info-field {
-        background-color: #f1f1f1;
-    }
-</style>
+    <style xmlns="http://www.w3.org/1999/html">
+        .info-field {
+            background-color: #f1f1f1;
+        }
+    </style>
 {% endblock style %}
 
 {% block content %}
-{% include 'utils/header.html' %}
+    {% include 'utils/header.html' %}
 
-<section class="persian-font overflow-hidden" style="overflow-x: hidden">
-    <div class="container-fluid">
-        <div class="my-5 row justify-content-center align-items-center">
-            <div class="col-8">
-                <h2 class="text-orange display-6 my-3" data-aos="fade-right" data-aos-duration="1800">{{ _('راه های ارتباطی شاتل') }}</h2>
-            </div>
-            <div class="col-lg-8 col-10" data-aos="fade-left" data-aos-duration="2000">
-                <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('تهران، خیابان شریعتی، پایین تر از پل صدر، بن بست الهیه، ساختمان شاتل ') }}</P>
-                <P class="info-field px-3 py-2 fs-5 rounded border"> {{ _('تلفن') }} : ۹۱۰۰۰۰۰۰ </P>
-                <P class="info-field px-3 py-2 fs-5 rounded border"> {{ _('مرکز امور مشتریان') }} : {{_('داخلی') }}
-                    3035 </P>
-                <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('امور نمایندگی ها') }}: {{_('داخلی') }}
-                    3309 </P>
-                <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('واحد تحقیق و توسعه') }} : {{_('داخلی') }}
-                    3403</P>
-                <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('امور مالی') }}: {{_('داخلی') }} 2132</P>
-                <P class="info-field px-3 py-2 fs-5 rounded border"> {{ _('مدیریت') }}: {{_('داخلی') }} 1031</P>
-                <P class="info-field px-3 py-2 fs-5 rounded border"> sales [at] shatel [dot] ir</P>
-                <p class="info-field px-3 py-2 fs-5 rounded border">services [at] shatel [dot] ir</p>
-                <p class="info-field px-3 py-2 fs-5 rounded border">engineer [at] shatel [dot] ir</p>
-                <P class="info-field px-3 py-2 fs-5 rounded border">rnd [at] shatel [dot] ir</P>
-                <p class="m-0 text-center">{{ _(' در صورت مشاهده هر گونه مشکل فنی و ... میتوانید برای بهبود عملکرد گزارش خود را به ایمیل report[@][at] shatel [dot] ir یا bounty[@] [at] shatel [dot] ir ارسال کنید') }}</p>
-            </div>
-            <div class="col-lg-8 col-10 my-2 my-md-5" data-aos-duration="3500" data-aos="zoom-in">
-                <div style="width: 100%" class="rounded">
-                <iframe loading="lazy" src="https://www.google.com/maps/d/u/0/embed?mid=1JJiHsNXR85cTDukDOCQWtRCJ2kFim0A&amp;ehbc=2E312F" width="100%" height="480" data-rocket-lazyload="fitvidscompatible" data-lazy-src="https://www.google.com/maps/d/u/0/embed?mid=1JJiHsNXR85cTDukDOCQWtRCJ2kFim0A&amp;ehbc=2E312F" data-ll-status="loaded" class="entered lazyloaded" style="pointer-events: none;"></iframe>
+    <section class="persian-font overflow-hidden" style="overflow-x: hidden">
+        <div class="container-fluid">
+            <div class="my-5 row justify-content-center align-items-center">
+                <div class="col-8">
+                    <h2 class="text-orange display-6 my-3" data-aos="fade-right"
+                        data-aos-duration="1800">{{ _('راه های ارتباطی شاتل') }}</h2>
                 </div>
-            </div>
-            <div class="col-lg-8 col-10 mt-3" data-aos="fade-left">
-                <h2 class="text-orange display-6 my-3">{{ _('فرم تماس با ما') }}</h2>
-            </div>
-            {% include 'utils/contact-us-form.html' %}
+                <div class="col-lg-8 col-10" data-aos="fade-left" data-aos-duration="2000">
+                    <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('تهران، خیابان شریعتی، پایین تر از پل صدر، بن بست الهیه، ساختمان شاتل ') }}</P>
+                    <P class="info-field px-3 py-2 fs-5 rounded border"> {{ _('تلفن') }} : ۹۱۰۰۰۰۰۰ </P>
+                    <P class="info-field px-3 py-2 fs-5 rounded border"> {{ _('مرکز امور مشتریان') }} : {{ _('داخلی') }}
+                        3035 </P>
+                    <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('امور نمایندگی ها') }}: {{ _('داخلی') }}
+                        3309 </P>
+                    <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('واحد تحقیق و توسعه') }} : {{ _('داخلی') }}
+                        3403</P>
+                    <P class="info-field px-3 py-2 fs-5 rounded border">{{ _('امور مالی') }}: {{ _('داخلی') }} 2132</P>
+                    <P class="info-field px-3 py-2 fs-5 rounded border"> {{ _('مدیریت') }}: {{ _('داخلی') }} 1031</P>
+                    <P class="info-field px-3 py-2 fs-5 rounded border"> sales [at] shatel [dot] ir</P>
+                    <p class="info-field px-3 py-2 fs-5 rounded border">services [at] shatel [dot] ir</p>
+                    <p class="info-field px-3 py-2 fs-5 rounded border">engineer [at] shatel [dot] ir</p>
+                    <P class="info-field px-3 py-2 fs-5 rounded border">rnd [at] shatel [dot] ir</P>
+                    <p class="m-0 text-center">{{ _(' در صورت مشاهده هر گونه مشکل فنی و ... میتوانید برای بهبود عملکرد گزارش خود را به ایمیل report[@][at] shatel [dot] ir یا bounty[@] [at] shatel [dot] ir ارسال کنید') }}</p>
+                </div>
+                <div class="col-lg-8 col-10 my-2 my-md-5" data-aos-duration="3500" data-aos="zoom-in">
+                    <div style="width: 100%" class="rounded">
+                        <iframe loading="lazy"
+                                src="https://www.google.com/maps/d/u/0/embed?mid=1JJiHsNXR85cTDukDOCQWtRCJ2kFim0A&amp;ehbc=2E312F"
+                                width="100%" height="480" data-rocket-lazyload="fitvidscompatible"
+                                data-lazy-src="https://www.google.com/maps/d/u/0/embed?mid=1JJiHsNXR85cTDukDOCQWtRCJ2kFim0A&amp;ehbc=2E312F"
+                                data-ll-status="loaded" class="entered lazyloaded"
+                                style="pointer-events: none;"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-10 mt-3" data-aos="fade-left">
+                    <h2 class="text-orange display-6 my-3">{{ _('فرم تماس با ما') }}</h2>
+                </div>
+                {% include 'utils/contact-us-form.html' %}
 
 
+            </div>
         </div>
-    </div>
-</section>
-{% include 'utils/footer.html' %}
+    </section>
+    {% include 'utils/footer.html' %}
 
 {% endblock content %}
 

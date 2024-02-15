@@ -2,7 +2,7 @@
 
 
 {% block title %}
-{{ _('شاتل')}} - {{ _('تنظیمات حساب کاربری')  }}
+    {{ _('شاتل') }} - {{ _('تنظیمات حساب کاربری') }}
 {% endblock title %}
 
 
@@ -10,94 +10,94 @@
 {% endblock style %}
 
 {% block body %}
-<section>
-    <div class="container-fluid persian-font my-4 my-md-5">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-11">
-                <h2 class="text-center ">{{ _('تنظیمات حساب کاربری') }}</h2>
-                <p class="text-muted text-center">{{ _('کاربر گرامی از این پنل میتوانید اطلاعات حساب کاربری خود را تکمیل کنید') }}</p>
-            </div>
-            <div class="col-12 col-sm-11">
-                <form method="post" action="{{ url_for('user.setting_post')  }}">
-                    {{form.hidden_tag()}}
-                    <label class="w-100 my-2">
-                        {{ _('نام کاربری') }}
-                        {{form.Username()}}
-                        {% if form.Username.errors %}
-                        {% for err in form.Username.errors %}
-                        <li class="text-danger">{{err}}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{ _('نام') }}
-                        {{form.FirstName()}}
-                        {% if form.FirstName.errors %}
-                        {% for err in form.FirstName.errors %}
-                        <li class="text-danger">{{err}}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{ _('نام خانوادگی') }}
-                        {{form.LastName()}}
-                        {% if form.LastName.errors %}
-                        {% for err in form.LastName.errors %}
-                        <li class="text-danger">{{err}}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{ _('گذرواژه') }}
-                        {{form.Password()}}
-                        {% if form.Password.errors %}
-                        {% for err in form.Password.errors %}
-                        <li class="text-danger">{{err}}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{ _('ایمیل') }}
-                        {{form.Email()}}
-                        {% if form.Email.errors %}
-                        {% for err in form.Email.errors %}
-                        <li class="text-danger">{{err}}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{ _('آدرس منزل') }}
-                        {{form.Address()}}
-                        {% if form.Address.errors %}
-                        {% for err in form.Address.errors %}
-                        <li class="text-danger">{{err}}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{ _('شماره تلفن همراه') }}
-                        {{form.PhoneNumber()}}
-                        {% if form.PhoneNumber.errors %}
-                        {% for err in form.PhoneNumber.errors %}
-                        <li class="text-danger">{{err}}</li>
-                        {% endfor %}
-                        {% endif %}
-                        <ul>
-                            <li>{{ _('قالب معتبر وارد کردن شماره شامل') }}:</li>
-                            <li>+989121111111</li>
-                            <li>00989121111111</li>
-                            <li>09121111111</li>
-                            <li>9121111111</li>
-                        </ul>
-                    </label>
-                    <label class="w-100 my-2">
-                        {{form.Submit()}}
-                    </label>
+    <section>
+        <div class="container-fluid persian-font my-4 my-md-5">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-11">
+                    <h2 class="text-center ">{{ _('تنظیمات حساب کاربری') }}</h2>
+                    <p class="text-muted text-center">{{ _('کاربر گرامی از این پنل میتوانید اطلاعات حساب کاربری خود را تکمیل کنید') }}</p>
+                </div>
+                <div class="col-12 col-sm-11">
+                    <form method="post" action="{{ url_for('user.setting_post') }}">
+                        {{ form.hidden_tag() }}
+                        <label class="w-100 my-2">
+                            {{ _('نام کاربری') }}
+                            {{ form.Username() }}
+                            {% if form.Username.errors %}
+                                {% for err in form.Username.errors %}
+                                    <li class="text-danger">{{ err }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ _('نام') }}
+                            {{ form.FirstName() }}
+                            {% if form.FirstName.errors %}
+                                {% for err in form.FirstName.errors %}
+                                    <li class="text-danger">{{ err }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ _('نام خانوادگی') }}
+                            {{ form.LastName() }}
+                            {% if form.LastName.errors %}
+                                {% for err in form.LastName.errors %}
+                                    <li class="text-danger">{{ err }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ _('گذرواژه') }}
+                            {{ form.Password() }}
+                            {% if form.Password.errors %}
+                                {% for err in form.Password.errors %}
+                                    <li class="text-danger">{{ err }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ _('ایمیل') }}
+                            {{ form.Email() }}
+                            {% if form.Email.errors %}
+                                {% for err in form.Email.errors %}
+                                    <li class="text-danger">{{ err }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ _('آدرس منزل') }}
+                            {{ form.Address() }}
+                            {% if form.Address.errors %}
+                                {% for err in form.Address.errors %}
+                                    <li class="text-danger">{{ err }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ _('شماره تلفن همراه') }}
+                            {{ form.PhoneNumber() }}
+                            {% if form.PhoneNumber.errors %}
+                                {% for err in form.PhoneNumber.errors %}
+                                    <li class="text-danger">{{ err }}</li>
+                                {% endfor %}
+                            {% endif %}
+                            <ul>
+                                <li>{{ _('قالب معتبر وارد کردن شماره شامل') }}:</li>
+                                <li>+989121111111</li>
+                                <li>00989121111111</li>
+                                <li>09121111111</li>
+                                <li>9121111111</li>
+                            </ul>
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ form.Submit() }}
+                        </label>
 
-                </form>
-            </div>
+                    </form>
+                </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock body %}

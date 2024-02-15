@@ -2,7 +2,7 @@
 
 
 {% block title %}
-{{ _('شاتل')}} - {{ _('ارسال تیکت پشتیبانی')  }}
+    {{ _('شاتل') }} - {{ _('ارسال تیکت پشتیبانی') }}
 {% endblock title %}
 
 
@@ -10,31 +10,31 @@
 {% endblock style %}
 
 {% block body %}
-<section>
-    <div class="container-fluid persian-font my-4 my-md-5 pt-md-5 pt-3">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-11">
-                <h2 class="text-center">{{ _('ارسال تیکت پشتیبانی') }}</h2>
-            </div>
-            <div class="col-12 col-sm-11">
-                <form method="POST" action="{{ url_for('user.send_ticket_post') }}">
-                    {{form.hidden_tag()}}
-                    <label class="w-100 my-2">
-                        {{form.Title()}}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{form.Caption()}}
-                    </label>
-                    <label class="w-100 d-flex justify-content-center align-items-center">
-                        {{captchaField}}
-                    </label>
-                    <label class="w-100 my-2">
-                        {{form.Submit()}}
-                    </label>
-                </form>
-            </div>
+    <section>
+        <div class="container-fluid persian-font my-4 my-md-5 pt-md-5 pt-3">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-11">
+                    <h2 class="text-center">{{ _('ارسال تیکت پشتیبانی') }}</h2>
+                </div>
+                <div class="col-12 col-sm-11">
+                    <form method="POST" action="{{ url_for('user.send_ticket_post') }}">
+                        {{ form.hidden_tag() }}
+                        <label class="w-100 my-2">
+                            {{ form.Title() }}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ form.Caption() }}
+                        </label>
+                        <label class="w-100 d-flex justify-content-center align-items-center">
+                            {{ captchaField }}
+                        </label>
+                        <label class="w-100 my-2">
+                            {{ form.Submit() }}
+                        </label>
+                    </form>
+                </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endblock body %}

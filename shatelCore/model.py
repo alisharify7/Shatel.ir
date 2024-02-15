@@ -1,15 +1,12 @@
-import uuid
 import datetime
-
+import uuid
 
 from flask import current_app
+from sqlalchemy import String, DateTime, Integer, Column
 
+from shatelConfig.settings import DATABASE_TABLE_PREFIX_NAME
 from .extensions import db
 from .utils import TimeStamp
-
-
-from sqlalchemy import String, DateTime, Integer, Column
-from shatelConfig.settings import DATABASE_TABLE_PREFIX_NAME
 
 
 class BaseModel(db.Model):
@@ -48,8 +45,7 @@ class BaseModel(db.Model):
         jalali = timerConv.convert_grg2_jalali_dt(t)
         return str(jalali.date())
 
-
-    def save(self, show_traceback:bool=False):
+    def save(self, show_traceback: bool = False):
         """
          combination of two steps, add and commit session
         """
@@ -64,9 +60,6 @@ class BaseModel(db.Model):
         else:
             return True
 
-
-
     PublicKey = Column(String(36), nullable=False, unique=True)
     CreatedTime = Column(DateTime, default=datetime.datetime.utcnow)
     LastUpdateTime = Column(DateTime, onupdate=datetime.datetime.utcnow, default=datetime.datetime.utcnow)
-

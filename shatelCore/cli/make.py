@@ -1,16 +1,8 @@
 # cli commands
 
-import os
-import datetime
-import sys
-
 from flask.cli import AppGroup
-from shatelCore.extensions import db
-from shatelAdmin.model import AdminsPermission, Permission
-from flask import current_app
 
 MakeCommands = AppGroup("make", help="make and create default operation commands.")
-
 
 # @MakeCommands.command("all")
 # def backup_all_database():
@@ -30,4 +22,3 @@ MakeCommands = AppGroup("make", help="make and create default operation commands
 #         permissionDB.SetPublicKey()
 #         permissionDB.save()
 #
-
