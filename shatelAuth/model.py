@@ -1,5 +1,10 @@
+import sqlalchemy as sa
+import sqlalchemy.orm as so
+
+
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
+
 
 from shatelCore.extensions import db
 from shatelCore.model import BaseModel
@@ -10,7 +15,7 @@ class User(BaseModel):
         Users Model Table
     """
     __tablename__ = BaseModel.SetTableName("users")
-    FirstName = Column(String(256), nullable=True, unique=False)
+    FirstName: so.Mapped[str] = Column(String(256), nullable=True, unique=False)
     LastName = Column(String(256), nullable=True, unique=False)
 
     Username = Column(String(128), nullable=False, unique=True)

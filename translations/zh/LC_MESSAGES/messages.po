@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-14 11:57+0330\n"
-"PO-Revision-Date: 2024-02-14 11:57+0330\n"
+"POT-Creation-Date: 2024-02-23 18:34+0330\n"
+"PO-Revision-Date: 2024-02-23 18:34+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
 "Language-Team: zh <LL@li.org>\n"
@@ -72,105 +72,105 @@ msgstr ""
 
 #: shatelAuth/form.py:154 shatelAuth/form.py:180 shatelUser/form.py:109
 #: shatelUser/templates/user/index.html:27
-#: shatelWeb/templates/web/utils/footer.html:44
+#: shatelWeb/templates/web/utils/footer.html:52
 #: shatelWeb/templates/web/utils/news-letter.html:14
 msgid "آدرس ایمیل"
 msgstr ""
 
-#: shatelAuth/form.py:160 shatelAuth/templates/auth/login.html:63
+#: shatelAuth/form.py:160 shatelAuth/templates/auth/login.html:62
 #: shatelAuth/templates/auth/register.html:5
-#: shatelWeb/templates/web/utils/footer.html:19
-#: shatelWeb/templates/web/utils/header.html:72
+#: shatelWeb/templates/web/utils/footer.html:25
+#: shatelWeb/templates/web/utils/header.html:73
 msgid "ساخت حساب کاربری"
 msgstr ""
 
 #: shatelAuth/form.py:186 shatelAuth/form.py:230
 #: shatelAuth/templates/auth/forget_password.html:5
 #: shatelAuth/templates/auth/set_password.html:5
-#: shatelCore/MailTemplate/ResetPassword.html:169 shatelCore/email.py:107
-#: shatelCore/email.py:108
+#: shatelCore/MailTemplate/ResetPassword.html:169 shatelCore/email.py:106
+#: shatelCore/email.py:107
 msgid "بازنشانی گذرواژه"
 msgstr ""
 
-#: shatelAuth/views.py:42
+#: shatelAuth/views.py:41
 msgid "برخی موارد مقداردهی نشده اند"
 msgstr ""
 
-#: shatelAuth/views.py:51
+#: shatelAuth/views.py:50
 msgid "کاربری با مشخصات وارد شده یافت نشد"
 msgstr ""
 
-#: shatelAuth/views.py:55
+#: shatelAuth/views.py:54
 msgid "اعتبارسنجی نادرست می باشد"
 msgstr ""
 
-#: shatelAuth/views.py:58
+#: shatelAuth/views.py:57
 msgid "حساب کاربری مورد نظر فعال نمی باشد"
 msgstr ""
 
-#: shatelAuth/views.py:91 shatelAuth/views.py:232 shatelAuth/views.py:376
-#: shatelUser/views.py:58
+#: shatelAuth/views.py:89 shatelAuth/views.py:230 shatelAuth/views.py:373
+#: shatelUser/views.py:57
 msgid "کپچا به درستی وارد نشده است"
 msgstr ""
 
-#: shatelAuth/views.py:97 shatelAuth/views.py:120 shatelUser/views.py:188
+#: shatelAuth/views.py:95 shatelAuth/views.py:118 shatelUser/views.py:187
 msgid "آدرس ایمیل توسط کاربر دیگری گرفته شده است"
 msgstr ""
 
-#: shatelAuth/views.py:103 shatelAuth/views.py:136
+#: shatelAuth/views.py:101 shatelAuth/views.py:134
 msgid "لطفا دقایقی دیگر دوباره امتحان کنید ..."
 msgstr ""
 
-#: shatelAuth/views.py:112
+#: shatelAuth/views.py:110
 msgid "خطایی رخ داد, بعدا امتحان کنید"
 msgstr ""
 
-#: shatelAuth/views.py:116 shatelUser/views.py:180
+#: shatelAuth/views.py:114 shatelUser/views.py:179
 msgid "نام کاربری توسط کاربر دیگری گرفته شده است"
 msgstr ""
 
-#: shatelAuth/views.py:131 shatelUser/views.py:206
+#: shatelAuth/views.py:129 shatelUser/views.py:205
 msgid "خطایی رخ داد بعدا امتحان کنید"
 msgstr ""
 
-#: shatelAuth/views.py:182
+#: shatelAuth/views.py:180
 msgid "خطایی هنگام پردازش درخواست رخ داد. دوباره امتحان کنید"
 msgstr ""
 
-#: shatelAuth/views.py:186 shatelAuth/views.py:340 shatelUser/views.py:84
-#: shatelUser/views.py:209
+#: shatelAuth/views.py:184 shatelAuth/views.py:338 shatelUser/views.py:83
+#: shatelUser/views.py:208
 msgid "عملیات با موفقیت انجام شد"
 msgstr ""
 
-#: shatelAuth/views.py:241
+#: shatelAuth/views.py:239
 msgid "کاربری با آدرس ایمیل وارد شده یافت نشد"
 msgstr ""
 
-#: shatelAuth/views.py:254
+#: shatelAuth/views.py:252
 msgid "کاربر گرامی در یک روز تنها 10 بار میتوانید درخواست بازنشانی گذرواژه دهید"
 msgstr ""
 
-#: shatelAuth/views.py:262 shatelAuth/views.py:338
+#: shatelAuth/views.py:260 shatelAuth/views.py:336
 msgid "خطایی رخ داد"
 msgstr ""
 
-#: shatelAuth/views.py:354
+#: shatelAuth/views.py:351
 msgid "با موفقیت از حساب کاربری خود خارج شدید"
 msgstr ""
 
-#: shatelAuth/views.py:380
+#: shatelAuth/views.py:377
 msgid "برخی موارد به نظر گم شده اند"
 msgstr ""
 
-#: shatelAuth/views.py:385
+#: shatelAuth/views.py:382
 msgid "اعتبارسنحی ناموفق بود"
 msgstr ""
 
-#: shatelAuth/views.py:389
+#: shatelAuth/views.py:386
 msgid "حساب کاربری توسط سیستم به صورت خودکار قفل گردیده است"
 msgstr ""
 
-#: shatelAuth/Access/decorator.py:19
+#: shatelAuth/Access/decorator.py:23
 msgid "برای دسترسی به صفحه مورد نیاز ابتدا وارد حساب کاربری خود شوید"
 msgstr ""
 
@@ -178,32 +178,32 @@ msgstr ""
 msgid "ایمیل بازنشانی گذرواژه با موفقیت برای شما ارسال شد"
 msgstr ""
 
-#: shatelAuth/templates/auth/forget_password.html:31
-#: shatelAuth/templates/auth/register.html:32
+#: shatelAuth/templates/auth/forget_password.html:32
+#: shatelAuth/templates/auth/register.html:33
 msgid "(در صورت عدم دریافت ایمیل صندوق هرزنامه را نیز برسی کنید)"
 msgstr ""
 
-#: shatelAuth/templates/auth/forget_password.html:35
+#: shatelAuth/templates/auth/forget_password.html:36
 msgid "برای بازنشانی گذرواژه لطفا آدرس ایمیل حساب کاربری خود را وارد نمایید"
 msgstr ""
 
 #: shatelAuth/templates/auth/forget_password.html:71
-#: shatelAuth/templates/auth/register.html:102
-#: shatelAuth/templates/auth/set_password.html:74
+#: shatelAuth/templates/auth/register.html:101
+#: shatelAuth/templates/auth/set_password.html:72
 msgid "حساب کاربری دارید؟"
 msgstr ""
 
 #: shatelAuth/templates/auth/admin/admin_login.html:5
 #: shatelAuth/templates/auth/forget_password.html:74
 #: shatelAuth/templates/auth/login.html:5
-#: shatelAuth/templates/auth/register.html:105
-#: shatelAuth/templates/auth/set_password.html:77
-#: shatelWeb/templates/web/utils/footer.html:18
-#: shatelWeb/templates/web/utils/header.html:78
+#: shatelAuth/templates/auth/register.html:104
+#: shatelAuth/templates/auth/set_password.html:75
+#: shatelWeb/templates/web/utils/footer.html:23
+#: shatelWeb/templates/web/utils/header.html:79
 msgid "ورود به حساب کاربری"
 msgstr ""
 
-#: shatelAuth/templates/auth/login.html:60
+#: shatelAuth/templates/auth/login.html:59
 msgid "فراموشی رمز عبور"
 msgstr ""
 
@@ -223,7 +223,11 @@ msgstr ""
 msgid "ورود ادمین"
 msgstr ""
 
-#: shatelCore/email.py:83 shatelCore/email.py:84
+#: shatelCore/__init__.py:111
+msgid "زبان با موفقیت تغییر کرد"
+msgstr ""
+
+#: shatelCore/email.py:82 shatelCore/email.py:83
 msgid "فعال سازی حساب کاربری"
 msgstr ""
 
@@ -231,34 +235,40 @@ msgstr ""
 msgid "کاربر گرامی از طریق لینک زیر حساب کاربری خود را فعال کنید"
 msgstr ""
 
-#: shatelCore/MailTemplate/ActivateAccount.html:146
+#: shatelCore/MailTemplate/ActivateAccount.html:147
 msgid "اعتبار لینک فعال سازی 2 ساعت است"
 msgstr ""
 
-#: shatelCore/MailTemplate/ActivateAccount.html:168
+#: shatelCore/MailTemplate/ActivateAccount.html:170
 msgid "فعال سازی حساب"
 msgstr ""
 
-#: shatelCore/MailTemplate/ActivateAccount.html:200
-msgid "َشاتل"
+#: shatelCore/MailTemplate/ActivateAccount.html:202
+#: shatelCore/MailTemplate/ResetPassword.html:201
+#: shatelUser/templates/user/history-tickets.html:5
+#: shatelUser/templates/user/send-ticket.html:5
+#: shatelUser/templates/user/setting.html:5
+#: shatelWeb/templates/web/index.html:4
+#: shatelWeb/templates/web/pages/job-hire.html:16
+msgid "شاتل"
 msgstr ""
 
-#: shatelCore/MailTemplate/ActivateAccount.html:333
+#: shatelCore/MailTemplate/ActivateAccount.html:335
 msgid "وبلاگ"
 msgstr ""
 
-#: shatelCore/MailTemplate/ActivateAccount.html:348
+#: shatelCore/MailTemplate/ActivateAccount.html:350
 #: shatelCore/MailTemplate/ResetPassword.html:350
 #: shatelCore/MailTemplate/ResetPassword.html:383
-#: shatelWeb/templates/web/utils/footer.html:47
+#: shatelWeb/templates/web/utils/footer.html:55
 #: shatelWeb/templates/web/utils/news-letter.html:18
 msgid "عضویت در خبرنامه"
 msgstr ""
 
-#: shatelCore/MailTemplate/ActivateAccount.html:381
+#: shatelCore/MailTemplate/ActivateAccount.html:383
 #: shatelUser/templates/user/base.html:64
-#: shatelUser/templates/user/base.html:164
-#: shatelWeb/templates/web/utils/footer.html:24
+#: shatelUser/templates/user/base.html:167
+#: shatelWeb/templates/web/utils/footer.html:30
 msgid "پشتیبانی"
 msgstr ""
 
@@ -278,15 +288,6 @@ msgstr ""
 msgid "اعتبار لینک 2 ساعت است"
 msgstr ""
 
-#: shatelCore/MailTemplate/ResetPassword.html:201
-#: shatelUser/templates/user/history-tickets.html:5
-#: shatelUser/templates/user/send-ticket.html:5
-#: shatelUser/templates/user/setting.html:5
-#: shatelWeb/templates/web/index.html:4
-#: shatelWeb/templates/web/pages/job-hire.html:15
-msgid "شاتل"
-msgstr ""
-
 #: shatelCore/MailTemplate/ResetPassword.html:335
 msgid "وبلاک"
 msgstr ""
@@ -304,11 +305,11 @@ msgstr ""
 msgid "حداقل و حداکثر طول داده در این فیلد %(length)s می باشد"
 msgstr ""
 
-#: shatelUser/form.py:20 shatelUser/templates/user/history-tickets.html:105
+#: shatelUser/form.py:20 shatelUser/templates/user/history-tickets.html:104
 msgid "عنوان تیکت"
 msgstr ""
 
-#: shatelUser/form.py:33 shatelWeb/templates/web/pages/job-hire.html:105
+#: shatelUser/form.py:33 shatelWeb/templates/web/pages/job-hire.html:116
 msgid "توضیحات"
 msgstr ""
 
@@ -344,40 +345,40 @@ msgstr ""
 msgid "آپدیت"
 msgstr ""
 
-#: shatelUser/views.py:62
+#: shatelUser/views.py:61
 msgid "برخی موارد به درستی وارد نشده است"
 msgstr ""
 
-#: shatelUser/views.py:81
+#: shatelUser/views.py:80
 msgid "خطایی رخ داد!"
 msgstr ""
 
-#: shatelUser/views.py:117
+#: shatelUser/views.py:116
 msgid "برخی مقادیر به نظر گم شده اند!"
 msgstr ""
 
-#: shatelUser/views.py:122
+#: shatelUser/views.py:121
 msgid "تیکتی با شماره وارد شده یافت نشد"
 msgstr ""
 
-#: shatelUser/views.py:130
+#: shatelUser/views.py:129
 msgid "پاسخی به تیکت مورد نظر داده نشده است"
 msgstr ""
 
-#: shatelUser/views.py:166
+#: shatelUser/views.py:165
 msgid "برخی مقادیر مقدار دهی نشده اند"
 msgstr ""
 
-#: shatelUser/views.py:175
+#: shatelUser/views.py:174
 msgid "حداقل طول گذرواژه باید 6 کاراکتر باشد"
 msgstr ""
 
-#: shatelUser/views.py:193
+#: shatelUser/views.py:192
 msgid "شماره تلفن همراه توسط کاربر دیگری گرفته شده است"
 msgstr ""
 
 #: shatelUser/templates/user/base.html:50
-#: shatelWeb/templates/web/utils/mobile-navbar.html:8
+#: shatelWeb/templates/web/utils/mobile-navbar.html:7
 msgid "خانه"
 msgstr ""
 
@@ -398,8 +399,8 @@ msgid "تنظیمات"
 msgstr ""
 
 #: shatelUser/templates/user/base.html:93
-#: shatelUser/templates/user/base.html:159
-#: shatelUser/templates/user/index.html:44
+#: shatelUser/templates/user/base.html:161
+#: shatelUser/templates/user/index.html:47
 #: shatelUser/templates/user/setting.html:5
 #: shatelUser/templates/user/setting.html:17
 msgid "تنظیمات حساب کاربری"
@@ -413,13 +414,13 @@ msgstr ""
 msgid "تمامی حقوق مادی و معنوی سایت برای شاتل محفوط می باشد"
 msgstr ""
 
-#: shatelUser/templates/user/base.html:154
-#: shatelWeb/templates/web/utils/mobile-navbar.html:21
+#: shatelUser/templates/user/base.html:155
+#: shatelWeb/templates/web/utils/mobile-navbar.html:20
 msgid "حساب کاربری"
 msgstr ""
 
-#: shatelUser/templates/user/base.html:168
-#: shatelUser/templates/user/history-tickets.html:129
+#: shatelUser/templates/user/base.html:171
+#: shatelUser/templates/user/history-tickets.html:128
 msgid "خروج"
 msgstr ""
 
@@ -444,31 +445,31 @@ msgid "وضعیت"
 msgstr ""
 
 #: shatelUser/templates/user/history-tickets.html:25
-#: shatelUser/templates/user/history-tickets.html:106
+#: shatelUser/templates/user/history-tickets.html:105
 msgid "تاریخ"
 msgstr ""
 
-#: shatelUser/templates/user/history-tickets.html:98
+#: shatelUser/templates/user/history-tickets.html:97
 msgid "تیکت شماره"
 msgstr ""
 
-#: shatelUser/templates/user/history-tickets.html:107
+#: shatelUser/templates/user/history-tickets.html:106
 msgid "وضعیت تیکت"
 msgstr ""
 
-#: shatelUser/templates/user/history-tickets.html:116
+#: shatelUser/templates/user/history-tickets.html:115
 msgid "پاسخ داده شده"
 msgstr ""
 
-#: shatelUser/templates/user/history-tickets.html:117
+#: shatelUser/templates/user/history-tickets.html:116
 msgid "در انتظار پاسخ"
 msgstr ""
 
-#: shatelUser/templates/user/history-tickets.html:123
+#: shatelUser/templates/user/history-tickets.html:122
 msgid "متن تیکت"
 msgstr ""
 
-#: shatelUser/templates/user/history-tickets.html:130
+#: shatelUser/templates/user/history-tickets.html:129
 msgid "نمایش پاسخ"
 msgstr ""
 
@@ -481,17 +482,17 @@ msgid "حساب کاربری من"
 msgstr ""
 
 #: shatelUser/templates/user/index.html:33
-#: shatelWeb/templates/web/pages/proxies.html:219
-#: shatelWeb/templates/web/pages/proxies.html:234
+#: shatelWeb/templates/web/pages/proxies.html:222
+#: shatelWeb/templates/web/pages/proxies.html:237
 msgid "شماره تماس"
 msgstr ""
 
-#: shatelUser/templates/user/index.html:34
-#: shatelUser/templates/user/index.html:40
+#: shatelUser/templates/user/index.html:35
+#: shatelUser/templates/user/index.html:42
 msgid "تنظیم نشده است"
 msgstr ""
 
-#: shatelUser/templates/user/index.html:39
+#: shatelUser/templates/user/index.html:40
 msgid "آدرس"
 msgstr ""
 
@@ -516,7 +517,7 @@ msgstr ""
 msgid "اعتبار سنجی"
 msgstr ""
 
-#: shatelWeb/views.py:49
+#: shatelWeb/views.py:52 shatelWeb/views.py:53
 msgid "آیا امکان خرید مستقیم از شاتل وجود دارد؟"
 msgstr ""
 
@@ -554,133 +555,133 @@ msgstr ""
 msgid "مشاهده اخبار "
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:70 shatelWeb/templates/web/index.html:81
-#: shatelWeb/templates/web/index.html:92
+#: shatelWeb/templates/web/index.html:71 shatelWeb/templates/web/index.html:82
+#: shatelWeb/templates/web/index.html:93
 msgid "بازگشایی خط تولیدی جدید شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:109
+#: shatelWeb/templates/web/index.html:110
 msgid "خدمات و سرویس ها"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:112
+#: shatelWeb/templates/web/index.html:113
 #: shatelWeb/templates/web/utils/footer.html:7
-#: shatelWeb/templates/web/utils/footer.html:9
+#: shatelWeb/templates/web/utils/footer.html:10
 msgid "درباره شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:121
+#: shatelWeb/templates/web/index.html:122
 msgid "طراحی و ساخت تجهیزات الکترونیکی و مخابراتی"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:132
+#: shatelWeb/templates/web/index.html:133
 msgid "طراحی و تولید محصولات خانه هوشمند"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:142
+#: shatelWeb/templates/web/index.html:143
 msgid "طراحی و ساخت مودم های فیبرنوری و 5G"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:152
+#: shatelWeb/templates/web/index.html:153
 msgid "توسعه و تولید نرم افزار و سرویس های ارتباطی"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:162
+#: shatelWeb/templates/web/index.html:163
 msgid "طراحی و توسعه نرم افزار های حضور و غیاب و امنیتی"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:172
+#: shatelWeb/templates/web/index.html:173
 msgid "تست و کنتنرل کیفیت محصولات"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:203
+#: shatelWeb/templates/web/index.html:207
 msgid "مودم های نسل پنج شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:204
+#: shatelWeb/templates/web/index.html:208
 msgid "تحولی در سرعت و انتقال داده در ایران"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:205
+#: shatelWeb/templates/web/index.html:210
 msgid ""
 "شاتل با ارائه خدمات و راهکارهای ارتباطی و محتوایی ارزش‌آفرین و نوآورانه و"
 " نیز پای‌بندی به اخلاق حرفه‌ای و مسئولیت‌های اجتماعی، رسالت خود را خلق "
 "لبخند رضایت در جامعه می‌داند."
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:210
+#: shatelWeb/templates/web/index.html:215
 msgid "ارتباط با شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:213
+#: shatelWeb/templates/web/index.html:218
 msgid " خرید محصولات شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:216
+#: shatelWeb/templates/web/index.html:221
 msgid "مشاهده محصولات"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:231
+#: shatelWeb/templates/web/index.html:236
 msgid "جوایز و افتخارات"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:238
+#: shatelWeb/templates/web/index.html:243
 msgid "دارنده استاندارد iso 9001"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:244
+#: shatelWeb/templates/web/index.html:249
 msgid "دارنده استاندارد iso 45001"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:250
+#: shatelWeb/templates/web/index.html:255
 msgid "دارنده استاندارد iso 14001"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:256
+#: shatelWeb/templates/web/index.html:261
 msgid "دارنده استاندارد iso IMS"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:269
+#: shatelWeb/templates/web/index.html:274
 msgid "جدید ترین محصولات شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:271
-#: shatelWeb/templates/web/utils/header.html:100
+#: shatelWeb/templates/web/index.html:276
+#: shatelWeb/templates/web/utils/header.html:101
 msgid "محصولات"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:289
+#: shatelWeb/templates/web/index.html:294
 msgid "مشاهده"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:307
+#: shatelWeb/templates/web/index.html:312
 #: shatelWeb/templates/web/pages/contact-us.html:4
-#: shatelWeb/templates/web/utils/header.html:92
+#: shatelWeb/templates/web/utils/header.html:93
 msgid "ارتباط با ما"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:308
+#: shatelWeb/templates/web/index.html:313
 msgid "آیا سوالی دارید؟"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:320
+#: shatelWeb/templates/web/index.html:325
 msgid "شرکت های همکار شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/index.html:365
+#: shatelWeb/templates/web/index.html:371
 msgid " + درخواست دریافت نمایندگی "
 msgstr ""
 
 #: shatelWeb/templates/web/pages/about-us.html:4
-#: shatelWeb/templates/web/pages/about-us.html:27
+#: shatelWeb/templates/web/pages/about-us.html:28
 msgid "درباره ما"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:33
+#: shatelWeb/templates/web/pages/about-us.html:34
 msgid "تاریخچه"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:34
+#: shatelWeb/templates/web/pages/about-us.html:36
 msgid ""
 "گروه فناوری ارتباطات و اطلاعات شاتل، بزرگ‌ترین مجموعه‌ی فعال در حوزه‌ی "
 "ارائه‌ی خدمات دسترسی به اینترنت و راهکارهای ارتباطی اینترنتی در کشور است."
@@ -694,22 +695,22 @@ msgid ""
 "اپلیکیشن نماواست. "
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:68
+#: shatelWeb/templates/web/pages/about-us.html:70
 msgid "گواهینامه ها و جوایز"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:69
+#: shatelWeb/templates/web/pages/about-us.html:72
 msgid ""
 "شاتل همواره تلاش کرده است تا افزون بر ارائه‌ی خدمات دسترسی به اینترنت به "
 "مشتریان در سراسر کشور، فعالیت‌هایی را فراسوی کسب و کار و بر اساس رسالت "
 "اجتماعی خود انجام دهد که از جمله آن‌ها می‌توان به موارد زیر اشاره کرد: "
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:78
+#: shatelWeb/templates/web/pages/about-us.html:81
 msgid "زمینه فعالیت"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:79
+#: shatelWeb/templates/web/pages/about-us.html:82
 msgid ""
 "همکاری با دانشگاه‌ها و مراکز تخصصی کشور\n"
 "ارائه‌ی خدمات و تسهیلات ویژه برای دانشجویان و دانشگاه، حمایت از "
@@ -736,101 +737,101 @@ msgid ""
 " شده است."
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:117
+#: shatelWeb/templates/web/pages/about-us.html:120
 msgid "حاضر در تمامی شهر ها و استان ها"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:123
+#: shatelWeb/templates/web/pages/about-us.html:126
 msgid "پشتبانی 24/7 هفته"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:129
+#: shatelWeb/templates/web/pages/about-us.html:132
 msgid "ارسال به سراسر کشور"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:135
+#: shatelWeb/templates/web/pages/about-us.html:138
 msgid "رضایت بیش از 99 درصدی"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:141
+#: shatelWeb/templates/web/pages/about-us.html:144
 msgid "استفاده از فناوری و ایده های نو"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:147
+#: shatelWeb/templates/web/pages/about-us.html:150
 msgid "ضمانت ارائه کالای اصیل ایرانی"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:153
+#: shatelWeb/templates/web/pages/about-us.html:156
 msgid "برترین فروشنده لوازم الکترونیکی در ایران"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:159
+#: shatelWeb/templates/web/pages/about-us.html:162
 msgid "8 سال سابقه تحقیقاتی و تولیدی"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/about-us.html:171
+#: shatelWeb/templates/web/pages/about-us.html:174
 msgid "گالری تصاویر"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:22
+#: shatelWeb/templates/web/pages/contact-us.html:23
 msgid "راه های ارتباطی شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:25
+#: shatelWeb/templates/web/pages/contact-us.html:26
 msgid "تهران، خیابان شریعتی، پایین تر از پل صدر، بن بست الهیه، ساختمان شاتل "
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:26
+#: shatelWeb/templates/web/pages/contact-us.html:27
 msgid "تلفن"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:27
+#: shatelWeb/templates/web/pages/contact-us.html:28
 msgid "مرکز امور مشتریان"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:27
-#: shatelWeb/templates/web/pages/contact-us.html:29
-#: shatelWeb/templates/web/pages/contact-us.html:31
-#: shatelWeb/templates/web/pages/contact-us.html:33
+#: shatelWeb/templates/web/pages/contact-us.html:28
+#: shatelWeb/templates/web/pages/contact-us.html:30
+#: shatelWeb/templates/web/pages/contact-us.html:32
 #: shatelWeb/templates/web/pages/contact-us.html:34
+#: shatelWeb/templates/web/pages/contact-us.html:35
 msgid "داخلی"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:29
+#: shatelWeb/templates/web/pages/contact-us.html:30
 msgid "امور نمایندگی ها"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:31
+#: shatelWeb/templates/web/pages/contact-us.html:32
 msgid "واحد تحقیق و توسعه"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:33
+#: shatelWeb/templates/web/pages/contact-us.html:34
 msgid "امور مالی"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:34
+#: shatelWeb/templates/web/pages/contact-us.html:35
 msgid "مدیریت"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:39
+#: shatelWeb/templates/web/pages/contact-us.html:40
 msgid ""
 " در صورت مشاهده هر گونه مشکل فنی و ... میتوانید برای بهبود عملکرد گزارش "
 "خود را به ایمیل report[@][at] shatel [dot] ir یا bounty[@] [at] shatel "
 "[dot] ir ارسال کنید"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/contact-us.html:47
+#: shatelWeb/templates/web/pages/contact-us.html:53
 msgid "فرم تماس با ما"
 msgstr ""
 
 #: shatelWeb/templates/web/pages/faq.html:4
 #: shatelWeb/templates/web/pages/faq.html:17
-#: shatelWeb/templates/web/utils/footer.html:17
-#: shatelWeb/templates/web/utils/header.html:87
+#: shatelWeb/templates/web/utils/footer.html:21
+#: shatelWeb/templates/web/utils/header.html:88
 msgid "سوالات متداول"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/faq.html:18
+#: shatelWeb/templates/web/pages/faq.html:19
 msgid "به تمام سوالات شما پاسخ داده‌ایم "
 msgstr ""
 
@@ -842,33 +843,33 @@ msgstr ""
 msgid "فرصت های شغلی "
 msgstr ""
 
-#: shatelWeb/templates/web/pages/job-hire.html:29
+#: shatelWeb/templates/web/pages/job-hire.html:30
 msgid "عنوان شغلی"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/job-hire.html:30
+#: shatelWeb/templates/web/pages/job-hire.html:31
 msgid "وظایف"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/job-hire.html:31
+#: shatelWeb/templates/web/pages/job-hire.html:32
 msgid "مزایا"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/job-hire.html:97
+#: shatelWeb/templates/web/pages/job-hire.html:108
 msgid "ارسال رزومه"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/job-hire.html:101
+#: shatelWeb/templates/web/pages/job-hire.html:112
 msgid "فایل رزومه"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/job-hire.html:111
+#: shatelWeb/templates/web/pages/job-hire.html:122
 #: shatelWeb/templates/web/utils/contact-us-form.html:31
 msgid "ارسال"
 msgstr ""
 
 #: shatelWeb/templates/web/pages/logos.html:4
-#: shatelWeb/templates/web/utils/footer.html:10
+#: shatelWeb/templates/web/utils/footer.html:12
 msgid "لوگو های شاتل"
 msgstr ""
 
@@ -888,8 +889,8 @@ msgid ""
 "باشند"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/logos.html:24
-#: shatelWeb/templates/web/pages/logos.html:28
+#: shatelWeb/templates/web/pages/logos.html:26
+#: shatelWeb/templates/web/pages/logos.html:32
 msgid "دانلود"
 msgstr ""
 
@@ -908,22 +909,22 @@ msgid ""
 "گارانتی شاتل را در شهر های ایران مشاهده نمایید"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/proxies.html:208
+#: shatelWeb/templates/web/pages/proxies.html:211
 msgid "آدرس و مشخصات همکاران ما"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/proxies.html:211
+#: shatelWeb/templates/web/pages/proxies.html:214
 msgid ""
 "مرکز کرج: تهران، خیابان شریعتی، پایین تر از پل صدر، بن بست الهیه، ساختمان"
 " شاتل "
 msgstr ""
 
-#: shatelWeb/templates/web/pages/proxies.html:215
-#: shatelWeb/templates/web/pages/proxies.html:230
+#: shatelWeb/templates/web/pages/proxies.html:218
+#: shatelWeb/templates/web/pages/proxies.html:233
 msgid "آدرس ایمیل الکترونیکی"
 msgstr ""
 
-#: shatelWeb/templates/web/pages/proxies.html:226
+#: shatelWeb/templates/web/pages/proxies.html:229
 msgid ""
 "مرکز تهران: تهران، خیابان شریعتی، پایین تر از پل صدر، بن بست الهیه، "
 "ساختمان شاتل "
@@ -1005,40 +1006,40 @@ msgstr ""
 msgid "کارشناسان ما آماده پاسخ گویی به سوالات و مشکلات شما هستند ..."
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:11
+#: shatelWeb/templates/web/utils/footer.html:14
 msgid "فرصت های شغلی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:15
-#: shatelWeb/templates/web/utils/header.html:65
+#: shatelWeb/templates/web/utils/footer.html:18
+#: shatelWeb/templates/web/utils/header.html:66
 msgid "خدمات"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:26
+#: shatelWeb/templates/web/utils/footer.html:33
 msgid "تماس با ما"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:27
+#: shatelWeb/templates/web/utils/footer.html:35
 msgid "مراکز گارانتی شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:32
+#: shatelWeb/templates/web/utils/footer.html:40
 msgid "اطلاع رسانی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:34
+#: shatelWeb/templates/web/utils/footer.html:42
 msgid "مشاهده وبلاگ"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:35
+#: shatelWeb/templates/web/utils/footer.html:43
 msgid "خبرنامه شاتل"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:36
+#: shatelWeb/templates/web/utils/footer.html:44
 msgid "جشنواره ها"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/footer.html:56
+#: shatelWeb/templates/web/utils/footer.html:64
 msgid "تمامی حقوق مادی و معنوی سایت متعلق به شاتل می باشد"
 msgstr ""
 
@@ -1054,87 +1055,87 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:60
+#: shatelWeb/templates/web/utils/header.html:61
 msgid "صفحه اصلی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:69
+#: shatelWeb/templates/web/utils/header.html:70
 msgid "* حساب کاربری"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:84
+#: shatelWeb/templates/web/utils/header.html:85
 msgid "* ارتباط"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:107
+#: shatelWeb/templates/web/utils/header.html:109
 msgid " مودم ها"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:112
+#: shatelWeb/templates/web/utils/header.html:115
 msgid "مودم های فیبرنوری"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:115
+#: shatelWeb/templates/web/utils/header.html:119
 msgid "مودم های سیم کارتی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:118
+#: shatelWeb/templates/web/utils/header.html:122
 msgid "مودم های"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:126
+#: shatelWeb/templates/web/utils/header.html:132
 msgid "خانه هوشمند"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:132
+#: shatelWeb/templates/web/utils/header.html:139
 msgid "تجهیزات خانه هوشمند"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:137
+#: shatelWeb/templates/web/utils/header.html:145
 msgid "پکیج های خانه هوشمند"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:146
+#: shatelWeb/templates/web/utils/header.html:155
 msgid "لوازم جانبی الکترونیکی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:151
+#: shatelWeb/templates/web/utils/header.html:161
 msgid "موبایل"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:155
+#: shatelWeb/templates/web/utils/header.html:165
 msgid "شارژر"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:168
+#: shatelWeb/templates/web/utils/header.html:178
 msgid "خدمات پس از فروش"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:174
+#: shatelWeb/templates/web/utils/header.html:184
 msgid "مرکز گارانتی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:179
+#: shatelWeb/templates/web/utils/header.html:190
 msgid "اعتبارسنجی گارانتی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:184
+#: shatelWeb/templates/web/utils/header.html:196
 msgid "ثبت درخواست گارانتی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:189
+#: shatelWeb/templates/web/utils/header.html:202
 msgid "ثبت نظر و پیشنهاد گارانتی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/header.html:196
+#: shatelWeb/templates/web/utils/header.html:209
 msgid "درخواست نمایندگی"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/mobile-navbar.html:13
+#: shatelWeb/templates/web/utils/mobile-navbar.html:12
 msgid "دسته بندی ها"
 msgstr ""
 
-#: shatelWeb/templates/web/utils/mobile-navbar.html:17
+#: shatelWeb/templates/web/utils/mobile-navbar.html:16
 msgid "جستجو"
 msgstr ""
 

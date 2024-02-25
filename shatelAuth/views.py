@@ -90,17 +90,21 @@ def register_post():
         return render_template("register.html", form=form)
 
     User = AuthModel.User()
-    if (user := AuthModel.User.query.filter_by(Email=form.EmailAddress.data).first()):
+    if (user := AuthModel.User.query.filter_by(Email=form.EmailAddress.data).first()):  # if user exists
         if user.Active:
             form.Submit.errors = [_l('آدرس ایمیل توسط کاربر دیگری گرفته شده است')]
             return render_template("register.html", form=form)
         else:
             # check if someone else is waiting for an email validation
-            key = f"ActiveEmail:{form.EmailAddress.data}"
-            if RedisServer.get(key):
-                form.EmailAddress.errors = [_l("لطفا دقایقی دیگر دوباره امتحان کنید ...")]
+            if AuthUtils.get_activation_email_slug_redis(
+                    key=form.EmailAddress.data):  # if someone else is in line for activation
+                form.EmailAddress.errors.append(_l("لطفا دقایقی دیگر دوباره امتحان کنید ..."))
+                form.EmailAddress.errors.append(_l("شما %(time)s دقیقه دیگر میتوانید اقدام به ساخت حساب کاربری کنید",
+                                                   time=AuthUtils.get_activation_ttl_slug_redis(
+                                                       form.EmailAddress.data)))
                 return render_template("register.html", form=form)
             else:
+                # if someone else is not trying to activate this account delete one users from db
                 try:
                     db.session.delete(user)
                     db.session.commit()
@@ -129,18 +133,17 @@ def register_post():
         form.Submit.errors = [_l('خطایی رخ داد بعدا امتحان کنید')]
         return render_template("register.html", form=form)
 
-    else:
-        if not (slug := AuthUtils.gen_and_set_activation_slug(email=form.EmailAddress.data)):
-            form.EmailAddress.errors = [_l("لطفا دقایقی دیگر دوباره امتحان کنید ...")]
-            return render_template("register.html", form=form)
+    if not (token := AuthUtils.gen_and_set_activation_slug(email=form.EmailAddress.data)):
+        form.EmailAddress.errors = [_l("لطفا دقایقی دیگر دوباره امتحان کنید ...")]
+        return render_template("register.html", form=form)
 
-        sendActivAccounteMail(
-            context={"token": slug},
-            recipients=[str(form.EmailAddress.data)],
-            async_thread=False,  # not recommended but just for now !
-            async_celery=True,
-        )
-        return render_template("register.html", showSendActiveMail=True, form=form)
+    sendActivAccounteMail(
+        context={"token": token},
+        recipients=[str(form.EmailAddress.data)],
+        async_thread=False,  # not recommended
+        async_celery=True,
+    )
+    return render_template("register.html", showSendActiveMail=True, form=form)
 
 
 @auth.route("/Active/<string:token>/")
@@ -149,15 +152,14 @@ def active_account(token: str):
     This View Activate User Account
 
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    this view take user unique activator key (uuid) and then validate 
+    this view take user unique activator key (uuid) and then validate
     that key and in the end activate user's account
     """
 
-    resultEmail = RedisServer.get(name=f"ActivateAccountToken:{token}")
+    resultEmail = AuthUtils.get_activation_token_slug_redis(token)
     if not resultEmail:
         abort(404)
-    if not resultEmail:
-        abort(404)
+
     resultEmail = str(resultEmail.decode("utf-8"))
 
     User = AuthModel.User.query.filter_by(Email=resultEmail).first_or_404()
@@ -180,8 +182,10 @@ def active_account(token: str):
             flash(_l("خطایی هنگام پردازش درخواست رخ داد. دوباره امتحان کنید"), "success")
             return redirect(url_for('auth.login_get'))
         else:
-            RedisServer.delete(f"ActivateAccountToken:{token}")
-            flash(_l("عملیات با موفقیت انجام شد"), "success")
+            AuthUtils.delete_activation_token_slug_redis(token)  # delete token
+            AuthUtils.delete_activation_email_slug_redis(User.Email)  # delete email
+            flash(_l("حساب کاربری با موفقیت فعال گردید"), "success")
+            flash(_l("اکنون میتوانید وارد حساب کاربری خود شوید"), "success")
             return redirect(url_for('auth.login_get'))
 
 
@@ -190,13 +194,13 @@ def get_notification():
     """Notification Messages view
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     This view return user all flash messages in a json
-    
+
 
     arguments:
         None -- clear
 
     return:
-        return all flash messages in a json format 
+        return all flash messages in a json format
     """
     flashes = []
     messages = get_flashed_messages(with_categories=True)
@@ -234,30 +238,22 @@ def reset_password_post():
         return render_template("forget_password.html", form=form, ctx=ctx)
 
     if not (
-            user := db.session.execute(
-                db.select(AuthModel.User).filter_by(Email=form.EmailAddress.data)).scalar_one_or_none()):
+    user := db.session.execute(db.select(AuthModel.User).filter_by(Email=form.EmailAddress.data)).scalar_one_or_none()):
         form.EmailAddress.errors.append(_l("کاربری با آدرس ایمیل وارد شده یافت نشد"))
         return render_template("forget_password.html", form=form, ctx=ctx)
 
-    resetCounterSlug = "ResetPasswordAccountCounter:"
-    if (lastToken := RedisServer.get(
-            f"lastRestToken:{user.Email}")):  # if here is an old token for reset password and its valid delete that
-        RedisServer.delete(f"ResetPasswordToken:{str(lastToken.decode('utf-8'))}")
+    if AuthUtils.get_reset_password_number(form.EmailAddress.data) >= 70:  # limit 70 per week
+        form.EmailAddress.errors.append(_l("محدودیت ارسال ایمیل بازنشانی گذرواژه"))
+        form.EmailAddress.errors.append(_l("هر کاربر در هفته میتواند تنها 70 بار درخواست بازنشانی گذرواژه دهد"))
+        return render_template("forget_password.html", form=form, ctx=ctx)
 
-    if not (previousResetCounter := RedisServer.get(name=f"{resetCounterSlug}{user.Email}")):
-        RedisServer.set(name=f"{resetCounterSlug}{user.Email}", value=1, ex=3600)  # 3600 in second mean 1 day
-    else:
-        previousResetCounter = int(str(previousResetCounter.decode('utf-8')))
-        if previousResetCounter >= 10:
-            flash(_l('کاربر گرامی در یک روز تنها 10 بار میتوانید درخواست بازنشانی گذرواژه دهید'), "danger")
-            return redirect(request.referrer)
-        else:
-            previousResetCounter += 1
-            RedisServer.set(name=f"{resetCounterSlug}{user.Email}", value=previousResetCounter,
-                            ex=RedisServer.ttl(name=f"{resetCounterSlug}{user.Email}") or 60)
+    last_reset_token = AuthUtils.get_reset_email_slug_redis(form.EmailAddress.data)
+    if last_reset_token:
+        AuthUtils.delete_reset_email_slug_redis(form.EmailAddress.data)
+        AuthUtils.delete_reset_token_slug_redis(last_reset_token)
 
     if not (token := AuthUtils.gen_and_set_reset_slug(email=user.Email)):
-        form.EmailAddress.errors.append(_l("خطایی رخ داد"))
+        form.EmailAddress.errors.append(_l("خطایی در هنگام درخواست رخ داد"))
         return render_template("forget_password.html", form=form, ctx=ctx)
 
     sendResetPasswordMail(
@@ -281,29 +277,23 @@ def check_reset_password(token: str):
     if language in current_app.config.get("LANGUAGES", list()):
         session['language'] = language
 
-    if not (UserEmail := RedisServer.get(name=f"ResetPasswordToken:{token}")):
+    if not (UserEmail := AuthUtils.get_reset_token_slug_redis(token)):
         abort(404)
 
-    UserEmail = str(UserEmail.decode('utf-8'))
-    if not (lastToken := RedisServer.get(name=f"lastRestToken:{UserEmail}")):
+    if not (UserToken := AuthUtils.get_reset_email_slug_redis(UserEmail)):
         abort(404)
 
-    lastToken = str(lastToken.decode('utf-8'))
-    if lastToken != token:
-        abort(404)
-    else:
-        session["allow-set-password"] = True
-        session["mail"] = UserEmail
-        session["token"] = f"ResetPasswordToken:{token}"
-        session["raw-token"] = token
-        return redirect(url_for('auth.set_password_get'))
+    session["allow-set-password"] = True
+    session["mail"] = UserEmail
+    session["raw-token"] = UserToken
+    return redirect(url_for('auth.set_password_get'))
 
 
 @auth.route("/set-password/", methods=["GET"])
 @only_reset_password
 def set_password_get():
     form = AuthForm.SetNewPasswordForm()
-    form.Token.data = session["token"]
+    form.Token.data = session["raw-token"]
     return render_template("set_password.html", form=form)
 
 
@@ -315,17 +305,28 @@ def set_password_post():
     if not form.validate():
         return render_template("set_password.html", form=form)
 
-    token = RedisServer.get(form.Token.data)
-    if not token:
+    if form.Token.data != session["raw-token"]:
+        session.pop("allow-set-password")
+        session.pop("mail")
+        session.pop("raw-token")
         abort(404)
 
-    userEmail = str(token.decode('utf-8'))
-    if not (user := db.session.execute(db.select(AuthModel.User).filter_by(Email=userEmail)).scalar_one_or_none()):
+    if not (UserEmail := AuthUtils.get_reset_token_slug_redis(form.Token.data)):
+        session.pop("allow-set-password")
+        session.pop("mail")
+        session.pop("raw-token")
+        abort(404)
+
+    if not (user := db.session.execute(db.select(AuthModel.User).filter_by(Email=UserEmail)).scalar_one_or_none()):
+        session.pop("allow-set-password")
+        session.pop("mail")
+        session.pop("raw-token")
         abort(404)
 
     user.setPassword(form.Password.data)
-    RedisServer.delete(form.Token.data)
-    RedisServer.delete(f"lastRestToken:{session.get('raw-token', None)}")
+    AuthUtils.delete_reset_token_slug_redis(form.Token.data)
+    AuthUtils.delete_reset_email_slug_redis(UserEmail)
+    AuthUtils.set_reset_password_number(email=session['mail'], value="0")
 
     try:
         db.session.add(user)
@@ -336,6 +337,10 @@ def set_password_post():
         flash(_l('خطایی رخ داد'), "danger")
     else:
         flash(_l('عملیات با موفقیت انجام شد'), "success")
+
+    session.pop("allow-set-password")
+    session.pop("mail")
+    session.pop("raw-token")
 
     return redirect(url_for('auth.login_get'))
 

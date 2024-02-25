@@ -5,13 +5,14 @@ import sys
 from email_validator import validate_email
 from flask.cli import AppGroup
 
-from shatelAdmin.model import Admin
+from shatelAdmin.model import Admin, Permission
 
 AdminCommands = AppGroup(name="admin", help="admin operation commands.")
 
 
 @AdminCommands.command("create", help="create a new admin in database.")
 def create_admin_account():
+    """Create a new user with admin perivilagers"""
     def get_password():
         while True:
             password = getpass.getpass("Password: ")
