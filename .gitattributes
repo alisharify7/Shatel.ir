@@ -220,4 +220,4 @@ Procfile    text
 *.wwaproj   merge=binary
 
 ## Language
-# * linguist-language=Python
+* linguist-language=Python
