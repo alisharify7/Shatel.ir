@@ -23,7 +23,7 @@ def login_admin(admin) -> None:
     session.permanent = True  # SET session lifetime
 
 
-def set_activation_token_slug_redis(key:str, value:str, expire:int=900):
+def set_activation_token_slug_redis(key: str, value: str, expire: int = 900):
     """
         Set activation slug for user in redis
         set activation base on Token Slug and email value
@@ -54,7 +54,8 @@ def get_activation_token_slug_redis(key: str) -> str:
     else:
         return result
 
-def set_activation_email_slug_redis(key:str, value:str, expire:int=900):
+
+def set_activation_email_slug_redis(key: str, value: str, expire: int = 900):
     """
         Set activation slug for user in redis
         set activation base on Token Slug and email value
@@ -73,7 +74,7 @@ def set_activation_email_slug_redis(key:str, value:str, expire:int=900):
     return RedisServer.set(name=keyRedis, value=value, ex=expire)
 
 
-def get_activation_email_slug_redis(key:str):
+def get_activation_email_slug_redis(key: str):
     """Getting an activation entry from redis db base on `Users Email address`
     return value of entry is Reset password Token
     """
@@ -85,12 +86,13 @@ def get_activation_email_slug_redis(key:str):
         return result
 
 
-def delete_activation_token_slug_redis(key:str):
+def delete_activation_token_slug_redis(key: str):
     """Delete activation entry from redis db base on `Token Slug`"""
     keyRedis = f"ActivateAccountToken:{key}"
     return RedisServer.delete(keyRedis)
 
-def delete_activation_email_slug_redis(key:str):
+
+def delete_activation_email_slug_redis(key: str):
     """
     Delete activation entry from redis db base on `User Email address`
     Call this method when users activate its account successfully
@@ -98,7 +100,8 @@ def delete_activation_email_slug_redis(key:str):
     keyRedis = f"ActivateAccountEmail:{key}"
     return RedisServer.delete(keyRedis)
 
-def get_activation_ttl_slug_redis(key:str):
+
+def get_activation_ttl_slug_redis(key: str):
     """returns an account activation token expire time in minute
     base of `User's Email address`
 
@@ -114,6 +117,7 @@ def get_activation_ttl_slug_redis(key:str):
         return result // 60
     else:
         return result
+
 
 def gen_and_set_activation_slug(email: str, length: int = 120):
     """
@@ -150,19 +154,18 @@ def gen_and_set_activation_slug(email: str, length: int = 120):
             return token
 
 
-
-def set_reset_slug_redis(token:str, email:str, expire:int=7200):
+def set_reset_slug_redis(token: str, email: str, expire: int = 7200):
     """
     """
     # 60 second / 60*60 second in minute / 3600 one house in second /  7200 second 2 hour in minute
 
-    tokenRedisPrefix = f"ResetPasswordToken:{token}" # show witch token belong to which email: get users email address from url in reset token
-    emailTokenPrefix = f"ResetPasswordEmail:{email}" # show which email belong to which token: uses when a email address is send to server for sending reset password
+    tokenRedisPrefix = f"ResetPasswordToken:{token}"  # show witch token belong to which email: get users email address from url in reset token
+    emailTokenPrefix = f"ResetPasswordEmail:{email}"  # show which email belong to which token: uses when a email address is send to server for sending reset password
     RedisServer.set(name=tokenRedisPrefix, value=email, ex=expire)
     RedisServer.set(name=emailTokenPrefix, value=token, ex=expire)
 
 
-def get_reset_password_number(email:str):
+def get_reset_password_number(email: str):
     keyRedis = f"ResetPasswordCounter:{email}"
     result = RedisServer.get(name=keyRedis)
     if not result:
@@ -171,11 +174,13 @@ def get_reset_password_number(email:str):
         result = result.decode('utf-8')
         return int(result)
 
-def set_reset_password_number(email:str, value:str):
-    keyRedis = f"ResetPasswordCounter:{email}"
-    return RedisServer.set(name=keyRedis, value=value, ex=(60*60)*7)
 
-def increase_reset_password_number(email:str):
+def set_reset_password_number(email: str, value: str):
+    keyRedis = f"ResetPasswordCounter:{email}"
+    return RedisServer.set(name=keyRedis, value=value, ex=(60 * 60) * 7)
+
+
+def increase_reset_password_number(email: str):
     keyRedis = f"ResetPasswordCounter:{email}"
     result = RedisServer.get(name=keyRedis)
     if not result:
@@ -184,11 +189,10 @@ def increase_reset_password_number(email:str):
         result = result.decode('utf-8')
         result = int(result) + 1
 
-    return RedisServer.set(name=keyRedis, value=result, ex=(60*60)*7)
+    return RedisServer.set(name=keyRedis, value=result, ex=(60 * 60) * 7)
 
 
-
-def get_reset_email_slug_redis(key:str):
+def get_reset_email_slug_redis(key: str):
     keyRedis = f"ResetPasswordEmail:{key}"
     result = RedisServer.get(name=keyRedis)
     if result:
@@ -196,7 +200,8 @@ def get_reset_email_slug_redis(key:str):
     else:
         return result
 
-def get_reset_token_slug_redis(key:str):
+
+def get_reset_token_slug_redis(key: str):
     keyRedis = f"ResetPasswordToken:{key}"
     result = RedisServer.get(name=keyRedis)
     if result:
@@ -204,13 +209,16 @@ def get_reset_token_slug_redis(key:str):
     else:
         return result
 
-def delete_reset_email_slug_redis(key:str):
+
+def delete_reset_email_slug_redis(key: str):
     keyRedis = f"ResetPasswordEmail:{key}"
     return RedisServer.delete(keyRedis)
 
-def delete_reset_token_slug_redis(key:str):
+
+def delete_reset_token_slug_redis(key: str):
     keyRedis = f"ResetPasswordToken:{key}"
     return RedisServer.delete(keyRedis)
+
 
 def gen_and_set_reset_slug(email: str, length: int = 120):
     """
@@ -227,7 +235,7 @@ def gen_and_set_reset_slug(email: str, length: int = 120):
     while True:
         if counter == 200:
             return False
-        token = generate_random_string(length=length//32) # uuid length is 32 char
+        token = generate_random_string(length=length//32)
         if get_reset_token_slug_redis(token):
             counter += 1
             continue

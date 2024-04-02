@@ -69,7 +69,7 @@ def create_app():
         app.add_template_filter(template_filders[each], name=each)
 
 
-    app.wsgi_app = ProxyFix(  # tell flask in behind a reverse proxy
+    app.wsgi_app = ProxyFix(  #  reverse proxy fix
         app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
     )
 

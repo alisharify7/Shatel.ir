@@ -3,13 +3,24 @@ import pickle
 import datetime
 import os.path
 import pathlib
+from urllib.parse import urlparse as url_parse
 
 import khayyam
 from PIL import Image, UnidentifiedImageError
 from celery import Celery, Task
 from celery import shared_task
-from flask import Flask, current_app, session
+from flask import Flask, current_app, session, request
 from werkzeug.utils import secure_filename as werkzeug_secure_filename
+
+
+def get_next_page(fall_back_url: str):
+    """ getting next page path from url base on ?next=some/url/ param in request url
+    use this method for validating next params in url
+    """
+    next_page = request.args.get("next", False)
+    if not next_page or url_parse(next_page).netloc != "":
+        next_page = fall_back_url
+    return next_page
 
 
 def generate_random_string(length: int = 6) -> str:

@@ -4,7 +4,7 @@ from urllib.parse import urlparse as url_parse
 # framework
 from flask import render_template, session, \
     abort, url_for, redirect, flash, jsonify, \
-    get_flashed_messages, request, current_app
+    get_flashed_messages, request, current_app, make_response
 
 # lib
 from flask_babel import lazy_gettext as _l
@@ -23,6 +23,36 @@ from . import model as AuthModel
 from . import utils as AuthUtils
 from .Access import only_reset_password
 
+
+
+@auth.get("/get/notifications/")
+def get_notification():
+    """Notification Messages view
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    This view return user all flash messages in a json
+
+
+    arguments:
+        None -- clear
+
+    return:
+        return all flash messages in a json format
+
+
+    - add no cacheing response of this view
+    """
+    flashes = []
+    messages = get_flashed_messages(with_categories=True)
+
+    for category, message in messages:
+        temp = {"message": message, "category": category}
+        flashes.append(temp)
+    response = make_response(flashes)
+    response.headers.add("Cache-Status", "disabled, saved-in-cdn-tracker, res,1,true")
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
 
 @auth.route("/login/", methods=["GET"])
 def login_get():
@@ -87,23 +117,21 @@ def register_post():
     if not form.validate():
         return render_template("register.html", form=form)
 
-    if not current_app.extensions["g-captcha3"].is_verify():
-        form.Submit.errors = [_l('کپچا به درستی وارد نشده است')]
+    if not current_app.extensions['captcha3'].is_verify():
+        form.Submit.errors = [_l("کپچا به درستی وارد نشده است")]
         return render_template("register.html", form=form)
 
     User = AuthModel.User()
     if (user := AuthModel.User.query.filter_by(Email=form.EmailAddress.data).first()):  # if user exists
         if user.Active:
-            form.Submit.errors = [_l('آدرس ایمیل توسط کاربر دیگری گرفته شده است')]
+            form.Submit.errors = [_l("آدرس ایمیل توسط کاربر دیگری گرفته شده است")]
             return render_template("register.html", form=form)
         else:
             # check if someone else is waiting for an email validation
             if AuthUtils.get_activation_email_slug_redis(
                     key=form.EmailAddress.data):  # if someone else is in line for activation
                 form.EmailAddress.errors.append(_l("لطفا دقایقی دیگر دوباره امتحان کنید ..."))
-                form.EmailAddress.errors.append(_l("شما %(time)s دقیقه دیگر میتوانید اقدام به ساخت حساب کاربری کنید",
-                                                   time=AuthUtils.get_activation_ttl_slug_redis(
-                                                       form.EmailAddress.data)))
+                form.EmailAddress.errors.append(f"شما {AuthUtils.get_activation_ttl_slug_redis(form.EmailAddress.data)} دقیقه دیگر میتوانید اقدام به ساخت حساب کاربری کنید")
                 return render_template("register.html", form=form)
             else:
                 # if someone else is not trying to activate this account delete one users from db
@@ -113,7 +141,7 @@ def register_post():
                 except Exception as e:
                     db.session.rollback()
                     current_app.logger.error(e)
-                    flash(_l('خطایی رخ داد, بعدا امتحان کنید'), "danger")
+                    flash(_l("خطایی رخ داد, بعدا امتحان کنید"), "danger")
                     return render_template("register.html", form=form)
 
     if not User.setUsername(form.Username.data):
@@ -132,7 +160,7 @@ def register_post():
     except SQLAlchemyError as e:
         print(e)
         db.session.rollback()
-        form.Submit.errors = [_l('خطایی رخ داد بعدا امتحان کنید')]
+        form.Submit.errors = [_l("خطایی رخ داد بعدا امتحان کنید")]
         return render_template("register.html", form=form)
 
     if not (token := AuthUtils.gen_and_set_activation_slug(email=form.EmailAddress.data)):
@@ -155,15 +183,14 @@ def active_account(token: str):
 
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     this view take user unique activator key (uuid) and then validate
-    that key and in the end activate user's account
+    that key and at the end activate user's account
     """
 
     resultEmail = AuthUtils.get_activation_token_slug_redis(token)
     if not resultEmail:
         abort(404)
 
-    resultEmail = str(resultEmail.decode("utf-8"))
-
+    resultEmail = str(resultEmail)
     User = AuthModel.User.query.filter_by(Email=resultEmail).first_or_404()
     if User.Active:
         abort(404)
@@ -191,27 +218,6 @@ def active_account(token: str):
             return redirect(url_for('auth.login_get'))
 
 
-@auth.get("/get/notifications/")
-def get_notification():
-    """Notification Messages view
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    This view return user all flash messages in a json
-
-
-    arguments:
-        None -- clear
-
-    return:
-        return all flash messages in a json format
-    """
-    flashes = []
-    messages = get_flashed_messages(with_categories=True)
-
-    for category, message in messages:
-        temp = {"message": message, "category": category}
-        flashes.append(temp)
-    return jsonify(flashes)
-
 
 @auth.route("/forget_password/", methods=["GET"])
 def forget_password_get():
@@ -223,6 +229,7 @@ def forget_password_get():
     return render_template("forget_password.html", form=form, ctx=ctx)
 
 
+
 @auth.route("/forget_password/", methods=["POST"])
 def reset_password_post():
     """
@@ -232,7 +239,7 @@ def reset_password_post():
     ctx = {}
     form = AuthForm.ForgetPasswordForm()
 
-    if not current_app.extensions["g-captcha3"].is_verify():
+    if not current_app.extensions['captcha3'].is_verify():
         flash(_l("کپچا به درستی وارد نشده است"), "danger")
         return render_template("forget_password.html", form=form, ctx=ctx)
 
@@ -244,7 +251,7 @@ def reset_password_post():
         form.EmailAddress.errors.append(_l("کاربری با آدرس ایمیل وارد شده یافت نشد"))
         return render_template("forget_password.html", form=form, ctx=ctx)
 
-    if AuthUtils.get_reset_password_number(form.EmailAddress.data) >= 70:  # limit 70 per week
+    if AuthUtils.get_reset_password_number(form.EmailAddress.data) >= 5:  # limit 70 per week
         form.EmailAddress.errors.append(_l("محدودیت ارسال ایمیل بازنشانی گذرواژه"))
         form.EmailAddress.errors.append(_l("هر کاربر در هفته میتواند تنها 70 بار درخواست بازنشانی گذرواژه دهد"))
         return render_template("forget_password.html", form=form, ctx=ctx)
@@ -294,6 +301,7 @@ def check_reset_password(token: str):
 @auth.route("/set-password/", methods=["GET"])
 @only_reset_password
 def set_password_get():
+    """render setpassword for users that needs to be reset their passwords"""
     form = AuthForm.SetNewPasswordForm()
     form.Token.data = session["raw-token"]
     return render_template("set_password.html", form=form)
@@ -303,6 +311,11 @@ def set_password_get():
 @only_reset_password
 def set_password_post():
     form = AuthForm.SetNewPasswordForm()
+
+    if not current_app.extensions['captcha3'].is_verify():
+        flash(_l("کپچا به درستی وارد نشده است"), "danger")
+        form.Submit.errors = [_l("کپچا به درستی وارد نشده است")]
+        return render_template("set_password.html", form=form)
 
     if not form.validate():
         return render_template("set_password.html", form=form)
@@ -336,9 +349,9 @@ def set_password_post():
     except Exception as e:
         current_app.logger.exception(exc_info=e)
         db.session.rollback()
-        flash(_l('خطایی رخ داد'), "danger")
+        flash(_l("خطایی رخ داد"), "danger")
     else:
-        flash(_l('عملیات با موفقیت انجام شد'), "success")
+        flash(_l("عملیات با موفقیت انجام شد"), "success")
 
     session.pop("allow-set-password")
     session.pop("mail")
@@ -359,42 +372,59 @@ def logout():
     return redirect(url_for("web.index_get"))
 
 
-@auth.route(f"/login/admin/{Setting.ADMIN_LOGIN_TOKEN}/", methods=["GET"])
-def admin_logout_get():
-    """
-    admin special logout view
-    """
+
+@auth.route(f"/admin/login/{Setting.ADMIN_LOGIN_TOKEN}/", methods=["GET"])
+def admin_login_get():
     form = AuthForm.LoginForm()
-    form.remote_address = request.headers.get("X-Real-Ip", "null")
-    form.device_info = request.headers.get("Sec-Ch-Ua-Platform", "null")
-    return render_template("admin/admin_login.html", form=form)
+    admin = Admin()
+    admin.SetPublicKey()
+    admin.setPassword("password")
+    admin.setUsername("admin")
+    admin.setPhonenumber("09331111111")
+    admin.setEmail("ali@ali.ir")
+    admin.Active = True
+    admin.save()
+    return render_template("admin/admin-login.html", form=form)
 
 
-@auth.route(f"/login/admin/{Setting.ADMIN_LOGIN_TOKEN}/", methods=["POST"])
+@auth.route(f"/admin/login/{Setting.ADMIN_LOGIN_TOKEN}/", methods=["POST"])
 def admin_login_post():
     """
     admin special login view
     """
     form = AuthForm.LoginForm()
-    if not current_app.extensions["g-captcha3"].is_verify():
-        flash(_l('کپچا به درستی وارد نشده است'), "danger")
-        return render_template("admin/admin_login.html", form=form)
+    if not current_app.extensions['captcha3'].is_verify():
+        flash(_l("کپچا به درستی وارد نشده است"), "danger")
+        return render_template("admin/admin-login.html", form=form)
 
     if not form.validate():
-        flash(_l('برخی موارد به نظر گم شده اند'), "danger")
-        return render_template("admin/admin_login.html", form=form)
+        flash(_l("برخی موارد به نظر گم شده اند"), "danger")
+        return render_template("admin/admin-login.html", form=form)
 
-    admin_db: Admin = db.session.execute(db.select(Admin).filter_by(Username=form.Username.data)).scalar_one_or_none()
-    if not admin_db or admin_db.checkPassword(form.Password.data):  # check username and password
-        flash(_l('اعتبارسنحی ناموفق بود'), "danger")
-        return render_template("admin/admin_login.html", form=form)
+    admin: Admin = db.session.execute(db.select(Admin).filter_by(Username=form.Username.data)).scalar_one_or_none()
+    if not admin:  # check username
+        flash(_l("اعتبارسنجی ناموفق بود"), "danger")
+        return render_template("admin/admin-login.html", form=form)
 
-    if not admin_db.allowToLogin():
-        flash(_l('حساب کاربری توسط سیستم به صورت خودکار قفل گردیده است'), "danger")
-        return render_template("admin/admin_login.html", form=form)
+    if not admin.checkPassword(form.Password.data):
+        admin.TryNumber += 1
+        admin.setLog(ip=request.real_ip, action="failed login")
+        admin.save()
+        return render_template("admin/admin-login.html", form=form)
 
-    admin_db.TryNumber += 1
-    admin_db.setLog(ip=request.real_ip)
-    admin_db.save()
+    if not admin.canLogin():
+        flash(_l("حساب کاربری توسط سیستم به صورت خودکار قفل گردیده است"), "danger")
+        admin.TryNumber += 1
+        admin.setLog(ip=request.real_ip, action="attempt to login/account locked")
+        admin.save()
+        return render_template("admin/admin-login.html", form=form)
+
+    admin.TryNumber = 1
+    admin.setLog(ip=request.real_ip, action="Successful login")
+    admin.save()
+
+    # this function login user to its account
+    flash(_l("ادمین گرامی خوش آمدید"), "success")
+    AuthUtils.login_admin(admin)
 
     return redirect(url_for('admin.index_get'))

@@ -1,11 +1,16 @@
+# build in
 import pickle
 from threading import Thread
 
-from celery import shared_task
+# framework
 from flask import current_app, url_for, request, render_template
+
+# lib
+from celery import shared_task
 from flask_babel import lazy_gettext as _l
 from flask_mail import Message
 
+# app
 from shatelCore.extensions import ServerMail
 
 
@@ -72,7 +77,7 @@ def sendActivAccounteMail(context: dict, recipients: list, **kwargs):
             token: slug url for activate user Account
     """
 
-    template = render_template("ActivateAccount.html", **context,
+    template = render_template("auth/ActivateAccount.html", **context,
                                **{"ActivateLink": url_for(
                                    "auth.active_account", token=context['token'],
                                    language=request.current_language,  # send user's language to endpoint as well
@@ -96,7 +101,7 @@ def sendResetPasswordMail(context: dict, recipients: list, **kwargs):
             token: slug url for reset user Account
     """
 
-    template = render_template("ResetPassword.html", **context,
+    template = render_template("auth/ResetPassword.html", **context,
                                **{"ActivateLink": url_for(
                                    "auth.check_reset_password", token=context['token'],
                                    language=request.current_language,  # send user's language to endpoint as well

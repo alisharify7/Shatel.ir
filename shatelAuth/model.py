@@ -1,13 +1,11 @@
 import sqlalchemy as sa
 import sqlalchemy.orm as so
 
-
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
-
 
 from shatelCore.extensions import db
 from shatelCore.model import BaseModel
+
 
 
 class User(BaseModel):
@@ -15,19 +13,32 @@ class User(BaseModel):
         Users Model Table
     """
     __tablename__ = BaseModel.SetTableName("users")
-    FirstName: so.Mapped[str] = Column(String(256), nullable=True, unique=False)
-    LastName = Column(String(256), nullable=True, unique=False)
+    FirstName: so.Mapped[str] = so.mapped_column(sa.String(256), nullable=True, unique=False)
+    LastName: so.Mapped[str] = so.mapped_column(sa.String(256), nullable=True, unique=False)
 
-    Username = Column(String(128), nullable=False, unique=True)
-    Password = Column(String(162), nullable=False, unique=True)
-    Email = Column(String(256), nullable=False, unique=True)
+    Username: so.Mapped[str] = so.mapped_column(sa.String(128), nullable=False, unique=True)
+    Password: so.Mapped[str] = so.mapped_column(sa.String(162), nullable=False, unique=True)
+    Email: so.Mapped[str] = so.mapped_column(sa.String(256), nullable=False, unique=True)
 
-    Address = Column(String(2048), nullable=True, unique=False)
-    PhoneNumber = Column(String(14), nullable=True, unique=True)
+    Address: so.Mapped[str] = so.mapped_column(sa.String(2048), nullable=True, unique=False)
+    PhoneNumber: so.Mapped[str] = so.mapped_column(sa.String(14), nullable=True, unique=True)
 
-    Active = Column(Boolean, default=False, nullable=False, unique=False)
+    Active: so.Mapped[bool] = so.mapped_column(sa.Boolean, default=False, nullable=False, unique=False)
+
 
     Tickets = db.relationship("Ticket", backref="User", lazy="dynamic")
+
+    def to_dict(self):
+        return {
+            "Username": self.Username,
+            "FirstName": self.FirstName or "NULL",
+            "LastName": self.LastName or "NULL",
+            "Address": self.Address or "NULL",
+            "Email": self.Email,
+            "PublicKey": self.PublicKey,
+            "Status": "Active" if self.Active else "inactive",
+            "CreatedTime": self.CreatedTime
+        }
 
     def getName(self, unique=False):
         """This Method Return Users Full name <f,l>"""
@@ -37,7 +48,7 @@ class User(BaseModel):
         return f"{self.FirstName} {self.LastName}"
 
     def setPassword(self, password: str) -> None:
-        self.Password = generate_password_hash(password)
+        self.Password = generate_password_hash(password, method="scrypt")
 
     def checkPassword(self, password: str) -> bool:
         return check_password_hash(pwhash=self.Password, password=password)
@@ -69,11 +80,12 @@ class User(BaseModel):
 
 class Ticket(BaseModel):
     __tablename__ = BaseModel.SetTableName("tickets")
-    Title = Column(String(64), nullable=False, unique=False)
-    Caption = Column(String(512), nullable=False, unique=False)
-    Status = Column(Boolean, default=False)
+    Title: so.Mapped[str] = so.mapped_column(sa.String(64), nullable=False, unique=False)
+    Caption: so.Mapped[str] = so.mapped_column(sa.String(512), nullable=False, unique=False)
+    Status: so.Mapped[bool] = so.mapped_column(sa.Boolean, default=False)
+    File: so.Mapped[str] = so.mapped_column(sa.String(1024), unique=True, nullable=True)
 
-    UserID = Column(Integer, ForeignKey(BaseModel.SetTableName("users") + ".id"), nullable=False, unique=False)
+    UserID: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey(User.id), nullable=False, unique=False)
     Answer = db.relationship("AnswerTicket", backref="GetTicket", lazy=True)
 
     def setTitle(self, title: str) -> None:
@@ -94,10 +106,12 @@ class Ticket(BaseModel):
 
 class AnswerTicket(BaseModel):
     __tablename__ = BaseModel.SetTableName("answer-tickets")
-    Message = Column(String(512), nullable=False, unique=False)
+    Message: so.Mapped[str] = so.mapped_column(sa.String(512), nullable=False, unique=False)
 
-    AdminID = Column(Integer, ForeignKey(BaseModel.SetTableName("admins") + ".id"), nullable=False, unique=False)
-    TicketID = Column(Integer, ForeignKey(BaseModel.SetTableName("tickets") + ".id"), nullable=True, unique=False)
+    AdminID: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey(BaseModel.SetTableName("admins") + ".id"),
+                                               nullable=False, unique=False)
+    TicketID: so.Mapped[int] = so.mapped_column(sa.Integer, sa.ForeignKey(BaseModel.SetTableName("tickets") + ".id"),
+                                                nullable=True, unique=False)
 
     def setMessage(self, message: str) -> None:
         self.Message = message
@@ -115,3 +129,9 @@ class AnswerTicket(BaseModel):
         admin: Admin class Model Instance
         """
         self.AdminID = admin.id
+
+
+class NewsLetter(BaseModel):
+    __tablename__ = BaseModel.SetTableName("news-letters")
+    Email: so.Mapped[str] = so.mapped_column(sa.String(1024), nullable=False, unique=True)
+    VerifiedAT: so.Mapped[str] = so.mapped_column(sa.DateTime, nullable=False, unique=False)
