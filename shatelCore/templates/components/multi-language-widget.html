@@ -1,7 +1,7 @@
 <select id="language-widget" class="form-control" dir="ltr">
     <option disabled selected>{{ _('Select a Language') }}</option>
     {% for lang in languages %}
-        <option data-link="{{ url_for('setUserLanguage', language=lang) }}">{{ languages[lang] }}</option>
+        <option data-link="{{ url_for('middlewares.setUserLanguage', language=lang) }}">{{ languages[lang] }}</option>
     {% endfor %}
 </select>
 <script>

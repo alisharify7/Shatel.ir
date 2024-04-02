@@ -28,7 +28,7 @@
                     {% for lang in languages %}
                         <li>
                             <a class="dropdown-item text-end"
-                               href="{{ url_for('setUserLanguage', language=lang) }}">{{ languages[lang] }}</a></li>
+                               href="{{ url_for('middlewares.setUserLanguage', language=lang) }}">{{ languages[lang] }}</a></li>
                         </li>
                     {% endfor %}
                 </ul>

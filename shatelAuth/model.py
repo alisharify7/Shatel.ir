@@ -130,8 +130,3 @@ class AnswerTicket(BaseModel):
         """
         self.AdminID = admin.id
 
-
-class NewsLetter(BaseModel):
-    __tablename__ = BaseModel.SetTableName("news-letters")
-    Email: so.Mapped[str] = so.mapped_column(sa.String(1024), nullable=False, unique=True)
-    VerifiedAT: so.Mapped[str] = so.mapped_column(sa.DateTime, nullable=False, unique=False)

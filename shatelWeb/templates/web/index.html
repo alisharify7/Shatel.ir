@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-    {% include 'utils/header.html' %}
+    {% include 'components/header.html' %}
 
     <!-- index carousel -->
     <div style="max-height: 60vh; width: 100%" class="custom-owl">
@@ -312,7 +312,7 @@
             <h2 class="text-center text-orange display-3" data-aos="fade-left">{{ _('ارتباط با ما') }}</h2>
             <p class="text-blue h3" data-aos="fade-right">{{ _('آیا سوالی دارید؟') }}</p>
         </div>
-        {% include "utils/contact-us-form.html" %}
+        {% include "components/contact-us-form.html" %}
     </section>
     <!-- end of contact us -->
 
@@ -373,8 +373,8 @@
     </section>
     <!-- end of partnership company  -->
 
-    {% include 'utils/footer.html' %}
-    {% include 'utils/mobile-navbar.html' %}
+    {% include 'components/footer.html' %}
+    {% include 'components/mobile-navbar.html' %}
 
 
 {% endblock content %}

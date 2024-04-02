@@ -1,0 +1,4 @@
+<script src="{{ '/global/js/toaster.js' | StorageUrl }}"></script>
+<script>
+    setUPNotification(`{{ url_for('auth.get_notification', _external=True) }}`);
+</script>

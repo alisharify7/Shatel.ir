@@ -1,0 +1,18 @@
+{#news letter html form uses in footer #}
+{% with form=newsLetterForm() %}
+<form id="newsLetterForm" action="{{ url_for('web.register_news_letter_post') }}" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="input-group w-100 mx-auto">
+        {{ form.Email() }}
+        {{
+                captcha.render_captcha(
+                    model_name='g-captcha3',
+                    BtnText=form.Submit.render_kw.get('value'),
+                    class=form.Submit.render_kw.get('class'),
+                    ParentFormID='newsLetterForm',
+                    hiddenBadge=True
+            )
+        }}
+    </div>
+</form>
+{% endwith %}

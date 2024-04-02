@@ -1,7 +1,7 @@
 from flask_babel import lazy_gettext as _l
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired, InputRequired, Length
+from wtforms import StringField, SubmitField, EmailField
+from wtforms.validators import DataRequired, InputRequired, Length, Email as EmailValidator
 
 
 class ValidateVarrantyForm(FlaskForm):
@@ -32,3 +32,26 @@ class ValidateVarrantyForm(FlaskForm):
             "id": "submitBtn"
         }
     )
+
+
+
+
+class NewsLetterForm(FlaskForm):
+    Email = EmailField(
+        validators=[
+            DataRequired(message="ورود داده در این فیلد الزامی می باشد"),
+            InputRequired(message="ورود داده در این فیلد الزامی می باشد"),
+            EmailValidator(message="ایمیل وارد شده نامعتبر می باشد")],
+        render_kw={
+            "class": "form-control rounded-0 rounded-start text-start",
+            "placeholder": _l("آدرس ایمیل")
+        }
+
+    )
+    Submit = SubmitField(
+        render_kw={
+            "value": _l("عضویت"),
+            "class":"btn bg-orange text-white input-group-text rounded-0 rounded-end"
+        }
+    )
+
