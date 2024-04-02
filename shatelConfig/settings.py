@@ -1,14 +1,16 @@
-import datetime
 import os
+import datetime
 from pathlib import Path
 
 import redis
 from dotenv import load_dotenv
 
-from .utils import generate_secret_key
+from shatelCore.utils import make_sure_directory_exists, generate_random_string
 
 load_dotenv()
 DATABASE_TABLE_PREFIX_NAME = os.environ.get("DATABASE_TABLE_PREFIX_NAME", "")
+
+
 
 
 class Setting:
@@ -16,7 +18,7 @@ class Setting:
         base Setting os.environ class for flask app
     """
 
-    SECRET_KEY = os.environ.get("APP_SECRET_KEY", generate_secret_key())
+    SECRET_KEY = os.environ.get("APP_SECRET_KEY", generate_random_string())
     ADMIN_LOGIN_TOKEN = os.environ.get("ADMIN_LOGIN_TOKEN", "123654")
 
     APP_DEBUG_STATUS = os.environ.get("APP_DEBUG", "") == "True"
@@ -34,6 +36,13 @@ class Setting:
     PRODUCT_IMAGE_STORAGE = STORAGE_DIR / "product" / "images"
     if not os.path.exists(PRODUCT_IMAGE_STORAGE):
         os.mkdir(PRODUCT_IMAGE_STORAGE)
+
+    TICKET_ATTACHMENT_DIR = STORAGE_DIR / "TicketAttachment"
+    make_sure_directory_exists(TICKET_ATTACHMENT_DIR)
+    TICKET_ATTACHMENT_EXT = ["pdf", "png", "jpg", "zip"]
+    TICKET_ATTACHMENT_MAX_SIZE = 1024*1024*16
+
+    MAX_CONTENT_LENGTH = 1024 * 1024 * 50 # global upload max size 50 MB
 
     # Database Config
     DATABASE_NAME = os.environ.get("DATABASE_NAME", "")
@@ -61,16 +70,24 @@ class Setting:
                                                                                                 None) else REDIS_DEFAULT_INTERFACE
 
     # Recaptcha Config <Flask-captcha2>
-    RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY", '')
-    RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY", '')
-    RECAPTCHA_ENABLED = os.environ.get("RECAPTCHA_ENABLED", False) == "True"
-    RECAPTCHA_LOG = os.environ.get("RECAPTCHA_LOG", True) == "True"
+    GOOGLE_CAPTCHA_V2_CONF = {
+        "CAPTCHA_PRIVATE_KEY": os.environ.get("CAPTCHA_PRIVATE_KEY_V2", ""),
+        "CAPTCHA_PUBLIC_KEY": os.environ.get("CAPTCHA_PUBLIC_KEY_V2", ""),
+        "CAPTCHA_ENABLED": os.environ.get('CAPTCHA_ENABLED_V2', str(DEBUG)) == 'True',
+        "CAPTCHA_LOG": os.environ.get('CAPTCHA_LOG_V2', str(DEBUG)) == 'True',
+        "CAPTCHA_LANGUAGE": os.environ.get('CAPTCHA_LANGUAGE_V2', 'en')
+    }
 
-    # RECAPTCHA_THEME = ''
-    # RECAPTCHA_TYPE = ''
-    # RECAPTCHA_SIZE = ''
-    # RECAPTCHA_LANGUAGE = ''
-    # RECAPTCHA_TABINDEX = ''
+    GOOGLE_CAPTCHA_V3_CONF = {
+        "CAPTCHA_PRIVATE_KEY": os.environ.get("CAPTCHA_PRIVATE_KEY_V3", ""),
+        "CAPTCHA_PUBLIC_KEY": os.environ.get("CAPTCHA_PUBLIC_KEY_V3", ""),
+        "CAPTCHA_ENABLED": os.environ.get('CAPTCHA_ENABLED_V3', str(DEBUG)) == 'True',
+        "CAPTCHA_SCORE": float(os.environ.get('CAPTCHA_SCORE_V3', 0.5)) if os.environ.get('CAPTCHA_SCORE_V3',
+                                                                                          '0.5').isdigit() else os.environ.get(
+            'CAPTCHA_SCORE_V3', 0.5),
+        "CAPTCHA_LOG": os.environ.get('CAPTCHA_LOG_V3', str(DEBUG)) == 'True'
+    }
+
 
     # available languages
     LANGUAGES = {
@@ -103,4 +120,10 @@ class Setting:
         result_backend=os.environ.get("REDIS_CELERY_BACKEND_URI", REDIS_DEFAULT_URL),
         broker_connection_retry_on_startup=True,
         result_serializer="pickle",
+        # beat_schedule={
+        #     "every-3-minutes": {
+        #         "task": "",
+        #         "schedule": 180,
+        #     }
+        # }
     )

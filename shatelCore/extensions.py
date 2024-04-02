@@ -1,7 +1,6 @@
 # flask extensions
 
 from flask_babel import Babel
-from flask_captcha2 import FlaskCaptcha2
 from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_session import Session
@@ -18,5 +17,3 @@ csrf = CSRFProtect()
 ServerSession = Session()
 ServerMigrate = Migrate()
 ServerMail = Mail()
-ServerCaptcha2 = FlaskCaptcha2()
-# ServerCaptcha3 = FlaskCaptcha3()

@@ -5,16 +5,18 @@ from urllib.parse import urlparse as url_parse
 from flask import render_template, session, \
     abort, url_for, redirect, flash, jsonify, \
     get_flashed_messages, request, current_app
+
+# lib
 from flask_babel import lazy_gettext as _l
 from sqlalchemy.exc import SQLAlchemyError
 
+# app
 from shatelAdmin.model import Admin
 from shatelConfig import Setting
 from shatelCore.email import sendActivAccounteMail, sendResetPasswordMail
-from shatelCore.extensions import RedisServer, db
-# app
-from shatelCore.extensions import ServerCaptcha2
-# app
+from shatelCore.extensions import db
+
+# current app
 from . import auth
 from . import form as AuthForm
 from . import model as AuthModel
@@ -85,7 +87,7 @@ def register_post():
     if not form.validate():
         return render_template("register.html", form=form)
 
-    if not ServerCaptcha2.is_verify():
+    if not current_app.extensions["g-captcha3"].is_verify():
         form.Submit.errors = [_l('کپچا به درستی وارد نشده است')]
         return render_template("register.html", form=form)
 
@@ -230,7 +232,7 @@ def reset_password_post():
     ctx = {}
     form = AuthForm.ForgetPasswordForm()
 
-    if not ServerCaptcha2.is_verify():
+    if not current_app.extensions["g-captcha3"].is_verify():
         flash(_l("کپچا به درستی وارد نشده است"), "danger")
         return render_template("forget_password.html", form=form, ctx=ctx)
 
@@ -374,7 +376,7 @@ def admin_login_post():
     admin special login view
     """
     form = AuthForm.LoginForm()
-    if not ServerCaptcha2.is_verify():
+    if not current_app.extensions["g-captcha3"].is_verify():
         flash(_l('کپچا به درستی وارد نشده است'), "danger")
         return render_template("admin/admin_login.html", form=form)
 

@@ -1,15 +1,26 @@
 import uuid
-
+from flask import session
+from shatelAuth.model import User
 from shatelCore.extensions import RedisServer
+from shatelCore.utils import generate_random_string
 
-
-
-def generate_random_text(length: int = 120):
+def login_user(user:User) -> None:
     """
-        this function generate random text str(uuid)
+    login users to their account, set values in their session
     """
-    uuids = [str(uuid.uuid4()).replace("-", "") for i in range((length // 32) + 1)]
-    return "".join(uuids)[:length]
+    session["login"] = True
+    session["account-id"] = user.id
+    session["password"] = user.Password # hash value
+    session.permanent = True  # SET session lifetime
+
+def login_admin(admin) -> None:
+    """
+    login admins to their account, set values in their session
+    """
+    session["login"] = True
+    session["account-id"] = admin.id
+    session["password"] = admin.Password
+    session.permanent = True  # SET session lifetime
 
 
 def set_activation_token_slug_redis(key:str, value:str, expire:int=900):
@@ -124,13 +135,13 @@ def gen_and_set_activation_slug(email: str, length: int = 120):
 
     """
     counter = 0
-    token = generate_random_text(length=length)
+    token = generate_random_string(length=length//32)
 
     while True:
         if counter == 200:
             return False
         if get_activation_token_slug_redis(token):
-            token = generate_random_text(length=length)
+            token = generate_random_string(length=length//32)
             continue
             counter += 1
         else:
@@ -216,7 +227,7 @@ def gen_and_set_reset_slug(email: str, length: int = 120):
     while True:
         if counter == 200:
             return False
-        token = generate_random_text(length=length)
+        token = generate_random_string(length=length//32) # uuid length is 32 char
         if get_reset_token_slug_redis(token):
             counter += 1
             continue

@@ -1,10 +1,8 @@
-from flask import request
-
-from . import app
+from flask import request, current_app
 
 
-@app.context_processor
-def app_context():
+
+def contexts():
     def currentLanguage():
         """
             this template filter returns users current language
@@ -20,7 +18,7 @@ def app_context():
         #     return "media/logo/eng-logo.png"
 
     ctx = {
-        "languages": app.config.get("LANGUAGES"),
+        "languages": current_app.config.get("LANGUAGES"),
         "currentLanguage": currentLanguage,
         "renderLogo": renderLogo,
 

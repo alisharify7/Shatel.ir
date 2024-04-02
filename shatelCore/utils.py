@@ -1,14 +1,45 @@
+import uuid
+import pickle
 import datetime
 import os.path
 import pathlib
-import pickle
-import uuid
 
 import khayyam
 from PIL import Image, UnidentifiedImageError
 from celery import Celery, Task
 from celery import shared_task
-from flask import Flask, current_app
+from flask import Flask, current_app, session
+from werkzeug.utils import secure_filename as werkzeug_secure_filename
+
+
+def generate_random_string(length: int = 6) -> str:
+    """generate random strings base on uuid.uuid4() """
+    if 0 < length <= 32:
+        return str(uuid.uuid4().hex.replace("-", ""))[:length]
+
+    round = (length // 32) + 1
+    random_string = [uuid.uuid4().hex.replace("-", "") for i in range(round)]
+    random_string = "".join(random_string)
+    return random_string[:length]
+
+
+def make_file_name_secure(name: str, round:int=3):
+    """This function make sure a file name is secure
+    remove dangerous characters and add uuid to first of file name
+    """
+    name = name.replace(" ", "")
+    name = werkzeug_secure_filename(name)
+    return f"{''.join([uuid.uuid4().hex for _ in range(round)])}-{datetime.datetime.utcnow().date()}-{name}"
+
+
+def userLocalSelector():
+    """
+        this function select user local base on session
+    """
+    try:
+        return session.get("language", "fa")
+    except:
+        return "en"
 
 
 def celery_init_app(app: Flask) -> Celery:
@@ -370,3 +401,10 @@ class TimeStamp:
             return date2
         else:
             return True
+
+
+
+def make_sure_directory_exists(path:os.path)->None:
+    """This function make sure a directory exists"""
+    if not os.path.exists(path):
+        os.mkdir(path)

@@ -1,15 +1,21 @@
+# build in
 import os
 
+# framework
 from flask import (render_template, send_from_directory, jsonify,
                    request, flash, redirect, current_app, session, url_for)
+
+# lib
 from flask_babel import lazy_gettext as _l, format_datetime
 
+# app
 from shatelAuth.Access.decorator import login_required
 from shatelAuth.model import Ticket
-from shatelCore.extensions import ServerCaptcha2
 from shatelCore.extensions import db
-from . import form as UserForm
+
+# current app
 from . import user
+from . import form as UserForm
 
 
 @user.route("/UserStatic/<path:filename>", methods=["GET"])
@@ -53,7 +59,7 @@ def send_ticket_post():
 
     form = UserForm.TicketForm()
 
-    if not ServerCaptcha2.is_verify():
+    if not current_app.extensions["g-captcha2"].is_verify():
         flash(_l('کپچا به درستی وارد نشده است'), "danger")
         return render_template("user/send-ticket.html", ctx=ctx, form=form)
 

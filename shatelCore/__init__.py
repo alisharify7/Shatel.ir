@@ -1,16 +1,14 @@
-from flask import Flask, request, session, redirect, url_for, flash
-from flask_babel import lazy_gettext as _l
+from flask import Flask
+from werkzeug.middleware.proxy_fix import ProxyFix
 
-from shatelAdmin.cli.admin import AdminCommands
-from shatelAuth.model import User
 from shatelConfig import Setting
-from .Logger import GetStdoutLogger
-# cli
-from .cli.make import MakeCommands
-from .extensions import db, ServerCaptcha2, ServerSession, \
-    ServerMigrate, ServerMail, babel, csrf
-from .utils import celery_init_app, add_watermark
 
+from .extensions import db, ServerSession, \
+    ServerMigrate, ServerMail, babel, csrf
+
+from .utils import celery_init_app, userLocalSelector
+
+from flask_captcha2 import FlaskCaptcha
 
 def create_app():
     """
@@ -18,13 +16,12 @@ def create_app():
     """
     app = Flask(
         __name__,
-        template_folder="MailTemplate",
+        template_folder="templates",
     )
     app.config.from_object(Setting)
 
     # register extensions
     db.init_app(app=app)  # db
-    ServerCaptcha2.init_app(app=app)  # captcha2
     csrf.init_app(app=app)
     ServerMail.init_app(app=app)  # mail
     ServerMigrate.init_app(db=extensions.db, app=app)  # migrate
@@ -34,10 +31,21 @@ def create_app():
         locale_selector=userLocalSelector,
         default_translation_directories=str((Setting.BASE_DIR / "translations").absolute())
     )
-
     celery = celery_init_app(app=app)  # celery
 
+    # captcha
+    # captcha config
+    ServerCaptchaMaster = FlaskCaptcha(app=app)
+    ServerCaptcha2 = ServerCaptchaMaster.getGoogleCaptcha2(name='g-captcha2', conf=Setting.GOOGLE_CAPTCHA_V2_CONF)
+    ServerCaptcha3 = ServerCaptchaMaster.getGoogleCaptcha3(name='g-captcha3', conf=Setting.GOOGLE_CAPTCHA_V3_CONF)
+    app.extensions['master-captcha'] = ServerCaptchaMaster
+    app.extensions['captcha2'] = ServerCaptcha2
+    app.extensions['captcha3'] = ServerCaptcha3
+
     # register apps:
+    from .middlewares import blp
+    app.register_blueprint(blp, url_prefix="/")
+
     from shatelWeb import web
     app.register_blueprint(web, url_prefix="/")
 
@@ -53,65 +61,23 @@ def create_app():
     from shatelProduct import product
     app.register_blueprint(product, url_prefix="/product/")
 
-    app.SimpleLogger = GetStdoutLogger("SimpleLogger")
+    from .context_processors import contexts
+    app.context_processor(contexts)
+
+    from .template_filters import template_filders
+    for each in template_filders:
+        app.add_template_filter(template_filders[each], name=each)
+
+
+    app.wsgi_app = ProxyFix(  # tell flask in behind a reverse proxy
+        app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+    )
+
     return app
 
 
-def userLocalSelector():
-    """
-        this function select user local base on session
-    """
-    try:
-        return session.get("language", "fa")
-    except:
-        return "en"
 
 
 app = create_app()
-app.cli.add_command(cmd=MakeCommands)
-app.cli.add_command(cmd=AdminCommands)
 
 
-@app.before_request
-def set_user_statue():
-    """
-    Set Some Useful utils on request before heads up to view
-
-    properties:
-
-        0.0 request.user_object
-            this prob return Users Object:<Sqlalchemy Object> from database if user is authenticated!
-            first user is_authenticated to ensure that user is logged in then
-            get user object from db
-
-        0.1 request.current_language
-            this prob return user current language:<str> < this prob uses local_selector flask_babel >
-
-        0.2 request.is_authenticated
-            this prob return user is authenticated: <bool> or nor
-
-
-    """
-    request.current_language = userLocalSelector()
-    request.is_authenticated = session.get("login", False)
-    request.user_object = db.session.execute(
-        db.select(User).filter_by(id=session.get("account-id", None))).scalar_one_or_none()
-    request.real_ip = request.headers.get('X-Real-Ip', request.remote_addr)
-
-
-@app.route("/lang/set/<string:language>")
-def setUserLanguage(language):
-    """
-        this view select a  language for user
-    """
-    location = (request.referrer or url_for('web.index_get'))
-    if language not in Setting.LANGUAGES:
-        return redirect(location)
-    else:
-        flash(_l('زبان با موفقیت تغییر کرد'), "success")
-        session["language"] = language
-        return redirect(location)
-
-
-import shatelCore.template_filter
-import shatelCore.app_contextprocessors
